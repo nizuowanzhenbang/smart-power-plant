@@ -494,7 +494,7 @@ python integration_smoke_test.py --run-yard
 
 ## 二、规划中的子系统
 
-### ⛽ gas-fuel-metering · 燃料计量与气源管理（v0.1 设计中）
+### ⛽ [gas-fuel-metering · 燃料计量与气源管理](https://github.com/nizuowanzhenbang/gas-fuel-metering)（v0.1 仓库已建 · 文档优先 📄）
 
 **做什么**：管理多路气源（中石油/中石化/LNG）的入厂计量、热值在线分析、与上游气源公司的结算对账。
 
@@ -537,7 +537,7 @@ python integration_smoke_test.py --run-yard
 
 | 子系统 | 当前状态 | 下一步 |
 |---|---|---|
-| gas-fuel-metering | v0.1 设计中 | 完成需求文档 + 数据模型 + FastAPI 骨架，对标 coal-transport-monitor 的工程量 |
+| [gas-fuel-metering](https://github.com/nizuowanzhenbang/gas-fuel-metering) | v0.1 文档已上 ✅ | 按各仓库 TASK.md 推进：核心算法（温压补偿/HHV/对账）+ 后端骨架 + 前端骨架 |
 | gas-turbine-performance | 未启动 | 等待 gas-fuel-metering 收尾，预计 v0.1 |
 | gas-emission-monitoring | 未启动 | 基于 emission-monitoring fork，参数库切换 |
 | 共享适配（plant-safety / equipment-inspection） | 未启动 | 增加燃气厂参数库 / 模板库 |
@@ -564,7 +564,7 @@ python integration_smoke_test.py --run-yard
 
 | 子系统 | GitHub |
 |---|---|
-| 燃料计量与气源管理 | 建设中（gas-fuel-metering） |
+| 燃料计量与气源管理 | https://github.com/nizuowanzhenbang/gas-fuel-metering |
 | 燃机性能与启停管理 | 规划中（gas-turbine-performance） |
 | 燃气环保监测 | 规划中（gas-emission-monitoring，基于 emission-monitoring 改造） |
 
