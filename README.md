@@ -1,8 +1,8 @@
 # 智慧发电厂全链路管理平台
 
-> 一座燃煤电厂日常要管的事，被拆成 6 个独立的小系统，彼此之间用一套约定好的"暗号"互相打招呼，最终拼成一张完整的数字网。
+> 一座燃煤电厂日常要管的事，被拆成 7 个独立的小系统，彼此之间用一套约定好的"暗号"互相打招呼，最终拼成一张完整的数字网。
 >
-> 这个仓库不放代码，只讲 **6 个系统之间怎么配合**。
+> 这个仓库不放代码，只讲 **7 个系统之间怎么配合**。
 
 ---
 
@@ -17,7 +17,9 @@
 - 锅炉、汽轮机这些大家伙得有人天天巡检，发现毛病要修；
 - 厂区里任何安全隐患都要登记、整改、复查。
 
-**问题来了**：这 6 件事过去分别由 6 个部门用 6 套表格/纸单子管，数据彼此不通。
+- 烟囱口实时排着 SO₂/NOx/烟尘，超过国家限值要被环保部罚款甚至限电。
+
+**问题来了**：这 7 件事过去分别由 7 个部门用 7 套表格/纸单子管，数据彼此不通。
 
 - 一批煤从下订单到烧进锅炉，途中要换 5 次"档案"，谁也讲不全它的完整经历；
 - 港口化验说热值 5500，厂里化验说热值 5200，谁动了手脚？查不出来；
@@ -56,6 +58,8 @@
 ```
 
 **两条线的交汇点**：煤场系统根据库存里每批煤的质量给出"今天该烧哪堆煤"的建议，而锅炉能不能正常烧，又取决于设备点检的健康度。**采购的煤要好，烧煤的设备要稳，这就是一座电厂日常运营的全部内核。**
+
+**还有第三条线 ——"合规排放的故事"**：煤烧进锅炉后，尾气从烟囱排出之前要经过脱硫、脱硝、除尘三道关；CEMS 仪表 24 小时盯着 SO₂/NOx/烟尘，超过限值立刻告警、严重的事件还会自动建一条环保隐患给安全部门。**主线管"煤怎么进来、设备怎么扛"，第三条线管"烟怎么出去"——三条线合起来才是一座电厂完整的数字命脉。**
 
 ---
 
@@ -164,20 +168,28 @@
 - **两票管理**：动设备前要先开"工作票"（写清楚谁在哪干什么）、操作高压设备前开"操作票"（一步一步走清单）；
 - **健康度评分**：每台设备一个 0-100 的健康分，出缺陷扣分、修好回弹；
 - **CRITICAL 缺陷自动报安全**：紧急缺陷登记的瞬间，自动调用 plant-safety 建一个隐患单，避免漏报；
-- **移动扫码**：师傅在现场用手机扫码就能查/报，支持离线（PWA）。
+- **移动扫码 + 离线点检**：师傅在现场用手机扫码就能查/报，弱网/无网点检结果先入 IndexedDB，恢复后自动同步（PWA）；
+- **两票电子签名**：工作票签发/许可/终结/归档、操作票审核/批准/每步执行都要再次输入密码生成 HMAC 签名，不可篡改 + 可验签；
+- **备件采购闭环**：低库存自动建采购申请 → 主管审批 → 推送到 fuel-procurement → 到货回填库存。
 
 <details>
-<summary>📋 13 张表 + 调度器 + 预测性维护算法</summary>
+<summary>📋 14 张表 + 调度器 + 预测性维护算法 + S3/Docker</summary>
 
-**13 张表**：`users`（5 角色：ADMIN/INSPECTOR/REPAIRMAN/SUPERVISOR/VIEWER）/ `equipments`（8 系统 × 3 关键度 A/B/C）/ `inspection_routes` / `inspection_points` / `inspection_tasks` / `inspection_records` / `defects`（含 `safety_sync_status` / `safety_hazard_no` 联动字段）/ `work_tickets` / `operation_tickets` / `operation_templates` / `spare_parts` / `stock_movements` / `audit_logs`
+**14 张表**：`users`（5 角色：ADMIN/INSPECTOR/REPAIRMAN/SUPERVISOR/VIEWER）/ `equipments`（8 系统 × 3 关键度 A/B/C）/ `inspection_routes` / `inspection_points` / `inspection_tasks` / `inspection_records` / `defects`（含 `safety_sync_status` / `safety_hazard_no` 联动字段）/ `work_tickets`（含 v3.0 `signatures` 签名链）/ `operation_tickets`（含 `signatures`）/ `operation_templates` / `spare_parts` / `stock_movements` / `audit_logs` / `purchase_requests`（v3.0）
 
-**APScheduler 4 个定时任务**：超期缺陷扫描 / 漏检任务扫描 / 任务自动生成 / 联动重试（plant-safety 失败重推）
+**APScheduler 5 个定时任务**：超期缺陷扫描 / 漏检任务扫描 / 任务自动生成 / plant-safety 联动重试 / 备件低库存采购申请自动生成（每 12h）
 
 **预测性维护算法**：`综合风险 = 缺陷数 30% + CRITICAL 率 25% + 异常率 15% + 健康度 20% + 等级状态加成`，sigmoid 平滑成失效概率
 
 **WebSocket 事件**：`defect.critical_created` / `defect.overdue_swept` / `task.missed_swept` / `defect.safety_synced` / `defect.safety_sync_failed`
 
-**移动端**：PWA（manifest + service worker） + `/m/scan` 路由用浏览器原生 `BarcodeDetector` 扫码 + 拍照上报
+**移动端**：PWA（manifest + service worker v2） + `/m/scan` 路由用浏览器原生 `BarcodeDetector` 扫码 + 拍照上报 + IndexedDB 离线队列
+
+**两票电子签名（v3.0）**：HMAC-SHA256(SECRET, `ticket_no|stage|user|ts`)，关键流转节点必须再次输入密码；`signatures` JSON 链可重算校验，`GET /{type}-tickets/{id}/signatures/verify` 一键验签
+
+**对象存储（v3.0）**：`STORAGE_BACKEND=local|s3` 切换，S3 后端兼容 AWS / MinIO / 阿里云 OSS（boto3 sigv4），自动签发预签名 URL
+
+**Docker Compose（v3.0）**：4 服务 backend(8003) + frontend(8080) + postgres16 + minio，一条命令拉起全栈
 
 **QR 打印**：`segno` 生成 SVG，`/equipment-qr-print` 提供 A4 4 列网格批量打印页
 </details>
@@ -210,7 +222,36 @@
 
 ---
 
-## 四、6 个系统怎么互相对话
+### 🌫️ [环保排放在线监测 · emission-monitoring](https://github.com/nizuowanzhenbang/emission-monitoring)
+
+**做什么**：盯着烟囱里实时排出的 SO₂、NOx、烟尘三项指标，超过国家"超低排放"限值（35 / 50 / 10 mg/Nm³）立即告警，月底自动出合规报表。
+
+**关键点**：
+- **基准氧折算**：CEMS 直接测出来的浓度还不能用，要按公式 `C折 = C实测 × (21 - 6) / (21 - O2实测)` 折算到 6% 基准氧后才能跟限值比；
+- **数据有效性**：仪表校准、故障、替代值会被自动标记不参与合规均值，CEMS 校准时入库自动转 `CALIBRATING`；
+- **三档严重度**：达标 / 一般超标 / 严重超标（≥1.5×），持续 30 分钟以上自动升级；
+- **告警闭环**：OPEN → 确认 → 处置 → 解决 → 监督员归档；超标过程的峰值、持续分钟、原因、整改措施一条不漏；
+- **合规报表**：日 / 月 / 年三档，自动算每个排放口的均值/峰值/可用率/合规率，状态机 DRAFT → SUBMITTED → APPROVED → ARCHIVED；
+- **与兄弟系统的伏笔（v2）**：严重告警自动推 plant-safety 建环保隐患；CEMS 故障自动推 equipment-inspection 建点检缺陷；coal-quality-monitor 检出入厂煤高硫时大屏预警 SO₂ 突升。
+
+<details>
+<summary>📋 7 张表 + 折算公式 + 严重度算法</summary>
+
+**7 张表**：`users`（5 角色：ADMIN/OPERATOR/ANALYST/SUPERVISOR/VIEWER）/ `units`（机组，编号 `UNIT-N`，含容量 MW、4 种燃料、状态机）/ `emission_points`（排放口，编号 `EP-U{N}-NNN`，5 类：STACK / PRE_DESULFUR / POST_DESULFUR / PRE_DENOX / POST_DENOX，`is_compliance_point` 标记合规上报口）/ `cems_devices`（编号 `CEMS-NNNN`，4 状态 ONLINE / OFFLINE / CALIBRATING / FAULT）/ `emission_readings`（分钟级时序，实测+折算双列，`severity` + `validity` 入库时算好）/ `emission_alerts`（编号 `AL-YYYYMMDD-NNNN`，含 peak_so2/nox/dust + duration_minutes + 完整处置链路）/ `emission_standards`（标准库，超低/特别排放/一般火电三档）/ `emission_reports`（编号 `RPT-YYYYMM-NN`）
+
+**核心算法**：
+- **基准氧折算**（GB13223-2011）：`C折 = C实测 × (21 - 6) / (21 - O2实测)`，O2 ≥ 20.5 视为异常不折算
+- **严重度判定**：超限 ≥1.5× 即 SEVERE；多指标取最大倍数
+- **告警合并**：同点位若已有未结告警则合并（更新 peak / duration_minutes / indicators），否则新建；持续 ≥30 min 自动升级 ESCALATED；恢复达标自动写 ended_at
+
+**Dashboard**：30 天合规率 + CEMS 可用率（合规线 95%）+ 24h 折算趋势 + 各排放口合规率柱图 + 告警等级/状态饼图 + 实时大屏（每个合规口最新值 + 限值红线）
+
+**默认 seed**：5 用户 + 2 机组（300MW + 600MW）+ 6 排放口 + 6 CEMS + 48h × 5min 真实风格读数 + 2 段超标段（一般已关闭 + 严重处置中） + 1 月报草稿
+</details>
+
+---
+
+## 四、7 个系统怎么互相对话
 
 **核心思路**：每个系统都有自己独立的数据库，互不强连接（不设外键）。但大家约定好用 **同一套"业务编号"作为暗号**，需要数据时就用 HTTP 调用对方接口拉过来。
 
@@ -329,6 +370,7 @@
 | 设备点检 | APScheduler + segno + WebSocket + PWA | 4 个定时任务 / 设备二维码 / 移动扫码 |
 | 燃料采购 | 仅基线 | 业务纯度最高，重在状态机与审批流 |
 | 安全生产 | 仅基线 | 纯接收方，重在状态机与幂等接收 |
+| 环保排放 | 仅基线（v2 加 APScheduler + WebSocket） | CEMS 时序流 + 基准氧折算 + 合规报表 |
 
 ---
 
@@ -342,8 +384,9 @@
 | [设备点检](https://github.com/nizuowanzhenbang/equipment-inspection) | 8003 | 5175 | admin/inspector/repairman/supervisor/viewer |
 | [安全生产](https://github.com/nizuowanzhenbang/plant-safety) | 8004 | 5177 | admin/admin123 |
 | [运煤监督](https://github.com/nizuowanzhenbang/coal-transport-monitor) | 8005 | 5178 | admin/admin123 |
+| [环保排放](https://github.com/nizuowanzhenbang/emission-monitoring) | 8004 | 5176 | admin/operator/analyst/supervisor/viewer（密码同名+123） |
 
-> 后三个系统默认 .env 里写的是 8000/5173，与燃料采购冲突。生产建议覆盖为上表端口，开发期可二选一启动。
+> 注意：环保排放 v1 暂用 8004/5176，与安全生产 / 煤质化验前端端口表面冲突。实际开发期同时启的人极少；生产部署建议统一在反代后规划，把上面 7 套端口全部唯一化。
 
 ---
 
@@ -373,9 +416,10 @@ python integration_smoke_test.py --run-yard
 | 燃料采购 | v2.1 | 招标比价、ERP 财务对接、合同电子签章 |
 | 煤场库存 | v2.1 | 三方智能配煤升级、SCADA 实时取数、皮带秤直连 |
 | 煤质化验 | v2.1 | 多港口化验机构接入、化验设备直连、LIMS 推送 |
-| 设备点检 | v2.5 | S3 存储、两票电签、离线模式、备件→采购单、Docker Compose |
+| 设备点检 | v3.0 ✅ | 真 CA 签名、DCS 报警对接、移动语音录入、大模型运维问答 |
 | 安全生产 | v1.1 | 两票管理、安全检查模块、WebSocket、角色权限 |
 | 运煤监督 | v2.0 | GPS 轨迹接入、磅房直连、车辆人脸识别 |
+| 环保排放 | v1.0 | APScheduler 月报、与 plant-safety / equipment-inspection 联动、WebSocket、DCS 直连 |
 
 ---
 
@@ -405,6 +449,7 @@ python integration_smoke_test.py --run-yard
 | 煤场库存 | https://github.com/nizuowanzhenbang/coal-yard-management |
 | 设备点检 | https://github.com/nizuowanzhenbang/equipment-inspection |
 | 安全生产 | https://github.com/nizuowanzhenbang/plant-safety |
+| 环保排放 | https://github.com/nizuowanzhenbang/emission-monitoring |
 | 本仓库（总览） | https://github.com/nizuowanzhenbang/smart-power-plant |
 
 > 这个 README 只讲整体设计。每个子系统的开发文档、API、部署脚本都在各自仓库里。
