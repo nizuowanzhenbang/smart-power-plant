@@ -577,6 +577,12 @@ python integration_smoke_test.py --run-yard
 |---|---|
 | 本仓库（双线总览） | https://github.com/nizuowanzhenbang/smart-power-plant |
 
+---
+
+## 🔒 安全基线
+
+- [SQL 注入防护基线 · 8 个子系统统一规范](./docs/sql-injection-baseline.md) — 强制规范、一键自查脚本、PR/Release/季度复审节奏
+
 ## 📜 License
 
 私有项目，未开源。
