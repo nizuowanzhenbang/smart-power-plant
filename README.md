@@ -2,7 +2,7 @@
 
 > 🏭 一家火电厂日常要管的事多得吓人：买煤/接管道气、运输、计量、化验、堆存、烧、巡设备、查隐患、盯排放——每件事过去都是一个部门一套 Excel，数据互不通。一批煤从下单到烧进锅炉途中要换 5 次"档案"，谁也讲不全它的完整经历；港口化验热值 5500、厂里复检只剩 5200，谁动过手脚根本查不出来；点检发现管子要爆了，写在巡检本上，安全员看不到，三天后真出事了。
 
-**这套平台把火电厂的日常拆成两条产品线**：**燃煤线**（7 个子系统已上线 ✅）覆盖买煤运煤化验堆存烧煤的完整链路；**燃气线**（3 个子系统规划中 🚧）覆盖管道气计量、燃机性能、燃气环保。两条线共享"安全生产 / 设备点检 / 环保排放 / 物资采购"四个通用底座，再通过一套约定好的"暗号"（业务编号）把所有子系统串成一张完整的数字网——每个系统独立部署、独立数据库、互不强耦合，任意一个挂了别的不受影响。
+**这套平台把火电厂的日常拆成两条产品线**：**燃煤线**（7 个子系统已上线 ✅）覆盖买煤运煤化验堆存烧煤的完整链路；**燃气线**（2 个子系统已上线 ✅、1 个规划中 🚧）覆盖管道气计量、燃机性能、燃气环保。两条线共享"安全生产 / 设备点检 / 环保排放 / 物资采购"四个通用底座，再通过一套约定好的"暗号"（业务编号）把所有子系统串成一张完整的数字网——每个系统独立部署、独立数据库、互不强耦合，任意一个挂了别的不受影响。
 
 > 📦 **本仓库只讲设计，不放代码**。子系统的开发文档 / API / 部署脚本都在各自仓库里。
 >
@@ -489,11 +489,20 @@ python integration_smoke_test.py --run-yard
 
 > 💡 **对应煤电线的位置**：相当于 coal-transport-monitor + coal-quality-monitor + 部分 fuel-procurement 三者合一——燃气没有"运输"和"入场化验"两个独立环节，统一在计量站完成。
 
-### 🔥 燃机性能与启停管理 · gas-turbine-performance（规划中）
+### 🔥 [燃机性能监测 · gas-turbine-performance](https://github.com/nizuowanzhenbang/gas-turbine-performance) （v1.0 落地 ✅）
 
-**做什么**：燃机机组性能监控、启停曲线管理、热部件寿命与保修评估。
+**做什么**：把 DCS 里燃机 + 余热锅炉 + 汽轮机的运行参数按 ISO 大气工况秒级修正，跟出厂基线一比，0.5% 的悄悄退化当场显形；同时盯振动、EGT 散布、轴位移做健康监测。
 
-**关键点**：燃机出力曲线 / 热耗率 / 排气温度（EGT）/ 压气机进口防冰状态 / 启停次数累计 / 热部件等效运行小时数 / 与 OEM 保修条款挂钩的维护节点提醒。
+**关键点**：
+- **ISO 大气工况修正**：温度（-0.5%/°C）+ 大气压（线性）+ 湿度（弱影响）三因子，把实测出力拉到 ISO 15°C/101.325 kPa/60% RH，参考 **ISO 2314 / ASME PTC 22 / DL/T 1066**；
+- **性能退化跟踪**：每分钟为每台 RUNNING 燃机算 15 分钟窗口性能，和最贴近的负荷基线比对；每日凌晨 2 点汇总过去 7 天，按规则推荐水洗（≥3% 或 ≥2000h）/ 大修（≥8% 或 ≥24000h）；
+- **健康监测**：振动按 **ISO 10816** 分 A/B/C/D 四区（C 区 WARNING / D 区 CRITICAL）；6 点 EGT 散布 ≥50°C 自动定位疑似异常热电偶；推力轴承轴向位移 ≥0.8/1.2 mm 分级告警；
+- **告警去重 + 闭环**：同对象 + 同 category + OPEN 仅刷新测量值，不连环发；OPEN → ACKNOWLEDGED → RESOLVED 全程留人留时间；
+- **跨系统出库**：CRITICAL 退化 → equipment-inspection 建缺陷工单；CRITICAL 振动 → plant-safety 建安全事件；每次性能计算回传效率/热耗给 gas-fuel-metering 做"度电耗气量"对账。
+
+**业务编号**：`PERF-YYYYMMDD-NNNN` 性能批次、`DEG-YYYYMM-NN` 月度退化记录、`AL-YYYYMMDD-NNNN` 告警
+
+> 💡 **对应煤电线的位置**：相当于 equipment-inspection 性能子集 + 自家退化跟踪。燃机的性能监测比锅炉细得多，必须单独成系统。
 
 ### 🌫️ 燃气环保监测 · gas-emission-monitoring（基于 emission-monitoring 改造）
 
@@ -523,7 +532,7 @@ python integration_smoke_test.py --run-yard
 | 子系统 | 当前状态 | 下一步 |
 |---|---|---|
 | [gas-fuel-metering](https://github.com/nizuowanzhenbang/gas-fuel-metering) | **v1.0 落地 ✅**（FastAPI + 9 路由 + APScheduler 4 类巡检 + React/AntD/ECharts 全栈 + Docker，97 测试） | v0.2 月对账闭环 + 跨系统联动 |
-| gas-turbine-performance | 未启动 | 基于 gas-fuel-metering 的跨系统接口启动 |
+| [gas-turbine-performance](https://github.com/nizuowanzhenbang/gas-turbine-performance) | **v1.0 落地 ✅**（FastAPI + 13 路由 + 5 模型 + APScheduler 3 类巡检 + ISO 修正/退化/振动算法全单测 + React/AntD/ECharts 7 页全栈 + Docker） | v0.2 启停寿命模型（启停次数权重 + 等效运行小时 EOH）+ OEM 保修节点提醒 |
 | gas-emission-monitoring | 未启动 | 基于 emission-monitoring fork，参数库切换 |
 | 共享适配（plant-safety / equipment-inspection） | 未启动 | 增加燃气厂参数库 / 模板库 |
 
@@ -563,13 +572,13 @@ python integration_smoke_test.py --run-yard
 
 > ★ = 设计上**双线共享**，燃气电厂线将复用（参数库 / 模板库切换，详见上方"火电厂双线总览"）
 
-### 燃气电厂线（v0.x 🚧）
+### 燃气电厂线（v1.x 建设中）
 
 | 子系统 | GitHub |
 |---|---|
-| 燃料计量与气源管理 | https://github.com/nizuowanzhenbang/gas-fuel-metering |
-| 燃机性能与启停管理 | 规划中（gas-turbine-performance） |
-| 燃气环保监测 | 规划中（gas-emission-monitoring，基于 emission-monitoring 改造） |
+| 燃料计量与气源管理 ✅ | https://github.com/nizuowanzhenbang/gas-fuel-metering |
+| 燃机性能监测 ✅ | https://github.com/nizuowanzhenbang/gas-turbine-performance |
+| 燃气环保监测 🚧 | 规划中（gas-emission-monitoring，基于 emission-monitoring 改造） |
 
 ### 总览
 
