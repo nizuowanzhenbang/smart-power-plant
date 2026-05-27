@@ -543,7 +543,7 @@ python integration_smoke_test.py --run-yard
 | 子系统 | 当前状态 | 下一步 |
 |---|---|---|
 | [gas-fuel-metering](https://github.com/nizuowanzhenbang/gas-fuel-metering) | **v1.0 落地 ✅**（FastAPI + 9 路由 + APScheduler 4 类巡检 + React/AntD/ECharts 全栈 + Docker，97 测试） | v0.2 月对账闭环 + 跨系统联动 |
-| [gas-turbine-performance](https://github.com/nizuowanzhenbang/gas-turbine-performance) | **v1.0 落地 ✅**（FastAPI + 13 路由 + 5 模型 + APScheduler 3 类巡检 + ISO 修正/退化/振动算法全单测 + React/AntD/ECharts 7 页全栈 + Docker） | v0.2 启停寿命模型（启停次数权重 + 等效运行小时 EOH）+ OEM 保修节点提醒 |
+| [gas-turbine-performance](https://github.com/nizuowanzhenbang/gas-turbine-performance) | **v1.0 落地 ✅**（FastAPI + 13 路由 + 5 模型 + APScheduler 3 类巡检 + ISO 修正/退化/振动算法全单测 + React/AntD/ECharts 7 页全栈 + Docker，**107 测试全过**） | v0.2 启停寿命模型（启停次数权重 + 等效运行小时 EOH）+ OEM 保修节点提醒 |
 | gas-emission-monitoring | 未启动 | 基于 emission-monitoring fork，参数库切换 |
 | 共享适配（plant-safety / equipment-inspection） | 未启动 | 增加燃气厂参数库 / 模板库 |
 
