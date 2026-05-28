@@ -2,7 +2,7 @@
 
 > 🏭 一家火电厂日常要管的事多得吓人：买煤/接管道气、运输、计量、化验、堆存、烧、巡设备、查隐患、盯排放——每件事过去都是一个部门一套 Excel，数据互不通。一批煤从下单到烧进锅炉途中要换 5 次"档案"，谁也讲不全它的完整经历；港口化验热值 5500、厂里复检只剩 5200，谁动过手脚根本查不出来；点检发现管子要爆了，写在巡检本上，安全员看不到，三天后真出事了。
 
-**这套平台把火电厂的日常拆成两条产品线**：**燃煤线**（7 个子系统已上线 ✅）覆盖买煤运煤化验堆存烧煤的完整链路；**燃气线**（2 个子系统已上线 ✅、1 个规划中 🚧）覆盖管道气计量、燃机性能、燃气环保。两条线共享"安全生产 / 设备点检 / 环保排放 / 物资采购"四个通用底座，再通过一套约定好的"暗号"（业务编号）把所有子系统串成一张完整的数字网——每个系统独立部署、独立数据库、互不强耦合，任意一个挂了别的不受影响。
+**这套平台把火电厂的日常拆成两条产品线**：**燃煤线**（8 个子系统已上线 ✅）覆盖买煤运煤化验堆存烧煤、再到机组能效与燃烧优化的完整链路；**燃气线**（3 个子系统已上线 ✅）覆盖管道气计量、燃机性能、燃气环保。两条线共享"安全生产 / 设备点检 / 环保排放 / 物资采购"四个通用底座，再通过一套约定好的"暗号"（业务编号）把所有子系统串成一张完整的数字网——每个系统独立部署、独立数据库、互不强耦合，任意一个挂了别的不受影响。
 
 > 📦 **本仓库只讲设计，不放代码**。子系统的开发文档 / API / 部署脚本都在各自仓库里。
 >
@@ -21,7 +21,8 @@
 | 🔧 设备主管 | 上千台设备从巡到修全程留痕，CRITICAL 缺陷自动转安全隐患 |
 | 🛡️ 安全员 | 隐患整改闭环，14/30 天超期自动飘红，复查留痕 |
 | 🌫️ 环保员 | CEMS 数据按基准氧折算秒级告警，月底一键出合规报表 |
-| 🏢 厂领导 | 7 个独立大屏 + 一座电厂日常运营的全部内核 |
+| 🎯 能效专工 | 反平衡算清供电煤耗的每一克耗差，AI 给最优配风，节煤减碳量化签发 |
+| 🏢 厂领导 | 8 个独立大屏 + 一座电厂日常运营的全部内核 |
 
 ---
 
@@ -50,12 +51,12 @@
 | 📦 物资采购审批 (fuel-procurement 框架) | 用于煤炭采购 | 框架复用，业务对象替换为天然气合同 |
 
 **两条线各自特有的部分**：
-- **燃煤独有**：运煤监督 / 煤场库存 / 煤质化验 / 配煤建议
+- **燃煤独有**：运煤监督 / 煤场库存 / 煤质化验 / 配煤建议 / 机组能效与燃烧优化
 - **燃气独有**：管道气计量 / 热值在线分析 / 燃机性能 / 启停寿命
 
 ---
 
-# 第一部分：燃煤电厂线（v2.x · 7 子系统已上线 ✅）
+# 第一部分：燃煤电厂线（v2.x · 8 子系统已上线 ✅）
 
 ## 🪨 燃煤厂日常的三条故事线
 
@@ -103,7 +104,7 @@
 
 ---
 
-## 📦 燃煤线的七个子系统
+## 📦 燃煤线的八个子系统
 
 每个系统都是一个独立的小应用，可以单独上线、单独维护，跟其他系统通过 HTTP 接口打交道。
 
@@ -291,7 +292,42 @@
 
 ---
 
-## 🔗 7 个系统怎么互相对话
+### ⚡ [机组能效与智能燃烧优化 · coal-unit-efficiency](https://github.com/nizuowanzhenbang/coal-unit-efficiency)
+
+**做什么**：把烧煤这一环的"总分"——供电煤耗——拆解到每一个可调参数上，告诉运行人员"煤都烧到哪去了、怎么少烧"。
+
+**为什么重要**：一台 600MW 机组供电煤耗每多 1 克/千瓦时，一年要多烧约 1500 吨标煤、多花 130 多万元、多排 4000 吨 CO₂。可这"1 克"藏在排烟温度、氧量、飞灰含碳量、真空度几十个表计的细微偏差里，人盯表根本算不清。本系统用锅炉反平衡法实时算出五项热损失、反推供电煤耗/锅炉效率/热耗率，用耗差分析把每个指标的偏差折算成"多烧了多少煤"，再用 AI 燃烧寻优给出"氧量调到多少、磨怎么配"的具体动作，最后一块驾驶舱大屏把全厂机组能效家底摆出来。
+
+**关键点**：
+- **反平衡能效画像**：按 GB 10184 / DL/T 904 逐项算 q2 排烟/q3 化学/q4 机械/q5 散热/q6 灰渣五项热损失，反推锅炉效率、供电煤耗、机组热耗率、厂用电率；
+- **耗差分析**：用灵敏度系数把排烟温度、氧量、飞灰含碳量、主/再热汽温、真空、厂用电率的偏差直接折算成 g/kWh，按影响排序，瀑布图摊开账；
+- **AI 燃烧寻优**：数据驱动（历史样本多元线性回归）+ 机理先验（最优氧量随负荷升高而降低）双保险，输出建议氧量/配风/磨煤机组合 + 预期降煤耗 + 折合日省金额 + 置信度，专工可采纳/驳回；
+- **节煤减碳量化**：能效日报/月报自动算较目标的节标煤量、节约金额、减碳量，状态机 DRAFT → ISSUED 签发归档；
+- **闭环告警 + 跨系统联动**：煤耗超标/锅炉效率掉档/耗差越限自动告警去重闭环；锅炉效率异常推 equipment-inspection 建排查工单、重大能耗事件推 plant-safety 备案；从 coal-quality-monitor 拉入炉煤低位发热量做煤耗折算基准。
+
+**业务编号**：`U-NN` 机组、`OPT-YYYYMMDD-NNNN` 优化建议、`ER-YYYYMM-NN` 能效报告、`AL-YYYYMMDD-NNNN` 告警
+
+<details>
+<summary>📋 8 张表 + 反平衡/煤耗/耗差/燃烧寻优算法 + 108 测试</summary>
+
+**8 张表**：`users`（5 角色 ADMIN/OPERATOR/ENERGY_ENG/MANAGER/VIEWER）/ `coal_units`（机组台账，含设计供电煤耗/锅炉效率/热耗等基准）/ `operating_snapshots`（DCS 工况快照时序）/ `efficiency_records`（能效计算结果，含 q2-q6 五项损失）/ `benchmark_targets`（小指标对标值 + 耗差灵敏度）/ `deviation_analyses`（耗差折算结果）/ `optimization_suggestions`（AI 建议）/ `energy_reports`（能效报告）/ `alerts`（能效预警）
+
+**核心算法**：
+- **锅炉反平衡**：`η = 100% − (q2+q3+q4+q5+q6)`，q2 随排烟温度/过量空气系数升高、q4 由飞灰/炉渣含碳量决定
+- **供电煤耗**：理论极限 122.84 g/kWh（3600/29307），实际 = 122.84 / 总效率；供电煤耗 = 发电煤耗 /(1−厂用电率)
+- **耗差折算**：`Δ煤耗 = 灵敏度 ×(实际−目标)`，区分"越低越好/越高越好"方向
+- **AI 燃烧寻优**：numpy 最小二乘拟合"煤耗=f(负荷,氧量,排烟温度,飞灰含碳量)"，样本不足退回机理先验
+
+**APScheduler 3 类作业**：能效计算（1 min 补算）/ 耗差扫描（5 min + 越限告警）/ 能效日报（每日 01:00）
+
+**默认 seed**：5 用户 + 3 机组（600MW 亚临界/660MW 超临界/1000MW 超超临界，U-01 故意亚健康触发告警）+ 72 条工况 + 联动能效/耗差/告警/AI 建议/日报；**108 pytest 全过**
+
+**技术栈**：FastAPI + SQLAlchemy 2 + APScheduler + numpy / React 18 + AntD 5 + ECharts；Docker Compose（PostgreSQL + 后端 8012 + Nginx 前端 5182）
+</details>
+
+---
+
+## 🔗 8 个系统怎么互相对话
 
 **核心思路**：每个系统都有自己独立的数据库，互不强连接（不设外键）。但大家约定好用 **同一套"业务编号"作为暗号**，需要数据时就用 HTTP 调用对方接口拉过来。
 
@@ -308,8 +344,9 @@
 | 设备点检 equipment-inspection | → 安全（CRITICAL 缺陷自动建隐患）/ → 安全（反查隐患状态）/ → 采购（备件低库存触发采购申请） | — |
 | 安全生产 plant-safety | — | ← 设备点检（接收隐患）/ ← 设备点检（被反查） |
 | 环保排放 emission-monitoring | （v2 规划）→ 安全（严重超标建环保隐患）/ → 设备点检（CEMS 故障建缺陷） | — |
+| 机组能效 coal-unit-efficiency | → 设备点检（锅炉效率异常建排查工单）/ → 安全（重大能耗事件备案） | ← 煤质化验（拉入炉煤低位发热量做煤耗折算基准） |
 
-> 💡 一眼看出哪个系统最"中心"：**煤场库存**（同时拉两边）和**设备点检**（同时推两边）是燃煤线的两个枢纽；**安全生产**是最纯粹的接收方。
+> 💡 一眼看出哪个系统最"中心"：**煤场库存**（同时拉两边）和**设备点检**（同时推两边）是燃煤线的两个枢纽；**安全生产**是最纯粹的接收方；**煤质化验**新增了一条出库——把入炉煤热值喂给机组能效系统。
 
 ### 第二步：八个跨系统通用的"暗号"
 
@@ -325,6 +362,7 @@
 | **隐患号** | `YH-20260520-0001` | 安全 → 设备点检 | 安全系统建好的隐患号反写到设备系统 |
 | **设备号** | `EQ-BL-0001` | 设备点检 / 安全 | 设备号前缀（BL/TB/EL...）映射到隐患分区 |
 | **堆区号** | `DQ-001` | 煤场 / 采购 | 入场回调时告诉采购"入了哪个堆" |
+| **机组号** | `U-01` | 机组能效 / 煤质化验 | 机组能效按机组号向化验系统拉对应入炉煤热值 |
 
 ### 第三步：跟一次最典型的"入场登记"，看 3 个系统是怎么联动的
 
@@ -390,6 +428,7 @@
 | 燃料采购 | 仅基线 | 业务纯度最高，重在状态机与审批流 |
 | 安全生产 | 仅基线 | 纯接收方，重在状态机与幂等接收 |
 | 环保排放 | 仅基线（v2 加 APScheduler + WebSocket） | CEMS 时序流 + 基准氧折算 + 合规报表 |
+| 机组能效 | APScheduler + numpy | 反平衡能效计算 + 耗差扫描 + 日报；numpy 最小二乘做燃烧寻优 |
 
 ---
 
@@ -404,6 +443,7 @@
 | [安全生产](https://github.com/nizuowanzhenbang/plant-safety) | 8004 | 5177 | admin/admin123 |
 | [运煤监督](https://github.com/nizuowanzhenbang/coal-transport-monitor) | 8005 | 5178 | admin/admin123 |
 | [环保排放](https://github.com/nizuowanzhenbang/emission-monitoring) | 8004 | 5176 | admin/operator/analyst/supervisor/viewer（密码同名+123） |
+| [机组能效](https://github.com/nizuowanzhenbang/coal-unit-efficiency) | 8012 | 5182 | admin/operator/energyeng/manager/viewer（密码均为 demo123） |
 
 > 🔧 环保排放 v1 暂用 8004/5176，与安全生产/煤质化验前端端口表面冲突。实际开发期同时启的人极少；生产部署建议统一在反代后规划，把上面 7 套端口全部唯一化。
 
@@ -439,10 +479,11 @@ python integration_smoke_test.py --run-yard
 | 安全生产 | v1.1 | 两票管理、安全检查模块、WebSocket、角色权限 |
 | 运煤监督 | v2.0 | GPS 轨迹接入、磅房直连、车辆人脸识别 |
 | 环保排放 | v1.0 | APScheduler 月报、与 plant-safety / equipment-inspection 联动、WebSocket、DCS 直连 |
+| 机组能效 | v1.0 ✅ | 分负荷段对标库、吹灰优化、锅炉/汽机数字孪生三维、SIS 实时流接入、燃烧模型在线训练 |
 
 ---
 
-# 第二部分：燃气电厂线（v0.x · 建设中 🚧）
+# 第二部分：燃气电厂线（v1.x · 3 子系统已上线 ✅）
 
 ## 燃气厂的痛点跟燃煤完全不是一回事
 
@@ -489,9 +530,9 @@ python integration_smoke_test.py --run-yard
 
 > 💡 **对应煤电线的位置**：相当于 equipment-inspection 性能子集 + 自家退化跟踪。燃机的性能监测比锅炉细得多，必须单独成系统。
 
-### 🌫️ 燃气环保监测 · gas-emission-monitoring（基于 emission-monitoring 改造）
+### 🌫️ [燃气环保监测 · gas-emission-monitoring](https://github.com/nizuowanzhenbang/gas-emission-monitoring) （v1.0 落地 ✅）
 
-**做什么**：从现有环保排放系统 fork 一份，切换参数库适配燃机。
+**做什么**：燃气电厂烟囱的"守夜人"——基于环保排放系统切换参数库适配燃机，NOx 单一主控、基准氧 15% 折算、燃机出力联动、CEMS 可用率扫描、月度合规报表自动闭环。
 
 **关键差异**：
 
@@ -544,7 +585,7 @@ python integration_smoke_test.py --run-yard
 |---|---|---|
 | [gas-fuel-metering](https://github.com/nizuowanzhenbang/gas-fuel-metering) | **v1.0 落地 ✅**（FastAPI + 9 路由 + APScheduler 4 类巡检 + React/AntD/ECharts 全栈 + Docker，97 测试） | v0.2 月对账闭环 + 跨系统联动 |
 | [gas-turbine-performance](https://github.com/nizuowanzhenbang/gas-turbine-performance) | **v1.0 落地 ✅**（FastAPI + 13 路由 + 5 模型 + APScheduler 3 类巡检 + ISO 修正/退化/振动算法全单测 + React/AntD/ECharts 7 页全栈 + Docker，**107 测试全过**） | v0.2 启停寿命模型（启停次数权重 + 等效运行小时 EOH）+ OEM 保修节点提醒 |
-| gas-emission-monitoring | 未启动 | 基于 emission-monitoring fork，参数库切换 |
+| [gas-emission-monitoring](https://github.com/nizuowanzhenbang/gas-emission-monitoring) | **v1.0 落地 ✅**（基准氧 15% 折算 + NOx 单一主控 + 燃机出力联动 + CEMS 可用率扫描 + 月度合规报表自动闭环） | DCS 直连、与 plant-safety / equipment-inspection 联动 |
 | 共享适配（plant-safety / equipment-inspection） | 未启动 | 增加燃气厂参数库 / 模板库 |
 
 ---
@@ -580,6 +621,7 @@ python integration_smoke_test.py --run-yard
 | 设备点检 ★ | https://github.com/nizuowanzhenbang/equipment-inspection |
 | 安全生产 ★ | https://github.com/nizuowanzhenbang/plant-safety |
 | 环保排放 ★ | https://github.com/nizuowanzhenbang/emission-monitoring |
+| 机组能效与智能燃烧优化 | https://github.com/nizuowanzhenbang/coal-unit-efficiency |
 
 > ★ = 设计上**双线共享**，燃气电厂线将复用（参数库 / 模板库切换，详见上方"火电厂双线总览"）
 
@@ -589,7 +631,7 @@ python integration_smoke_test.py --run-yard
 |---|---|
 | 燃料计量与气源管理 ✅ | https://github.com/nizuowanzhenbang/gas-fuel-metering |
 | 燃机性能监测 ✅ | https://github.com/nizuowanzhenbang/gas-turbine-performance |
-| 燃气环保监测 🚧 | 规划中（gas-emission-monitoring，基于 emission-monitoring 改造） |
+| 燃气环保监测 ✅ | https://github.com/nizuowanzhenbang/gas-emission-monitoring |
 
 ### 总览
 
