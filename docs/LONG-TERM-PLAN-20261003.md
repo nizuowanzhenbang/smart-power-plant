@@ -172,7 +172,9 @@ PR 与依赖：
 
 > 按 smart-power-plant 的 docs/LONG-TERM-PLAN-20261003.md 继续迭代。先读 docs/ITERATION-STATUS.md，核对实际分支和 PR 状态，完成下一项未完成单元。默认单代理、单目标，减少重复扫描和测试；结束前保存证据与交接。常规修复、测试、文档和草稿 PR 自主推进；合并、生产部署、破坏性数据操作提交具体方案后再确认。
 
-## 下一轮的第一项动作
+## 第一项动作与进度入口
+
+单元 01 已启动，文档候选及下一轮动作见 [进度交接](ITERATION-STATUS.md) 和 [证据索引](EVIDENCE-20261003.md)。以下保留原始单元范围，后续不据此从头重做。
 
 执行单元 01：先读取 smart-power-plant 的 README.md、docs/DEMO.md、docs/ROADMAP.md 和点检相关 PR 的最新状态，修正过时说法并建立证据索引。交付一份文档草稿 PR；不重复实现已经在 #4–#9 中完成的能力。
 
