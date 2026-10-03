@@ -20,18 +20,18 @@
 
 | 项目 | 已见证据 | 本规划的处理 |
 |---|---|---|
-| 设备点检主分支 | #11 已合并，固定提交 `b2bd35cea7ad40a0a0ab9b836707b6af6539738b` | 按该版本演示，后续迭代保持可复核 |
+| 设备点检主分支 | #12 已合并，固定提交 `04f898fb63f4b389f95eba264eff3b7138850870` | 按该版本演示，新增 0003 收货迁移，后续迭代保持可复核 |
 | 设备点检 #4–#10 | 历史差异已独立审查，全部提交纳入 #11；旧草稿已收拢 | 不再按旧依赖链重复合并或开发 |
-| 本轮新增修复 | 库存精度/盘点归零、累计上限及恢复目标隔离 | 先失败回归、修复、独立复核和全量测试 |
-| #11 远端 CI | Quality checks 与 Compose browser acceptance 均 success | 具体提交和新 main 检查见发布证据；不等于现场投运 |
+| 本轮新增修复 | 库存精度/盘点归零、累计上限、恢复目标隔离及收货重放幂等 | 先失败回归、修复、独立复核和全量测试 |
+| #12 远端 CI | Quality checks 与 Compose browser acceptance 均 success | 具体提交和新 main 检查见发布证据；不等于现场投运 |
 | 燃煤能效 | README 和 PR #2 描述模型质量检查及降级 | 后续复跑并整理为辅助案例 |
 | 作品集入口 | 导览、演示、状态及证据已跟随固定基线 | 接续前先读最新进度，不按历史快照重做 |
 
 证据链接：
-- [设备点检 PR #11](https://github.com/nizuowanzhenbang/equipment-inspection/pull/11)
-- [最新发布证据](RELEASE-20261003.md)
-- [Quality checks](https://github.com/nizuowanzhenbang/equipment-inspection/actions/runs/37144133975)
-- [Compose browser acceptance](https://github.com/nizuowanzhenbang/equipment-inspection/actions/runs/37144134103)
+- [设备点检 PR #12](https://github.com/nizuowanzhenbang/equipment-inspection/pull/12)
+- [最新发布证据](RELEASE-RECEIPTS-20261003.md)
+- [Quality checks](https://github.com/nizuowanzhenbang/equipment-inspection/actions/runs/37162973445)
+- [Compose browser acceptance](https://github.com/nizuowanzhenbang/equipment-inspection/actions/runs/37162973440)
 - [能效 PR #2](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/2)
 
 历史 PR 的依赖、兼容与差异已复核，审查发现的两个问题在集成前修复。其他仓库的实际验收范围仍需在各自执行单元确认，不能从主作品绿灯推断全平台已验收。
@@ -175,7 +175,7 @@ PR 与依赖：
 
 ## 第一项动作与进度入口
 
-单元 01–04 的基线整理已完成，下一轮从库存收货重放幂等缺口接续，见 [进度交接](ITERATION-STATUS.md) 和 [发布证据](RELEASE-20261003.md)。以下保留原始单元 01 范围作为规划历史，不再从头重做。
+单元 01–04 的基线整理已完成，收货重放幂等已完成，下一轮从取消/审批与首次收货竞争接续，见 [进度交接](ITERATION-STATUS.md) 和 [发布证据](RELEASE-RECEIPTS-20261003.md)。以下保留原始单元 01 范围作为规划历史，不再从头重做。
 
 执行单元 01：先读取 smart-power-plant 的 README.md、docs/DEMO.md、docs/ROADMAP.md 和点检相关 PR 的最新状态，修正过时说法并建立证据索引。交付一份文档草稿 PR；不重复实现已经在 #4–#9 中完成的能力。
 
