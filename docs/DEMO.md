@@ -66,6 +66,8 @@ python interview_demo.py --output interview-evidence.json
 
 煤质现在可作为一项辅助案例：固定 main `f6efd459f596293fe21ddd44104eb48a957684b6`，见[煤质发布证据](RELEASE-COAL-QUALITY-20261004.md)。正常港口/入厂化验后收到严重铅封运输预警，再次化验重评仍保留原运输记录、处理信息和SEVERE状态；预警数1、风险0.60、供应商手动重算95分。解释为何各来源只替换自己生成的预警，以及为何计分必须看数据库实际保存的全部记录。可在固定版本按维护说明执行 `cd backend && python -m pytest tests/test_quality_transport_api.py -q`，复核六个实际API用例。该故事不代表现场煤质检测或全链路联合验收。
 
+内部招聘也可选择安全检查案例替换上述辅助案例：讲“防护罩缺损 → 检查不符合 → 真实隐患单”。旧接口允许客户端塞入虚假编号，导致系统误判已转单；现在拒绝并保持原记录不变，正常转换由服务器生成关联。用[固定版本讲解卡](https://github.com/nizuowanzhenbang/plant-safety/blob/24e33ec011c0d0cc3dd3d9dcc79dffb1440541df/docs/CHECK-HAZARD-OWNERSHIP.md)中的三个真实测试演示异常拒绝、正常转换和事务回滚；[证据](RELEASE-SAFETY-20261004.md)记录15项完整后端与CI。当前没有安全检查编辑页面，按API场景讲解。
+
 ## 9–10 分钟：映射岗位能力和下一步
 
 | 岗位关心什么 | 用哪个事实回答 |
@@ -74,8 +76,10 @@ python interview_demo.py --output interview-evidence.json
 | 数据可靠性 | 沿 API、事务和数据库讲清一次业务写入 |
 | 权限与运维 | 说明演示模式、角色拒绝、迁移与恢复范围 |
 | 软件交付 | 给出提交、PR 和 CI 链接，明确已合并与候选 |
-| 下一步如何选 | 固定基线已形成；优先隐患检查关联隔离，其次煤质数值校验；采购创建边界保留后续 |
+| 下一步如何选 | 固定基线已形成；安全检查关联隔离已交付；优先煤质数值校验，其次隐患期限规则；采购创建边界保留后续 |
 
 按本人实际完成、理解与讲解程度组织简历：围绕电厂设备点检场景维护 FastAPI、React 原型，验证弱网重传、内容冲突、缺陷闭环与库存可靠性；通过可重复的 API 场景与 CI 留下交付证据。注明实际参与及 AI 辅助范围。
+
+岗位侧重：信息化讲接口、事务与测试；生产技术讲现场记录到整改任务的交接；安全管理讲责任、追溯和异常处置。案例可证明具体软件行为，不代替现场规程。先用90秒讲业务问题与结果，再按追问展开[5个问答](https://github.com/nizuowanzhenbang/plant-safety/blob/24e33ec011c0d0cc3dd3d9dcc79dffb1440541df/docs/CHECK-HAZARD-OWNERSHIP.md)。
 
 [长期规划](LONG-TERM-PLAN-20261003.md) · [最新交接](ITERATION-STATUS.md)
