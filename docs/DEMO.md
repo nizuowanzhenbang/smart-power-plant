@@ -6,12 +6,12 @@
 
 | 选择 | 固定提交 | 能展示什么 |
 |---|---|---|
-| 当前固定展示基线 | `170b8393e622d31e23a5a546419748183f07ce20`（PR #13 合并） | API 闭环、点检/验收/库存并发、权限、迁移恢复、部署、盘点归零、收货重放及状态竞争保护 |
+| 当前固定展示基线 | `76d799c1fc781147ea6bbdeaff0ee57e8bc659db`（PR #14 合并） | API 闭环、点检/验收/库存并发、权限、迁移恢复、部署、盘点归零、收货重放、状态竞争及过时盘点保护 |
 | 历史 API 基线 | `8b4551808524b76c7b50c3425396bd5a265ba080`（PR #3 合并） | 用于解释演进，不作为新演示的默认版本 |
 
-演示优先使用当前固定基线，启动和迁移按该提交的文档操作。历史版本的零配置行为不能套用到新版本。[最新提交、检查及范围](RELEASE-PURCHASE-STATE-20261004.md)。
+演示优先使用当前固定基线，启动和迁移按该提交的文档操作。历史版本的零配置行为不能套用到新版本。[最新提交、检查及范围](RELEASE-STOCKTAKE-20261004.md)。
 
-提前在独立虚拟环境中按[基线运行说明](https://github.com/nizuowanzhenbang/equipment-inspection/blob/170b8393e622d31e23a5a546419748183f07ce20/docs/DEMO.md)安装依赖。在固定版本的设备点检仓库执行：
+提前在独立虚拟环境中按[基线运行说明](https://github.com/nizuowanzhenbang/equipment-inspection/blob/76d799c1fc781147ea6bbdeaff0ee57e8bc659db/docs/DEMO.md)安装依赖。在固定版本的设备点检仓库执行：
 
 ~~~sh
 cd backend
@@ -21,7 +21,7 @@ python interview_demo.py --output interview-evidence.json
 
 成功标准是本次命令退出码 0、打印 PASS，并生成 `status: passed` 的报告。已有报告拒绝覆盖，复跑换一个文件名。脚本使用临时 SQLite、临时上传目录和随机密钥，关闭调度及外部联动，结束后销毁临时环境。
 
-这是一条 API 演示命令，不会启动浏览器页面。要展示 UI，提前按选定版本 README 配置独立演示环境，阅读[运行模式](https://github.com/nizuowanzhenbang/equipment-inspection/blob/170b8393e622d31e23a5a546419748183f07ce20/docs/RUNTIME-SECURITY.md)和[数据库迁移](https://github.com/nizuowanzhenbang/equipment-inspection/blob/170b8393e622d31e23a5a546419748183f07ce20/docs/DATABASE-MIGRATIONS.md)说明。固定演示账户只在显式 APP_MODE=demo 下创建；正式模式需有效密钥并先迁移。报告与录屏均应带版本、日期。
+这是一条 API 演示命令，不会启动浏览器页面。要展示 UI，提前按选定版本 README 配置独立演示环境，阅读[运行模式](https://github.com/nizuowanzhenbang/equipment-inspection/blob/76d799c1fc781147ea6bbdeaff0ee57e8bc659db/docs/RUNTIME-SECURITY.md)和[数据库迁移](https://github.com/nizuowanzhenbang/equipment-inspection/blob/76d799c1fc781147ea6bbdeaff0ee57e8bc659db/docs/DATABASE-MIGRATIONS.md)说明。固定演示账户只在显式 APP_MODE=demo 下创建；正式模式需有效密钥并先迁移。报告与录屏均应带版本、日期。
 
 ## 0–1 分钟：说清业务问题
 
@@ -48,15 +48,17 @@ python interview_demo.py --output interview-evidence.json
 
 只选一个追问展开，避免把所有 PR 都念一遍：
 
-- **为什么有唯一键还要处理并发？** 展示 [PostgreSQL 回归说明](https://github.com/nizuowanzhenbang/equipment-inspection/blob/170b8393e622d31e23a5a546419748183f07ce20/docs/POSTGRESQL.md)及 [验收竞争说明](https://github.com/nizuowanzhenbang/equipment-inspection/blob/170b8393e622d31e23a5a546419748183f07ce20/docs/VERIFICATION-CONCURRENCY.md)，讲清事务、锁顺序、等锁后刷新和回滚范围。
-- **升级失败如何恢复？** 展示 [迁移兼容矩阵](https://github.com/nizuowanzhenbang/equipment-inspection/blob/170b8393e622d31e23a5a546419748183f07ce20/docs/DATABASE-MIGRATIONS.md)与 [独立恢复方案](https://github.com/nizuowanzhenbang/equipment-inspection/blob/170b8393e622d31e23a5a546419748183f07ce20/docs/BACKUP-RESTORE.md)，说明代码回退不等于数据恢复，恢复验证后再切换连接。
-- **部署如何复核？** 展示 [PR #13 的 Compose 检查](https://github.com/nizuowanzhenbang/equipment-inspection/actions/runs/37178519939)：构建启动、就绪检查、Chromium 登录授权、盘点归零与收货故障恢复、日志凭证检查。该作业通过不能证明完整离线浏览器流程或生产容量。
+- **为什么有唯一键还要处理并发？** 展示 [PostgreSQL 回归说明](https://github.com/nizuowanzhenbang/equipment-inspection/blob/76d799c1fc781147ea6bbdeaff0ee57e8bc659db/docs/POSTGRESQL.md)及 [验收竞争说明](https://github.com/nizuowanzhenbang/equipment-inspection/blob/76d799c1fc781147ea6bbdeaff0ee57e8bc659db/docs/VERIFICATION-CONCURRENCY.md)，讲清事务、锁顺序、等锁后刷新和回滚范围。
+- **升级失败如何恢复？** 展示 [迁移兼容矩阵](https://github.com/nizuowanzhenbang/equipment-inspection/blob/76d799c1fc781147ea6bbdeaff0ee57e8bc659db/docs/DATABASE-MIGRATIONS.md)与 [独立恢复方案](https://github.com/nizuowanzhenbang/equipment-inspection/blob/76d799c1fc781147ea6bbdeaff0ee57e8bc659db/docs/BACKUP-RESTORE.md)，说明代码回退不等于数据恢复，恢复验证后再切换连接。
+- **部署如何复核？** 展示 [PR #14 的 Compose 检查](https://github.com/nizuowanzhenbang/equipment-inspection/actions/runs/37183237840)：构建启动、就绪检查、Chromium 登录授权、盘点归零、过时盘点冲突与收货故障恢复、日志凭证检查。该作业通过不能证明完整离线浏览器流程或生产容量。
 
-这些改进已纳入 PR #13 的固定 main 基线。还可选择[库存精度与归零](https://github.com/nizuowanzhenbang/equipment-inspection/blob/170b8393e622d31e23a5a546419748183f07ce20/docs/STOCK-CONSISTENCY.md)：解释先复现舍入/竞争、再检查真实库存和流水。指定场景通过并不代表所有收货、盘点或外部联动问题已解决。
+这些改进已纳入 PR #14 的固定 main 基线。还可选择[库存精度与归零](https://github.com/nizuowanzhenbang/equipment-inspection/blob/76d799c1fc781147ea6bbdeaff0ee57e8bc659db/docs/STOCK-CONSISTENCY.md)：解释先复现舍入/竞争、再检查真实库存和流水。指定场景通过并不代表所有收货、盘点或外部联动问题已解决。
 
-可选择[收货响应丢失](https://github.com/nizuowanzhenbang/equipment-inspection/blob/170b8393e622d31e23a5a546419748183f07ce20/docs/PURCHASE-RECEIPT-REPLAY.md)：部分收到 2 件，服务器已提交但响应丢失，刷新后复用 UUID 只记一条流水；新一批同数量使用新 UUID。解释为何按数量或时间猜测重复会误伤真实分批到货，以及为何提交后的 HTTP 响应要使用已保存快照。补充两个标签页和换账户的恢复边界。正式演示先维护窗口备份并 upgrade/check 到 0003。
+可选择[收货响应丢失](https://github.com/nizuowanzhenbang/equipment-inspection/blob/76d799c1fc781147ea6bbdeaff0ee57e8bc659db/docs/PURCHASE-RECEIPT-REPLAY.md)：部分收到 2 件，服务器已提交但响应丢失，刷新后复用 UUID 只记一条流水；新一批同数量使用新 UUID。解释为何按数量或时间猜测重复会误伤真实分批到货，以及为何提交后的 HTTP 响应要使用已保存快照。补充两个标签页和换账户的恢复边界。正式演示先维护窗口备份并 upgrade/check 到 0003。
 
-可选择[采购状态竞争](https://github.com/nizuowanzhenbang/equipment-inspection/blob/170b8393e622d31e23a5a546419748183f07ce20/docs/PURCHASE-STATE-CONSISTENCY.md)：最终 5 件已收货后，先读到旧状态的取消返回 400；部分收到 2 件后仍可取消并确认原 UUID。说明等锁后重读状态、状态与审计一起提交，以及外部推送成功后本地失败为什么不能撤销远端订单。这些竞争由真实数据库自动测试固定交错，不依赖手工操作时机。
+可选择[采购状态竞争](https://github.com/nizuowanzhenbang/equipment-inspection/blob/76d799c1fc781147ea6bbdeaff0ee57e8bc659db/docs/PURCHASE-STATE-CONSISTENCY.md)：最终 5 件已收货后，先读到旧状态的取消返回 400；部分收到 2 件后仍可取消并确认原 UUID。说明等锁后重读状态、状态与审计一起提交，以及外部推送成功后本地失败为什么不能撤销远端订单。这些竞争由真实数据库自动测试固定交错，不依赖手工操作时机。
+
+可选择[过时盘点保护](https://github.com/nizuowanzhenbang/equipment-inspection/blob/76d799c1fc781147ea6bbdeaff0ee57e8bc659db/docs/STOCKTAKE-SNAPSHOT.md)：打开库存 10 的盘点框，另一操作入库 2 后，旧快照提交 10 返回 409，当前库存仍为 12；关闭并刷新后重新输入 11 才能提交。即使先入 2 再出 2 回到 10，旧版本仍冲突。库存与流水版本同一 SQL 读取；冲突不自动替换版本或重试。旧 ADJUST 客户端须升级，此次没有新迁移。浏览器等待真实响应时不能编辑或关闭对话框。
 
 ## 8–9 分钟：辅助案例
 
@@ -72,7 +74,7 @@ python interview_demo.py --output interview-evidence.json
 | 数据可靠性 | 沿 API、事务和数据库讲清一次业务写入 |
 | 权限与运维 | 说明演示模式、角色拒绝、迁移与恢复范围 |
 | 软件交付 | 给出提交、PR 和 CI 链接，明确已合并与候选 |
-| 下一步如何选 | 固定基线已形成；优先过时盘点保护，再处理采购创建边界、依赖和联动缺口 |
+| 下一步如何选 | 固定基线已形成；优先采购创建及自动补货边界，再处理依赖和联动缺口 |
 
 按本人实际完成、理解与讲解程度组织简历：围绕电厂设备点检场景维护 FastAPI、React 原型，验证弱网重传、内容冲突、缺陷闭环与库存可靠性；通过可重复的 API 场景与 CI 留下交付证据。注明实际参与及 AI 辅助范围。
 

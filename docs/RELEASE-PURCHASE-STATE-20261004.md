@@ -1,5 +1,7 @@
 # 2026-10-04 采购状态竞争发布证据
 
+本文件保留 PR #13 当时的历史版本、检查和下一步。当前演示基线已更新，见[过时盘点发布证据](RELEASE-STOCKTAKE-20261004.md)。
+
 [PR #13](https://github.com/nizuowanzhenbang/equipment-inspection/pull/13) 已合并。固定演示 main：`170b8393e622d31e23a5a546419748183f07ce20`；源提交：`63653ebfddec80101a9b689e110b0c82ab5d2232`。本地验收、上传及最终 main tree 均为 `56b62bec60a1ede25494a8ccb2380c0a6ebd823e`。前一基线 `04f898fb63f4b389f95eba264eff3b7138850870` 与[收货重放发布快照](RELEASE-RECEIPTS-20261003.md)保留历史；此前能力全部保留。
 
 ## 问题与最终行为

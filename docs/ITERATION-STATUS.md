@@ -10,42 +10,41 @@
 
 | 单元 | 状态 |
 |---|---|
-| 01–04 | 完成；#11 收拢历史成果，#12/#13 更新演示基线，历史 #4–#10 不重复实施 |
+| 01–04 | 完成；#11 收拢历史成果，#12/#13/#14 更新演示基线，历史 #4–#10 不重复实施 |
 | 05–06 | 库存锁、事务流水、收货重放及六入口采购状态竞争保护完成 |
-| 07 | 精度、累计上限、盘点归零完成；过时绝对盘点保护为下一项 |
+| 07 | 精度、累计上限、盘点归零及过时绝对盘点保护完成；采购创建/自动补货边界待核查 |
 | 08–24 | 尚未完整执行；已有迁移/恢复与依赖升级证据按实际范围复用 |
 
 ## 当前固定版本
 
 - 仓库：`nizuowanzhenbang/equipment-inspection`。
-- 最新 main：`170b8393e622d31e23a5a546419748183f07ce20`，由 [PR #13](https://github.com/nizuowanzhenbang/equipment-inspection/pull/13) 合并。
-- 源提交：`63653ebfddec80101a9b689e110b0c82ab5d2232`；本地/上传/main tree：`56b62bec60a1ede25494a8ccb2380c0a6ebd823e`。
-- 前一基线 `04f898fb63f4b389f95eba264eff3b7138850870` 与[收货重放发布快照](RELEASE-RECEIPTS-20261003.md)保留历史；#4–#10 成果已纳入 #11。
-- 本轮后端448（真实PG164）、Node16、API35、tsc/Vite/Ruff/diff全部通过；PR Quality/Compose success（远端Chromium8），新 main Quality success。详见[完整证据](RELEASE-PURCHASE-STATE-20261004.md)。
+- 最新 main：`76d799c1fc781147ea6bbdeaff0ee57e8bc659db`，由 [PR #14](https://github.com/nizuowanzhenbang/equipment-inspection/pull/14) 合并。
+- 源提交：`d2f06048453ac7cbd319673a770ab46dcdff173d`；本地/上传/main tree：`16fa73b67b503296db888e102a7793768ba392dd`。
+- 前一基线 `170b8393e622d31e23a5a546419748183f07ce20` 与[采购状态发布快照](RELEASE-PURCHASE-STATE-20261004.md)保留历史。
+- 本轮后端492（真实PG186）、Node16、API35、本地Chromium11、tsc/Vite/Ruff/diff全部通过；PR Quality/Compose success（实际nginx/PG、Chromium11），新 main Quality success。详见[完整证据](RELEASE-STOCKTAKE-20261004.md)。
 - 文档仓库：`nizuowanzhenbang/smart-power-plant`，实际文档版本查 main 历史，避免自引用 SHA。
 
 ## 完成与限制
 
-六个既有状态入口统一在备件锁后刷新采购单。最终收货先完成则取消400；部分收货后取消仍合法并保留已成功 UUID。批准和发送的状态、元数据及审计同事务；真实审计约束失败全部回滚。使用真实 SQLite/PG 和本地 HTTP 服务验证竞争、发送失败恢复及发送/最后收货交错。一次整分支独立审查无发现；独立复跑48项SQLite通过。
+数量与流水版本同一 SQL 快照；ADJUST 等锁刷新后拒绝缺失/过时版本；数量先变后恢复仍冲突。并发同版本盘点、合法零盘点、真实约束失败回滚、等锁刷新及提交后响应一致性已由实际数据库固定交错验证。前端冲突保留原快照，刷新后明确输入新数量，等待响应期间禁止编辑/关闭/重复提交。一次整分支独立审查无发现，独立6项SQLite通过。
 
-本轮没有迁移、依赖或前端源码变化，HEAD保持0003；从0002升级仍按原维护窗口备份/upgrade/check。同步外部推送持备件锁，PostgreSQL 同备件写入会等待，SQLite 写锁也会阻塞其他写入。远端成功而本地失败不能撤销远端订单，重发前核对外部系统；outbox、远端去重、取消通知等留待后续。
-
-原无键客户端、清除浏览器存储、更换浏览器和多标签页新建独立意图的去重边界仍保留。过时盘点、采购创建/自动补货精度金额、超量政策及编号竞争待做。弃用、大包与扫描范围限制见发布证据；本轮无生产部署或容量证明。
+旧 ADJUST 客户端须升级，否则409；IN/OUT兼容，无新迁移或依赖，HEAD保持0003。手工SQL、修改/删除流水及恢复中的旧浏览器会话不在版本保证范围，恢复后重新读取核对；ADJUST响应丢失须人工核对，不自动重试。原收货UUID与部分取消规则保留；同步外部推送持锁、远端成功无法本地撤销的既有边界不变。弃用、大包与扫描范围限制见发布证据；没有生产部署或容量证明。
 
 ## 下一项具体动作
 
-处理过时绝对盘点。先读 main 的 `backend/app/api/spare_parts.py`、`backend/app/schemas/spare_part.py`、`frontend/src/pages/SparePartList.tsx` 和 `backend/tests/postgresql/test_stock_transactions.py`。ADJUST 目前把库存直接置为 qty，现有写锁只能串行提交，不能辨认用户读取盘点快照后发生的出入库。先用真实 SQLite/PG 固定“读取库存10 → 新增入库2 → 旧快照盘点为10”的交错，检查库存与流水是否静默丢失新增2。此处是待复现范围，不把未运行的场景写成已确认缺陷。
+核查采购创建与自动补货。实际入口与内嵌请求模型在 `backend/app/api/purchase_requests.py`，持久化模型在 `backend/app/models/purchase_request.py`，编号辅助在 `backend/app/utils/helpers.py`；没有独立 `schemas/purchase_request.py` 或 `services` 目录，不按猜测路径读取。
 
-再比较版本号与期望状态方案，确定旧客户端及迁移兼容、冲突响应和前端重读确认；单独写设计、失败回归后最小修复。保留当前收货 UUID 与合法部分取消行为，不重做既有库存锁或迁移。
+先读取 `PRCreate`、`create_pr`、`auto_generate`、`_next_pr_seq`、金额/数量字段及现有测试。已见源码使用 float 计算申请数量/金额、count+1 生成序号；这只是核查线索，不把未运行的输入或竞争写成已确认缺陷。下一轮在隔离 SQLite/PG 固定超精度/非有限数、Decimal金额边界、并发手工创建和自动补货交错，分别确认实际行为与兼容要求。超量收货政策单独确认，不顺手改变合法既有流程。
 
-随后核查采购创建/自动补货精度金额、超量政策与编号竞争；认证依赖、前端加载及可靠联动继续按长期路线。
+保留本轮库存版本、原收货UUID与采购状态保护；若有实际缺口，先设计和失败回归再最小修复。随后按长期路线处理认证依赖、前端加载及可靠联动。
 
 ## 本地接续
 
-- worktree：`/workspace/worktrees/equipment-autonomous-20261003`，分支 `maintenance/purchase-state-20261004`，已推送，工作树干净。
-- 主 checkout：`/workspace/equipment-inspection`；新会话先 fetch 并核对真实 main。
-- 文档 checkout：`/workspace/smart-power-plant`，分支 `docs/purchase-state-release-20261004`。
-- venv：`/workspace/scratch/inspection-venv`；PG包装：`/workspace/scratch/pg-tools-20261004`，复跑须重建对应隔离容器 `inspection-pg-20261004`。本轮自建测试容器/临时服务已停止。
-- 日志：scratch 下 purchase-state-red、purchase-audit-red、purchase-http-red、purchase-state-atomic-green、purchase-state-full、purchase-state-node、purchase-state-build、purchase-state-interview；完整后端 XML：purchase-state-final.xml。审查/交付摘要：purchase-state-progress-final.md。
+- worktree：`/workspace/worktrees/equipment-autonomous-20261003`，分支 `maintenance/stocktake-snapshot-20261004`，已推送，工作树干净。
+- 主 checkout：`/workspace/equipment-inspection`；新会话先 fetch 并核对真实 main；与 linked worktree 共用 Git refs，fetch 顺序执行。
+- 文档 checkout：`/workspace/smart-power-plant`，分支 `docs/stocktake-release-20261004`。
+- venv：`/workspace/scratch/inspection-venv`；PG包装：`/workspace/scratch/pg-tools-stocktake-20261004`，复跑须重建对应隔离容器 `inspection-pg-stocktake-20261004`。本轮自建容器、API/Vite/报告服务已停止；旧默认数据库与其他 scratch 保留。
+- 日志：scratch 下 stocktake-red、stocktake-green、stocktake-browser-red、stocktake-browser-pending-red、stocktake-browser-green、stocktake-browser-confirmation、stocktake-full、stocktake-node-final、stocktake-build-final、stocktake-e2e-final、stocktake-interview；完整后端XML：stocktake-final.xml。
+- 实际测试截图：`/workspace/scratch/stocktake-tests-20261004.png`；简单结果：`/workspace/scratch/stocktake-test-results-20261004.md`；审查/交付摘要：`/workspace/scratch/stocktake-progress-final.md`。
 
 若工作区重建，按固定提交与哈希锁恢复，不依赖本地路径仍存在。接续前核对实际 Git/PR 与文档，不按历史快照从头执行。
