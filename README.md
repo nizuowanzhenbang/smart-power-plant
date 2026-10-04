@@ -1,11 +1,13 @@
 # 智慧电厂业务软件作品集
 
-以电厂采购、燃料、设备、隐患和能效场景练习业务软件开发与维护。面向电力企业信息化岗位，重点展示需求分析、流程控制、数据可靠性、接口集成及工程验证。
+以电厂采购、燃料、设备、隐患和能效场景练习业务软件开发与维护。面向电力企业内部招聘，重点展示业务理解、流程控制、数据可靠性及工程验证；按信息化、生产技术或安全管理岗位调整讲解深度。
 
 **项目性质：个人软件原型与模拟场景。** 已有 10 个业务代码仓库；本仓库是导览与文档入口。尚未完成全平台联合验收，不宣称电厂生产投运、接入 DCS/SIS、替代现场两票制度或取得经济收益。
 
 - [10 分钟演示路线](docs/DEMO.md)
-- [本轮煤质发布证据](docs/RELEASE-COAL-QUALITY-20261004.md)
+- [本轮安全检查发布证据](docs/RELEASE-SAFETY-20261004.md)
+- [安全检查内部招聘讲解卡](https://github.com/nizuowanzhenbang/plant-safety/blob/24e33ec011c0d0cc3dd3d9dcc79dffb1440541df/docs/CHECK-HAZARD-OWNERSHIP.md)
+- [煤质发布证据](docs/RELEASE-COAL-QUALITY-20261004.md)
 - [设备点检固定基线](docs/RELEASE-STOCKTAKE-20261004.md)
 - [首次核对的历史证据快照](docs/EVIDENCE-20261003.md)
 - [长期迭代规划](docs/LONG-TERM-PLAN-20261003.md)
@@ -22,7 +24,9 @@
 
 该设备版本要求旧 ADJUST 客户端更新并携带库存版本，缺失或过时返回 409；冲突后刷新库存并重新输入盘点数量，无需新数据库迁移。
 
-本轮煤质监督通过 [PR #2](https://github.com/nizuowanzhenbang/coal-quality-monitor/pull/2) 合并，固定 main 为 `f6efd459f596293fe21ddd44104eb48a957684b6`。化验重评保留运输预警及处理记录，合并计算批次风险，供应商重算保留运输扣分。完整后端35项（含新增14项实际数据库/API回归）、构建及 PR/新main Quality 均通过，见[本轮证据](docs/RELEASE-COAL-QUALITY-20261004.md)。
+煤质监督已通过 [PR #2](https://github.com/nizuowanzhenbang/coal-quality-monitor/pull/2) 合并，固定 main 为 `f6efd459f596293fe21ddd44104eb48a957684b6`。化验重评保留运输预警及处理记录，合并计算批次风险，供应商重算保留运输扣分。完整后端35项（含新增14项实际数据库/API回归）、构建及 PR/新main Quality 均通过，见[煤质证据](docs/RELEASE-COAL-QUALITY-20261004.md)。
+
+本轮安全检查通过 [plant-safety PR #2](https://github.com/nizuowanzhenbang/plant-safety/pull/2) 合并，固定 main `24e33ec011c0d0cc3dd3d9dcc79dffb1440541df`。提交检查结果拒绝客户端指定隐患编号，正常转换由服务器保存真实关联。完整后端15项（含新增13项）、构建、PR/新main检查通过，见[发布证据](docs/RELEASE-SAFETY-20261004.md)。
 
 ## 推荐先看什么
 
@@ -30,9 +34,10 @@
 |---|---|---|---|
 | 1 | 设备点检与缺陷管理 | 弱网重传、缺陷闭环、角色审计、并发库存、迁移恢复与部署验收 | [固定基线 API 演示](https://github.com/nizuowanzhenbang/equipment-inspection/blob/76d799c1fc781147ea6bbdeaff0ee57e8bc659db/docs/DEMO.md)、[集成验证](docs/RELEASE-STOCKTAKE-20261004.md) |
 | 2 | 煤质监督 | 化验与运输预警保留、风险汇总及供应商扣分依据 | [固定版本技术说明](https://github.com/nizuowanzhenbang/coal-quality-monitor/blob/f6efd459f596293fe21ddd44104eb48a957684b6/docs/TRANSPORT-ALERT-REEVALUATION.md)、[验证证据](docs/RELEASE-COAL-QUALITY-20261004.md) |
-| 3 | 燃煤机组能效 | 模型留出评估、基线比较与规则降级；说明算法输入和适用边界 | [已合并的模型质量 PR #2](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/2) |
+| 3 | 安全检查转隐患 | 业务断点、输入信任边界、权限拒绝和故障回滚 | [案例与面试追问](https://github.com/nizuowanzhenbang/plant-safety/blob/24e33ec011c0d0cc3dd3d9dcc79dffb1440541df/docs/CHECK-HAZARD-OWNERSHIP.md) |
+| 4 | 燃煤机组能效 | 模型留出评估、基线比较与规则降级；说明算法输入和适用边界 | [已合并的模型质量 PR #2](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/2) |
 
-先完整讲透一项，再用另外两项证明能力可以迁移。其余模块是扩展场景，不必在一次面试里逐项展示。
+先完整讲透一项，再按岗位选择一到两项辅助案例。其余模块是扩展场景，不必在一次面试里逐项展示。
 
 ## 模块索引
 
@@ -43,13 +48,13 @@
 | [coal-transport-monitor](https://github.com/nizuowanzhenbang/coal-transport-monitor) | 运输重量、时长、铅封异常 | 编译修复、修正测试对象构造 |
 | [fuel-procurement](https://github.com/nizuowanzhenbang/fuel-procurement) | 供应商、合同、采购订单 | 应用与认证冒烟检查 |
 | [coal-yard-management](https://github.com/nizuowanzhenbang/coal-yard-management) | 入出场、库存、盘点、温度 | 温度筛选类型修复、基础检查 |
-| [plant-safety](https://github.com/nizuowanzhenbang/plant-safety) | 隐患排查与整改闭环 | 已复现客户端隐患关联阻塞转换；下一轮隔离服务器生成的关联 |
+| [plant-safety](https://github.com/nizuowanzhenbang/plant-safety) | 隐患排查与整改闭环 | 隐患关联隔离已交付；整改期限上限等边界待修 |
 | [emission-monitoring](https://github.com/nizuowanzhenbang/emission-monitoring) | 排放数据、告警、报表 | 构建修复、基础检查 |
 | [coal-unit-efficiency](https://github.com/nizuowanzhenbang/coal-unit-efficiency) | 燃煤机组能效分析 | 既有算法和接口回归测试 |
 | [gas-fuel-metering](https://github.com/nizuowanzhenbang/gas-fuel-metering) | 燃气计量、热值、对账 | 既有计量和接口回归测试 |
 | [gas-turbine-performance](https://github.com/nizuowanzhenbang/gas-turbine-performance) | 燃机与联合循环性能 | 既有性能和接口回归测试 |
 
-历史维护记录中的 GitHub 写入 403 和草稿依赖链是当时的状态。设备点检与煤质监督按各自发布快照完成集成；其他模块的历史维护重点保留作索引，本轮只作有限选题核查，未重新验收全部仓库。`gas-emission-monitoring` 在 2026-09-12 记录中为空仓库，本轮未重新检查，不计入这份作品集的已实现模块。
+历史维护记录中的 GitHub 写入 403 和草稿依赖链是当时的状态。设备点检、煤质监督与安全检查按各自发布快照完成集成；其他模块的历史维护重点保留作索引，本轮实施安全检查关联修复，未重新验收全部仓库。`gas-emission-monitoring` 在 2026-09-12 记录中为空仓库，本轮未重新检查，不计入这份作品集的已实现模块。
 
 ## 如何评价这套作品
 

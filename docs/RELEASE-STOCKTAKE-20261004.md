@@ -1,6 +1,6 @@
 # 2026-10-04 过时盘点发布证据
 
-本文件保留设备点检 PR #14 的固定基线与历史检查。作品集最新迭代为[煤质重评保护](RELEASE-COAL-QUALITY-20261004.md)；设备点检版本本轮未变。
+本文件保留设备点检 PR #14 的固定基线与历史检查。后续[煤质重评保护](RELEASE-COAL-QUALITY-20261004.md)保留独立快照；作品集最新进展见[交接](ITERATION-STATUS.md)，设备点检固定版本以本文件为准。
 
 [PR #14](https://github.com/nizuowanzhenbang/equipment-inspection/pull/14) 已合并。固定演示 main：`76d799c1fc781147ea6bbdeaff0ee57e8bc659db`；源提交：`d2f06048453ac7cbd319673a770ab46dcdff173d`。本地验收、上传及最终 main tree 均为 `16fa73b67b503296db888e102a7793768ba392dd`。前一基线 `170b8393e622d31e23a5a546419748183f07ce20` 与[采购状态发布快照](RELEASE-PURCHASE-STATE-20261004.md)保留历史；既有收货 UUID、状态竞争、精度与归零能力全部保留。
 

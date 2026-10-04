@@ -4,11 +4,12 @@
 
 目标是把已有 GitHub 电厂项目整理为内部招聘时能演示、能解释、能复核的个人作品。优先按电力企业信息化、业务系统开发与维护岗位组织；如果目标岗位变化，调整案例侧重。
 
-采用“一项主作品 + 两项辅助案例”：
+采用“一项主作品 + 按岗位选择一到两项辅助案例”：
 - 主作品：equipment-inspection，讲透弱网点检、缺陷闭环、并发、权限、迁移恢复和部署验证。
 - 辅助案例一：coal-unit-efficiency，解释模型评估、基线比较、数据泄漏防范和明确降级。
 - 辅助案例二：coal-quality-monitor，展示化验数据、合同指标与质量预警的业务建模。执行前核实当前实现和测试。
-- smart-power-plant 作为导航、路线和证据入口；其余仓库先维持已有质量检查。
+- 可替换的安全管理案例：plant-safety，讲安全检查与隐患单的真实关联、输入边界和故障回滚，见[案例卡](https://github.com/nizuowanzhenbang/plant-safety/blob/24e33ec011c0d0cc3dd3d9dcc79dffb1440541df/docs/CHECK-HAZARD-OWNERSHIP.md)。
+- smart-power-plant 作为导航、路线和证据入口；每轮可跨项目选择与内部招聘相关的实际问题。
 
 其他选择是轮流维护所有仓库，或继续搭建大平台。前者容易摊薄深度，后者会增加联调和文档负担。本规划先让一项作品达到完整交付标准，再扩大范围。
 
@@ -22,15 +23,17 @@
 |---|---|---|
 | 设备点检主分支 | #14 已合并，固定提交 `76d799c1fc781147ea6bbdeaff0ee57e8bc659db` | 按该版本演示；本轮无迁移，延续 0003 收货迁移与可复核证据 |
 | 设备点检 #4–#10 | 历史差异已独立审查，全部提交纳入 #11；旧草稿已收拢 | 不再按旧依赖链重复合并或开发 |
-| 本轮新增修复 | 煤质化验重评保留运输预警/处理记录，按质量与运输汇总风险与扣分；设备点检保持前轮固定基线 | 先失败回归、修复、独立复核和全量测试 |
+| 本轮新增修复 | 安全检查提交拒绝客户端隐患编号，保留真实服务器关联；新增内部招聘案例卡与追问 | 先失败回归、修复、独立复核和全量测试 |
 | 设备点检 #14 历史 CI | Quality checks 与 Compose browser acceptance 均 success | 具体提交和新 main 检查见发布证据；不等于现场投运 |
 | 煤质监督 | PR #2已合并，固定提交 `f6efd459f596293fe21ddd44104eb48a957684b6`；后端35、构建和PR/新main Quality通过 | 形成重评保留运输证据的一条辅助案例；其他输入边界继续核查 |
+| 安全检查 | PR #2已合并，固定提交 `24e33ec011c0d0cc3dd3d9dcc79dffb1440541df`；后端15、构建和PR/新main检查通过 | 本地安全检查案例，不代表跨系统联动验收 |
 | 燃煤能效 | README 和 PR #2 描述模型质量检查及降级 | 后续复跑并整理为辅助案例 |
 | 作品集入口 | 导览、演示、状态及证据已跟随固定基线 | 接续前先读最新进度，不按历史快照重做 |
 
 证据链接：
 - [设备点检 PR #14](https://github.com/nizuowanzhenbang/equipment-inspection/pull/14)
-- [本轮煤质发布证据](RELEASE-COAL-QUALITY-20261004.md)
+- [本轮安全检查证据](RELEASE-SAFETY-20261004.md)
+- [煤质发布证据](RELEASE-COAL-QUALITY-20261004.md)
 - [设备点检固定版本证据](RELEASE-STOCKTAKE-20261004.md)
 - [煤质 PR #2](https://github.com/nizuowanzhenbang/coal-quality-monitor/pull/2)
 - [Quality checks](https://github.com/nizuowanzhenbang/equipment-inspection/actions/runs/37183237858)
@@ -178,7 +181,7 @@ PR 与依赖：
 
 ## 第一项动作与进度入口
 
-单元 01–04 的基线整理、收货重放、采购状态竞争及过时绝对盘点保护已完成，本轮煤质重评保护已交付，下一轮优先从隐患检查关联隔离接续；采购创建边界仍保留队列，见 [进度交接](ITERATION-STATUS.md)、[煤质证据](RELEASE-COAL-QUALITY-20261004.md) 和 [设备点检证据](RELEASE-STOCKTAKE-20261004.md)。以下保留原始单元 01 范围作为规划历史，不再从头重做。
+单元 01–04 的基线整理、收货重放、采购状态竞争及过时绝对盘点保护已完成，煤质重评与安全检查关联保护已交付，下一轮优先煤质非有限数输入校验，再核查隐患期限；采购创建边界仍保留队列，见 [进度交接](ITERATION-STATUS.md)、[安全检查证据](RELEASE-SAFETY-20261004.md)、[煤质证据](RELEASE-COAL-QUALITY-20261004.md) 和 [设备点检证据](RELEASE-STOCKTAKE-20261004.md)。以下保留原始单元 01 范围作为规划历史，不再从头重做。
 
 执行单元 01：先读取 smart-power-plant 的 README.md、docs/DEMO.md、docs/ROADMAP.md 和点检相关 PR 的最新状态，修正过时说法并建立证据索引。交付一份文档草稿 PR；不重复实现已经在 #4–#9 中完成的能力。
 
