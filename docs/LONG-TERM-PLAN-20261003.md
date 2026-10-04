@@ -20,18 +20,18 @@
 
 | 项目 | 已见证据 | 本规划的处理 |
 |---|---|---|
-| 设备点检主分支 | #13 已合并，固定提交 `170b8393e622d31e23a5a546419748183f07ce20` | 按该版本演示；本轮无迁移，延续 0003 收货迁移与可复核证据 |
+| 设备点检主分支 | #14 已合并，固定提交 `76d799c1fc781147ea6bbdeaff0ee57e8bc659db` | 按该版本演示；本轮无迁移，延续 0003 收货迁移与可复核证据 |
 | 设备点检 #4–#10 | 历史差异已独立审查，全部提交纳入 #11；旧草稿已收拢 | 不再按旧依赖链重复合并或开发 |
-| 本轮新增修复 | 采购状态共用锁后刷新、状态/审计原子提交及实际 HTTP 故障验证；保留前轮精度与重放成果 | 先失败回归、修复、独立复核和全量测试 |
-| #13 远端 CI | Quality checks 与 Compose browser acceptance 均 success | 具体提交和新 main 检查见发布证据；不等于现场投运 |
+| 本轮新增修复 | 同 SQL 库存版本、过时盘点冲突与明确刷新确认；保留前轮精度、收货重放及采购状态成果 | 先失败回归、修复、独立复核和全量测试 |
+| #14 远端 CI | Quality checks 与 Compose browser acceptance 均 success | 具体提交和新 main 检查见发布证据；不等于现场投运 |
 | 燃煤能效 | README 和 PR #2 描述模型质量检查及降级 | 后续复跑并整理为辅助案例 |
 | 作品集入口 | 导览、演示、状态及证据已跟随固定基线 | 接续前先读最新进度，不按历史快照重做 |
 
 证据链接：
-- [设备点检 PR #13](https://github.com/nizuowanzhenbang/equipment-inspection/pull/13)
-- [最新发布证据](RELEASE-PURCHASE-STATE-20261004.md)
-- [Quality checks](https://github.com/nizuowanzhenbang/equipment-inspection/actions/runs/37178519919)
-- [Compose browser acceptance](https://github.com/nizuowanzhenbang/equipment-inspection/actions/runs/37178519939)
+- [设备点检 PR #14](https://github.com/nizuowanzhenbang/equipment-inspection/pull/14)
+- [最新发布证据](RELEASE-STOCKTAKE-20261004.md)
+- [Quality checks](https://github.com/nizuowanzhenbang/equipment-inspection/actions/runs/37183237858)
+- [Compose browser acceptance](https://github.com/nizuowanzhenbang/equipment-inspection/actions/runs/37183237840)
 - [能效 PR #2](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/2)
 
 历史 PR 的依赖、兼容与差异已复核，审查发现的两个问题在集成前修复。其他仓库的实际验收范围仍需在各自执行单元确认，不能从主作品绿灯推断全平台已验收。
@@ -175,7 +175,7 @@ PR 与依赖：
 
 ## 第一项动作与进度入口
 
-单元 01–04 的基线整理、收货重放及采购状态竞争保护已完成，下一轮从过时绝对盘点保护接续，见 [进度交接](ITERATION-STATUS.md) 和 [发布证据](RELEASE-PURCHASE-STATE-20261004.md)。以下保留原始单元 01 范围作为规划历史，不再从头重做。
+单元 01–04 的基线整理、收货重放、采购状态竞争及过时绝对盘点保护已完成，下一轮从采购创建及自动补货边界接续，见 [进度交接](ITERATION-STATUS.md) 和 [发布证据](RELEASE-STOCKTAKE-20261004.md)。以下保留原始单元 01 范围作为规划历史，不再从头重做。
 
 执行单元 01：先读取 smart-power-plant 的 README.md、docs/DEMO.md、docs/ROADMAP.md 和点检相关 PR 的最新状态，修正过时说法并建立证据索引。交付一份文档草稿 PR；不重复实现已经在 #4–#9 中完成的能力。
 
