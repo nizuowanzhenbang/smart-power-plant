@@ -1,50 +1,58 @@
 # 迭代进度与接续入口
 
-更新日期：2026-10-04。[长期规划](LONG-TERM-PLAN-20261003.md)。主作品 equipment-inspection；辅助案例 coal-unit-efficiency、coal-quality-monitor。
+更新日期：2026-10-04。[长期规划](LONG-TERM-PLAN-20261003.md)。主作品equipment-inspection；辅助案例coal-unit-efficiency、coal-quality-monitor。用户允许从其他电厂项目选择改进。
 
-## 授权与方式
+## 授权与执行方式
 
-用户持续授权自主迭代、长时间分析、测试、GitHub 推送与必要审查；验证后的合并自主完成。默认单代理、每轮一个主目标，复杂变化单独做一次整分支审查。无后台定时任务、模型侧实时额度读数或跨账户限制运行承诺；额度/上下文切换后从本文件继续。
-
-## 实际进度
-
-| 单元 | 状态 |
-|---|---|
-| 01–04 | 完成；#11 收拢历史成果，#12/#13/#14 更新演示基线，历史 #4–#10 不重复实施 |
-| 05–06 | 库存锁、事务流水、收货重放及六入口采购状态竞争保护完成 |
-| 07 | 精度、累计上限、盘点归零及过时绝对盘点保护完成；采购创建/自动补货边界待核查 |
-| 08–24 | 尚未完整执行；已有迁移/恢复与依赖升级证据按实际范围复用 |
+用户持续授权自主设计、开发、长时间分析、自动化测试、GitHub推送与必要审查；验证后的合并自主完成。一个主代理负责集成，有限委派独立选题/测试/审查，每轮实修一个主目标。本轮两个只读候选检查、一个API测试作者和一个独立审查者；没有并行修改同一产品文件。没有后台定时任务、模型侧实时额度读数或跨账户限制承诺。
 
 ## 当前固定版本
 
-- 仓库：`nizuowanzhenbang/equipment-inspection`。
-- 最新 main：`76d799c1fc781147ea6bbdeaff0ee57e8bc659db`，由 [PR #14](https://github.com/nizuowanzhenbang/equipment-inspection/pull/14) 合并。
-- 源提交：`d2f06048453ac7cbd319673a770ab46dcdff173d`；本地/上传/main tree：`16fa73b67b503296db888e102a7793768ba392dd`。
-- 前一基线 `170b8393e622d31e23a5a546419748183f07ce20` 与[采购状态发布快照](RELEASE-PURCHASE-STATE-20261004.md)保留历史。
-- 本轮后端492（真实PG186）、Node16、API35、本地Chromium11、tsc/Vite/Ruff/diff全部通过；PR Quality/Compose success（实际nginx/PG、Chromium11），新 main Quality success。详见[完整证据](RELEASE-STOCKTAKE-20261004.md)。
-- 文档仓库：`nizuowanzhenbang/smart-power-plant`，实际文档版本查 main 历史，避免自引用 SHA。
+| 项目 | main / 来源 / 证据 |
+|---|---|
+| 煤质监督，本轮已交付 | `f6efd459f596293fe21ddd44104eb48a957684b6`，源`3aaec74f918d76b527e7c733608a310de7c5353e`，tree`80e49442d2bba59b3ebb5f919658205999c1bc09`；[PR #2](https://github.com/nizuowanzhenbang/coal-quality-monitor/pull/2)，[完整证据](RELEASE-COAL-QUALITY-20261004.md) |
+| 设备点检，前轮固定基线 | `76d799c1fc781147ea6bbdeaff0ee57e8bc659db`；[PR #14](https://github.com/nizuowanzhenbang/equipment-inspection/pull/14)，[历史证据](RELEASE-STOCKTAKE-20261004.md)，本轮未改动或重复全验收 |
 
-## 完成与限制
+煤质本地35pass0fail/skip，含新增数据库8和API6；构建/Ruff/diff/pip检查通过。PR Quality `37190541433` 与新main Quality `37190662818` success；两处均backend35/Ruff/frontend构建。整分支审查无发现，独立SQLite边界检查通过。文档仓库实际版本查main历史，避免自引用SHA。
 
-数量与流水版本同一 SQL 快照；ADJUST 等锁刷新后拒绝缺失/过时版本；数量先变后恢复仍冲突。并发同版本盘点、合法零盘点、真实约束失败回滚、等锁刷新及提交后响应一致性已由实际数据库固定交错验证。前端冲突保留原快照，刷新后明确输入新数量，等待响应期间禁止编辑/关闭/重复提交。一次整分支独立审查无发现，独立6项SQLite通过。
+## 长期单元进度
 
-旧 ADJUST 客户端须升级，否则409；IN/OUT兼容，无新迁移或依赖，HEAD保持0003。手工SQL、修改/删除流水及恢复中的旧浏览器会话不在版本保证范围，恢复后重新读取核对；ADJUST响应丢失须人工核对，不自动重试。原收货UUID与部分取消规则保留；同步外部推送持锁、远端成功无法本地撤销的既有边界不变。弃用、大包与扫描范围限制见发布证据；没有生产部署或容量证明。
+- 01–04已完成；设备历史#4–#10不重复实施。
+- 05–07库存精度、归零、过时盘点、收货重放及采购状态保护完成；采购创建/自动补货边界仍待核查。
+- 17–18煤质辅助案例完成“重评保留运输证据”的一个实际API/数据库场景；输入/单位/合同等完整核查未完成，不把阶段全部标为完成。
+- 其余单元按实际范围继续，不从已有迁移恢复/依赖升级重做。
+
+## 本轮行为和边界
+
+化验重评只替换质量引擎自有八类预警，保留运输记录ID、字段与处理信息；按实际全部预警计算状态、数量和风险。手动/自动/修改三入口回归通过；处理状态历史计分政策不变。没有接口字段、迁移、依赖或前端源码变化。
+
+历史被删运输证据须核对源系统或备份，本轮不自动恢复。运输事件的替换/重放、并发协调及化验保存与评估的既有分阶段提交未重做。框架弃用、大包和依赖范围未锁边界见发布证据；没有生产部署、容量或全平台联合验收。
 
 ## 下一项具体动作
 
-核查采购创建与自动补货。实际入口与内嵌请求模型在 `backend/app/api/purchase_requests.py`，持久化模型在 `backend/app/models/purchase_request.py`，编号辅助在 `backend/app/utils/helpers.py`；没有独立 `schemas/purchase_request.py` 或 `services` 目录，不按猜测路径读取。
+优先plant-safety检查结果的隐患关联隔离。已核查main `f4c84538824e67dbfc4e23d509e92f2e8a741db5`；只读探针创建计划/记录、启动后提交不符合项且附`hazard_id=999999`，提交200并持久化，转换400“已转隐患单”，实际hazards为0。普通不附ID的控制能成功转换。
 
-先读取 `PRCreate`、`create_pr`、`auto_generate`、`_next_pr_seq`、金额/数量字段及现有测试。已见源码使用 float 计算申请数量/金额、count+1 生成序号；这只是核查线索，不把未运行的输入或竞争写成已确认缺陷。下一轮在隔离 SQLite/PG 固定超精度/非有限数、Decimal金额边界、并发手工创建和自动补货交错，分别确认实际行为与兼容要求。超量收货政策单独确认，不顺手改变合法既有流程。
+先核对实际main并读取该仓库CLAUDE.md、`backend/app/schemas/safety_check.py`、`backend/app/api/safety_checks.py`及前端提交字段。输入/输出共用CheckResultItem，提交直接保存客户端hazard_id，转换信任该字段。比较拒绝非null客户端关联与分开写入DTO的方案；同时核对已转换记录是否能重提及表单回显，防止丢失合法服务器关联。先真实失败回归再最小修复，保留服务器创建ID和重复转换拒绝；本轮未提前实施该设计。
 
-保留本轮库存版本、原收货UUID与采购状态保护；若有实际缺口，先设计和失败回归再最小修复。随后按长期路线处理认证依赖、前端加载及可靠联动。
+## 其他候选队列
+
+| 项目与范围 | 已知事实 / 状态 |
+|---|---|
+| 煤质非有限化验输入 | 前一main`11bb3c8c8f11f64b599c22ca681cee5a45c35106`实际探针Infinity入厂热值200并写inf、批次正常；创建/修改有限值校验待修 |
+| 隐患整改期限 | 同plant-safety探针MAJOR60天被接受，超过仓库CLAUDE/README所写14天；规则兼容与更新入口待核查，不当作已交付 |
+| 采购创建/自动补货 | 设备点检float金额/count+1编号为源码线索，尚未真实复现本轮输入/并发，不宣称已确认缺陷 |
+| 燃气计量 | clone main`349c9e947535e800dd4f1e44e36612c5ed0ca10f`；旧共用venv探针被缺openpyxl阻塞，没有完成API缺陷验证，无源码变化 |
+
+只读探针使用临时SQLite与测试密钥；煤质选择探针鉴权被局部替换，其发现已由新增真实JWT回归验证。隐患探针为真实临时用户鉴权；候选结果不算进煤质35项正式验收。
 
 ## 本地接续
 
-- worktree：`/workspace/worktrees/equipment-autonomous-20261003`，分支 `maintenance/stocktake-snapshot-20261004`，已推送，工作树干净。
-- 主 checkout：`/workspace/equipment-inspection`；新会话先 fetch 并核对真实 main；与 linked worktree 共用 Git refs，fetch 顺序执行。
-- 文档 checkout：`/workspace/smart-power-plant`，分支 `docs/stocktake-release-20261004`。
-- venv：`/workspace/scratch/inspection-venv`；PG包装：`/workspace/scratch/pg-tools-stocktake-20261004`，复跑须重建对应隔离容器 `inspection-pg-stocktake-20261004`。本轮自建容器、API/Vite/报告服务已停止；旧默认数据库与其他 scratch 保留。
-- 日志：scratch 下 stocktake-red、stocktake-green、stocktake-browser-red、stocktake-browser-pending-red、stocktake-browser-green、stocktake-browser-confirmation、stocktake-full、stocktake-node-final、stocktake-build-final、stocktake-e2e-final、stocktake-interview；完整后端XML：stocktake-final.xml。
-- 实际测试截图：`/workspace/scratch/stocktake-tests-20261004.png`；简单结果：`/workspace/scratch/stocktake-test-results-20261004.md`；审查/交付摘要：`/workspace/scratch/stocktake-progress-final.md`。
+- 煤质worktree：`/workspace/worktrees/coal-quality-alerts-20261004`，分支`maintenance/quality-transport-alerts-20261004`，已推送且工作树干净。
+- 煤质main clone：`/workspace/scratch/selection-coal-quality-20261004`，已快进新main；与worktree共用Git refs，fetch顺序执行。
+- 煤质venv：`/workspace/scratch/coal-quality-venv-20261004`。本轮测试SQLite自行销毁，未新建容器/持久测试服务。
+- 文档：`/workspace/smart-power-plant`，分支`docs/coal-quality-release-20261004`。
+- 结果：`/workspace/scratch/coal-quality-test-results-20261004.md`；后端XML：coal-quality-final-20261004.xml；日志：coal-quality-baseline、unit-red、api-red、full、build、install、npm-install，均带20261004后缀。
+- 审查/交付摘要：`/workspace/scratch/coal-quality-progress-20261004.md`；源与发布metadata同scratch目录。
+- 只读候选：`/workspace/scratch/selection-plant-safety-20261004`；探针plant-safety-selection-probe-20261004.py、selection-coal-quality-probe-20261004.py。默认库、旧设备环境与其他scratch保留。
 
-若工作区重建，按固定提交与哈希锁恢复，不依赖本地路径仍存在。接续前核对实际 Git/PR 与文档，不按历史快照从头执行。
+新会话先核对实际Git/PR/AGENTS或CLAUDE指令，再按下一项推进。若工作区重建，依据固定SHA与依赖说明恢复，不依赖本地路径或缓存仍存在。
