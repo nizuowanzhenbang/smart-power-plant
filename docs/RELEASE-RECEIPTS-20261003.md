@@ -1,5 +1,7 @@
 # 2026-10-03 收货重放发布证据
 
+这是 PR #12 的历史发布快照。当前演示版本及后续采购状态竞争修复见 [2026-10-04 发布证据](RELEASE-PURCHASE-STATE-20261004.md)；以下提交、测试与当时待做范围保留作历史记录。
+
 [PR #12](https://github.com/nizuowanzhenbang/equipment-inspection/pull/12) 已合并。固定演示 main 为 `04f898fb63f4b389f95eba264eff3b7138850870`；源提交 `fc9f4102d51fad3901728df8f5d6a1c87b944a7b`。本地验证、上传、最终 main tree 均为 `ca4a2495466f632f9f566b3c57ba684c4868a62a`。此前 #11 与 #4–#10 的成果全部保留；[上一发布快照](RELEASE-20261003.md)只作历史参考。
 
 ## 问题与最终行为
