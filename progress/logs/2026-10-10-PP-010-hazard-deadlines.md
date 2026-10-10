@@ -21,3 +21,12 @@
 ## 下一项具体操作
 
 接收独立审查结果；有实际问题先失败回归再修复；核对 PR 完整检查和候选 SHA，按本轮用户授权集成并回写发布证据。日志文件在 /workspace/scratch/plant-safety-*20261010.log。
+
+## 12:06 UTC · 审查与修复
+
+- 一次独立只读审查完成：没有其他 Critical/Important；发现一项 Important 并发漏洞。先读取 GENERAL/7 天后，期限请求校验 30 天，另一请求升级 MAJOR；原候选两个请求均 200，最终留下 MAJOR/30 天。
+- 主代理新增 3 项真实 HTTP/JWT/SQLite 请求交错回归，覆盖等级/期限两个竞争顺序及校验后复查关闭。原候选 3 failed，均错误返回 200。
+- 改为以原等级、发现时间、期限、状态、更新时间为条件的原子 UPDATE；冲突回滚并返回 409。刷新后重试重新校验，不能靠重放绕过上限。
+- 修复后完整后端 68 passed（新增 53 项，原 15 项保留）；Ruff 和 diff 检查通过。前端未在本修复改变，沿用本轮实际构建结果；最终 CI 会再构建。
+- 最终候选 9dd1c18e7d089ebb4e02349998271f9ec8a7de87 已推送；[PR #3](https://github.com/nizuowanzhenbang/plant-safety/pull/3) 已更新说明，检查运行 38050745250 尚在等待完整结果，未合并。
+- GitHub CLI 的 PR 编辑因旧 Projects GraphQL 字段失败；已通过 REST PATCH 更新同一 PR，不是发布阻塞。
