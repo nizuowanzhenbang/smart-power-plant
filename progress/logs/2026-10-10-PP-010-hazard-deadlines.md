@@ -30,3 +30,14 @@
 - 修复后完整后端 68 passed（新增 53 项，原 15 项保留）；Ruff 和 diff 检查通过。前端未在本修复改变，沿用本轮实际构建结果；最终 CI 会再构建。
 - 最终候选 9dd1c18e7d089ebb4e02349998271f9ec8a7de87 已推送；[PR #3](https://github.com/nizuowanzhenbang/plant-safety/pull/3) 已更新说明，检查运行 38050745250 尚在等待完整结果，未合并。
 - GitHub CLI 的 PR 编辑因旧 Projects GraphQL 字段失败；已通过 REST PATCH 更新同一 PR，不是发布阻塞。
+
+## 集成与交接
+
+- 最终候选 [PR Quality 38050745250](https://github.com/nizuowanzhenbang/plant-safety/actions/runs/38050745250) 后端与前端检查均成功，head 为 9dd1c18e7d089ebb4e02349998271f9ec8a7de87。
+- 合并前复读 PR 与 main：基线仍为 b8a1c05a4f39fe5e3e56741bed6cd7d0f27f6dd0，候选一致且可合并。通过 REST 使用候选 SHA 条件 squash 合并，2026-10-10 12:07:33 UTC 完成。
+- 固定主分支 e5e62e77ea0d01c7c24bea790d79e51a3b3f18d1，与最终候选文件树无差异；[main Quality 38050827389](https://github.com/nizuowanzhenbang/plant-safety/actions/runs/38050827389) 对应该 SHA，后端/前端均成功。
+- PP-010 状态改为已合并；摘要、任务、基线和当前重点更新；完整 [发布证据](../evidence/2026-10-10-hazard-deadlines.md) 保存兼容变化与未验收边界。
+- 中央历史记录保留，发布回写以 43510b42644cd8f0299b0ee49f3bf1def3800441 为父提交；最终回写提交由本文件的 Git 历史定位，避免写入自身 SHA 的循环。
+- 下一项 PP-020 待核查，未认领或实施。首先读取最新中央 SHA 和核心文件，再核对煤质 DTO/计算入口的单位、基准、缺项与有限极端值；不要重做非有限输入或运输证据保留。
+
+本轮没有后台自动开发、PostgreSQL 运行时、浏览器交互或现场验收。其他环境要更新仓库检出/合并全局模板，接续规则才进入 Codex 指令发现范围。

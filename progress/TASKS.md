@@ -9,8 +9,8 @@
 | 编号 | 优先级 | 状态 | 任务 | 验收与第一项动作 |
 |---|---|---|---|---|
 | PP-001 | 完成 | 已合并 | 进度仓库与 Codex 接续入口 | 中央发布 b2b3073；11/11 根目录入口远端一致；当前环境全局规则已安装 |
-| PP-010 | 当前 | 进行中 | 隐患整改期限 | 核对创建/修改/转换、等级调整、时区及历史兼容；实际复现后确定改动 |
-| PP-020 | 近期 2 | 待核查 | 煤质单位、基准、缺项和物理范围 | 读 DTO 与计算入口；保留已交付的非有限输入保护和运输证据 |
+| PP-010 | 完成 | 已合并 | 隐患整改期限 | [PR #3](https://github.com/nizuowanzhenbang/plant-safety/pull/3)，`e5e62e7`；68 项后端及构建通过，包含并发冲突保护；见 [证据](evidence/2026-10-10-hazard-deadlines.md) |
+| PP-020 | 下一项 | 待核查 | 煤质单位、基准、缺项和物理范围 | 读 DTO 与计算入口，列清单位/基准/null/有限极端值；保留已交付的非有限输入保护和运输证据 |
 | PP-030 | 近期 3 | 待核查 | 设备采购创建与自动补货边界 | 数量/金额精度、超量收货政策、编号竞争按实际代码逐项核查；不重做收货重放 |
 | PP-040 | 能力基础 | 待核查 | 点检重大缺陷到安全隐患可靠联动 | 核对双方契约；对端宕机、响应丢失、重放、内容冲突和恢复有证据 |
 | PP-050 | 能力基础 | 待做 | 统一业务身份、单位、时间和指标口径 | 先列供应商/煤批次/设备/机组标识与来源；不能只按显示名称关联 |
@@ -19,7 +19,7 @@
 | PP-080 | 远期 | 待做 | 电价、负荷、检修与燃料成本协同 | 定义经营目标、约束与情景比较；先做可解释的模拟决策 |
 | PP-090 | 远期 | 待做 | 执行效果验证和策略反馈 | 记录动作与效果，控制负荷/煤质干扰，分别显示预测和测量收益 |
 
-这些是长期能力队列，不是已批准的一次性全部实现。本轮用户授权先完成 PP-001，再沿既定方向推进 PP-010；远期能力仍按可验收单元逐项实施。
+这些是长期能力队列，不是已批准的一次性全部实现。本轮已完成 PP-001 与 PP-010；下一轮从 PP-020 核查接续，远期能力仍按可验收单元逐项实施。
 
 ## 已有覆盖：不要从头重做
 
@@ -28,7 +28,7 @@
 | DONE-EQ-01 | 已有覆盖 | 离线重放、点检检修验收、库存/收货/状态竞争及盘点基线 | [equipment-inspection PR #14](https://github.com/nizuowanzhenbang/equipment-inspection/pull/14)；包含前序成果，未证明所有采购创建入口 |
 | DONE-CQ-01 | 已有覆盖 | 重评保留运输证据与供应商扣分 | [coal-quality-monitor PR #2](https://github.com/nizuowanzhenbang/coal-quality-monitor/pull/2)；未覆盖全部煤质单位规则 |
 | DONE-CQ-02 | 已有覆盖 | 8 指标非有限输入保护 | [coal-quality-monitor PR #3](https://github.com/nizuowanzhenbang/coal-quality-monitor/pull/3)；有限极端值/缺项留待核查 |
-| DONE-SF-01 | 已有覆盖 | 安全检查转隐患关联归属 | [plant-safety PR #2](https://github.com/nizuowanzhenbang/plant-safety/pull/2)；未完成整改期限上限核查 |
+| DONE-SF-01 | 已有覆盖 | 安全检查转隐患关联归属 | [plant-safety PR #2](https://github.com/nizuowanzhenbang/plant-safety/pull/2)，PP-010 保留原 15 项回归；期限升级另见 PP-010 |
 | DONE-CE-01 | 已有覆盖 | 能效模型评估、基线和降级 | [coal-unit-efficiency PR #2](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/2)；未证明工业校准或实际节煤收益 |
 
 重新打开已覆盖任务时，新增日志写清实际回归、新需求或证据冲突；不能因为换了会话就重新实施。

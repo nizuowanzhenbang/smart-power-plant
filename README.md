@@ -2,6 +2,8 @@
 
 统一工作记忆已设在本仓库的 [progress/](progress/README.md)。Codex 每轮先读 [规则](progress/AGENTS.md)、[摘要](progress/SUMMARY.md)、[当前重点](progress/CURRENT.md)、[任务台账](progress/TASKS.md)，收尾回写实际结果、证据和下一步。原有作品介绍及发布证据继续保留；远期能力路线见 [数智化路线](progress/ROADMAP.md)。
 
+2026-10-10 已交付：11 个仓库的接续入口及隐患整改期限升级，见 [工作记忆接入](progress/evidence/2026-10-10-memory-integration.md) 和 [整改期限发布证据](progress/evidence/2026-10-10-hazard-deadlines.md)。下一项是煤质单位、基准与缺项核查。
+
 # 智慧电厂业务软件作品集
 
 以电厂采购、燃料、设备、隐患和能效场景练习业务软件开发与维护。面向电力企业内部招聘，重点展示业务理解、流程控制、数据可靠性及工程验证；按信息化、生产技术或安全管理岗位调整讲解深度。
@@ -22,7 +24,7 @@
 - [后续建设路线](docs/ROADMAP.md)
 - [历史总体方案](docs/ARCHITECTURE-HISTORY.md)（含待验证设计，不作为交付证据）
 
-## 当前交付状态（2026-10-05 核对）
+## 历史交付状态（2026-10-05 核对，最新见 progress/）
 
 设备点检已通过 [PR #14](https://github.com/nizuowanzhenbang/equipment-inspection/pull/14) 集成到 main，固定演示提交为 `76d799c1fc781147ea6bbdeaff0ee57e8bc659db`。该基线包含离线重传、点检/验收与库存并发、运行配置、迁移恢复、可复现部署和前端升级，并新增数量精度、盘点归零、恢复目标隔离、采购收货重放幂等、状态竞争及过时盘点保护。#4–#9 的全部历史提交已纳入该基线，旧草稿已收拢。
 

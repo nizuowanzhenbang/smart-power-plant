@@ -1,6 +1,6 @@
 # 仓库与代码基线
 
-核对：2026-10-10 UTC。代码基线是加入本轮接续指令之前的固定提交；文档接入会产生新的 HEAD，不改变这些业务代码基线。
+核对：2026-10-10 UTC。代码基线记录各模块最后已验证的业务发布；单独加入接续指令不改变原业务证据。本轮 plant-safety 已升级，其余保留此前固定版本。
 
 | 仓库 | 默认分支 | 代码基线 | Codex 入口 |
 |---|---|---|---|
@@ -10,7 +10,7 @@
 | [coal-transport-monitor](https://github.com/nizuowanzhenbang/coal-transport-monitor) | `main` | [`357de14ac550`](https://github.com/nizuowanzhenbang/coal-transport-monitor/commit/357de14ac5506e131acd15698989f352e4f1e9e2) | [已接入 `9ad9a0ba94cf`](https://github.com/nizuowanzhenbang/coal-transport-monitor/commit/9ad9a0ba94cf79838365387f97d95059b0b3b491) |
 | [fuel-procurement](https://github.com/nizuowanzhenbang/fuel-procurement) | `main` | [`db6bfd756ea1`](https://github.com/nizuowanzhenbang/fuel-procurement/commit/db6bfd756ea1f110080caac0a0e3235f17a07cb8) | [已接入 `fe025025b6c0`](https://github.com/nizuowanzhenbang/fuel-procurement/commit/fe025025b6c039992fba49b94ea957044b13ab6a) |
 | [coal-yard-management](https://github.com/nizuowanzhenbang/coal-yard-management) | `master` | [`140cfc237996`](https://github.com/nizuowanzhenbang/coal-yard-management/commit/140cfc2379969a443a16d09bb7f718b440d9ede0) | [已接入 `d2a2aa569dd2`](https://github.com/nizuowanzhenbang/coal-yard-management/commit/d2a2aa569dd2637263fc42c58ba2a903236e1796) |
-| [plant-safety](https://github.com/nizuowanzhenbang/plant-safety) | `main` | [`24e33ec011c0`](https://github.com/nizuowanzhenbang/plant-safety/commit/24e33ec011c0d0cc3dd3d9dcc79dffb1440541df) | [已接入 `b8a1c05a4f39`](https://github.com/nizuowanzhenbang/plant-safety/commit/b8a1c05a4f39fe5e3e56741bed6cd7d0f27f6dd0) |
+| [plant-safety](https://github.com/nizuowanzhenbang/plant-safety) | `main` | [`e5e62e77ea0d`](https://github.com/nizuowanzhenbang/plant-safety/commit/e5e62e77ea0d01c7c24bea790d79e51a3b3f18d1)；[PP-010 证据](evidence/2026-10-10-hazard-deadlines.md) | [已接入 `b8a1c05a4f39`](https://github.com/nizuowanzhenbang/plant-safety/commit/b8a1c05a4f39fe5e3e56741bed6cd7d0f27f6dd0) |
 | [emission-monitoring](https://github.com/nizuowanzhenbang/emission-monitoring) | `master` | [`f8384855e957`](https://github.com/nizuowanzhenbang/emission-monitoring/commit/f8384855e957196e22eac9787c84376011d8ac9c) | [已接入 `eefab6262450`](https://github.com/nizuowanzhenbang/emission-monitoring/commit/eefab6262450ba26d7192dbfc317b3bba2a9380e) |
 | [coal-unit-efficiency](https://github.com/nizuowanzhenbang/coal-unit-efficiency) | `master` | [`08534f680222`](https://github.com/nizuowanzhenbang/coal-unit-efficiency/commit/08534f680222dba098255deb0b3fc5e9e6ab6093) | [已接入 `39180dc6eed8`](https://github.com/nizuowanzhenbang/coal-unit-efficiency/commit/39180dc6eed80b5d8392641e03f72f3c60fe6ae3) |
 | [gas-fuel-metering](https://github.com/nizuowanzhenbang/gas-fuel-metering) | `main` | [`349c9e947535`](https://github.com/nizuowanzhenbang/gas-fuel-metering/commit/349c9e947535e800dd4f1e44e36612c5ed0ca10f) | [已接入 `bba7b57086ff`](https://github.com/nizuowanzhenbang/gas-fuel-metering/commit/bba7b57086ff5854cd128d4c5415167a379ef0c9) |

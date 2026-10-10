@@ -25,7 +25,7 @@
 | logs/ | 每轮追加的工作记录 | 每次有实质工作时 |
 | evidence/ | 固定版本、PR 与验证依据 | 交付或复核时 |
 
-[接续模板](templates/HANDOFF.md) · [跨环境设置](docs/SETUP.md) · [首次基线核对](evidence/2026-10-09-baseline.md)
+[接续模板](templates/HANDOFF.md) · [跨环境设置](docs/SETUP.md) · [首次基线核对](evidence/2026-10-09-baseline.md) · [入口接入证据](evidence/2026-10-10-memory-integration.md) · [整改期限发布](evidence/2026-10-10-hazard-deadlines.md)
 
 ## 快速接续指令
 
