@@ -1,3 +1,5 @@
+> 2026-10-10：最新接续入口已迁入 [progress/CURRENT.md](../progress/CURRENT.md)，配合 [SUMMARY](../progress/SUMMARY.md) 和 [TASKS](../progress/TASKS.md) 使用。以下保留历史记录；后续不按旧状态重复实施。
+
 # 迭代进度与接续入口
 
 2026-10-05更新。[长期规划](LONG-TERM-PLAN-20261003.md)。用户持续授权自主开发、长时间分析、自动测试、审核、GitHub推送与验证后合并；可选择其他电厂项目，服务内部招聘面试。岗位未指定时按信息化/生产技术/安全管理的共同业务案例讲解。

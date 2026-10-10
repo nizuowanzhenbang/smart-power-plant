@@ -1,3 +1,5 @@
+> 2026-10-10：最新接续入口已迁入 [progress/CURRENT.md](../progress/CURRENT.md)，配合 [SUMMARY](../progress/SUMMARY.md) 和 [TASKS](../progress/TASKS.md) 使用。以下保留历史记录；后续不按旧状态重复实施。
+
 # 电厂项目长期迭代规划（2026-10-03）
 
 ## 目标与工作方式

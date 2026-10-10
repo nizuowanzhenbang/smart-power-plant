@@ -1,3 +1,7 @@
+## 电厂数智化进度与 Codex 接续
+
+统一工作记忆已设在本仓库的 [progress/](progress/README.md)。Codex 每轮先读 [规则](progress/AGENTS.md)、[摘要](progress/SUMMARY.md)、[当前重点](progress/CURRENT.md)、[任务台账](progress/TASKS.md)，收尾回写实际结果、证据和下一步。原有作品介绍及发布证据继续保留；远期能力路线见 [数智化路线](progress/ROADMAP.md)。
+
 # 智慧电厂业务软件作品集
 
 以电厂采购、燃料、设备、隐患和能效场景练习业务软件开发与维护。面向电力企业内部招聘，重点展示业务理解、流程控制、数据可靠性及工程验证；按信息化、生产技术或安全管理岗位调整讲解深度。
