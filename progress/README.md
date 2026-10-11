@@ -17,7 +17,9 @@
 | 文件 | 用途 | 更新时机 |
 |---|---|---|
 | SUMMARY.md | 当前全局摘要 | 能力、基线或重点变化 |
-| CURRENT.md | 下一位 Codex 的接续入口 | 开工认领、暂停、收尾 |
+| CURRENT.md | 下一位 Codex 的业务与批次摘要 | 开工、暂停、收尾 |
+| SESSION.json | 实时唯一认领与最后交接 | claim、checkpoint、release 发布 |
+| RELEASES.json | 固定交付及需核验的检查 | 实际合并且验收后 |
 | TASKS.md | 有编号的任务及状态 | 状态或验收结论变化 |
 | REPOSITORIES.md | 仓库、代码基线和指令覆盖 | 仓库或基线变化 |
 | ROADMAP.md | 数智化能力路线与验收目标 | 方向或依赖变化 |
@@ -33,6 +35,6 @@
 
 ## 快速接续指令
 
-> 继续电厂项目。先读取 nizuowanzhenbang/smart-power-plant 默认分支的 progress/AGENTS.md、progress/SUMMARY.md、progress/CURRENT.md、progress/TASKS.md，报告读取的提交与本轮任务编号；核对目标仓库当前状态，避免重做已交付能力；结束前回写进度、证据、阻塞和下一步。
+> 继续电厂项目。先从 nizuowanzhenbang/smart-power-plant 默认分支的同一 SHA 读取 progress/AGENTS.md、SUMMARY.md、CURRENT.md、TASKS.md 和 SESSION.json（或更新检出后运行 python -m progress_tools resume）。按记录认领或明确接管，一批完成多项可验收升级；关键阶段保存代码 SHA 与下一动作，收尾回写实际证据，避免重做已交付能力。
 
 GitHub 上的 `AGENTS.md` 在对应仓库被检出并进入 Codex 指令发现范围时生效。它不会让所有陌生环境自动获得跨仓库权限；使用范围和补救方法见 [SETUP.md](docs/SETUP.md)。本仓库保存工作记忆，不启动后台开发或定时任务。
