@@ -27,6 +27,8 @@ cp -n progress/templates/GLOBAL-AGENTS.md "${CODEX_HOME:-$HOME/.codex}/AGENTS.md
 
 启动一个新会话，先要求它报告指令来源、中央提交 SHA、当前任务和已经完成而不应重做的内容。无自动 Git 检出的连接会话，用 GitHub 文件工具读取 progress/ 的四个核心文件；具备写权限才能回写。
 
+总览检出更新后可在根目录执行 `python -m progress_tools resume`，按固定 SHA 恢复核心文件及 SESSION；读取和保存命令见 [AUTOMATION](AUTOMATION.md)。无需额外 Python 库，保存需要已有 GitHub 写权限；全局规则并非跨环境自动安装服务。
+
 ## 新增仓库与并发
 
 将 progress/templates/REPO-AGENTS.md 合并到新仓库根目录，并更新 REPOSITORIES.md 的接入提交。仅添加中央台账不会让新仓库自动获得入口。

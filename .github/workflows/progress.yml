@@ -1,0 +1,28 @@
+name: Progress checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: progress-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  progress:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Regression tests
+        run: python -m unittest discover -s tests -v
+      - name: Check structure and links
+        run: python -m progress_tools check --offline
+      - name: Verify indexed releases against GitHub
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -m progress_tools check --remote

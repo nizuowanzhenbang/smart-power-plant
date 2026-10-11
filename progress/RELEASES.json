@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "releases": [
+    {
+      "task_id": "PP-010",
+      "repository": "nizuowanzhenbang/plant-safety",
+      "commit": "e5e62e77ea0d01c7c24bea790d79e51a3b3f18d1",
+      "pr": 3,
+      "checks": ["backend", "frontend"]
+    }
+  ]
+}
