@@ -23,21 +23,21 @@
 
 Files: progress_tools/github.py、state.py、cli.py、__main__.py；tests/test_progress_tools.py。
 Interfaces: snapshot(api, repo) -> (sha, files)；mutate(api, repo, command, task, owner, metadata) -> commit_sha。
-- [ ] 写真实临时 HTTP API 回归：固定版本读取、竞争/过时写入、所有者/任务保护、明确接管、错误状态、远端代码/合并验证；先确认 CLI/模块缺失失败。
-- [ ] 实现最小 REST 客户端与 SESSION 校验、claim/checkpoint/release/resume；运行完整 unittest，核对状态及非零拒绝。
-- [ ] 添加 SESSION/RELEASES 配置、使用说明；实际推送候选并记录验证，不提前标为合并。
+- [x] 写真实临时 HTTP API 回归：固定版本读取、竞争/过时写入、所有者/任务保护、明确接管、错误状态、远端代码/合并验证；先确认 CLI/模块缺失失败。
+- [x] 实现最小 REST 客户端与 SESSION 校验、claim/checkpoint/release/resume；运行完整 unittest，核对状态及非零拒绝。
+- [x] 添加 SESSION/RELEASES 配置、使用说明；实际推送候选并记录验证，不提前标为合并。
 
 ## Task 2 · 自动核验与批量约定
 
 Files: progress_tools/audit.py；tests/test_progress_tools.py；.github/workflows/progress.yml；progress/AGENTS.md、CURRENT.md、README.md。
 Interfaces: audit(root, remote_api=None) -> list[str]；CLI check --offline / --remote。
-- [ ] 写坏链接/重复编号/错误状态/畸形 JSON/真实 PR 与检查不符回归，先失败再实现。
-- [ ] 实现本地/远端核验、只读 CI，中央规则改为一批多项、关键阶段保存，保留证据边界。
+- [x] 写坏链接/重复编号/错误状态/畸形 JSON/真实 PR 与检查不符回归，先失败再实现。
+- [x] 实现本地/远端核验、只读 CI，中央规则改为一批多项、关键阶段保存，保留证据边界。
 - [ ] 全套测试/离线/真实在线核验；提交候选。一次 fresh-context 审查，重要问题 RED→GREEN 修复；候选 CI 后集成，复核 main CI。
 
 ## Task 3 · 恢复演练与接续
 
-- [ ] reviewer 不继承旧聊天，先只读取远端核心进度，报告最新 SHA、已完成/活动任务/第一动作；保存实际报告与范围。
+- [x] reviewer 不继承旧聊天，先只读取远端核心进度，报告最新 SHA、已完成/活动任务/第一动作；保存实际报告与范围。
 - [ ] 使用已发布工具实际认领/保存/释放或切换至 PP-020；回写运行结果及批次剩余，随后执行独立煤质设计与计划。
 
 ## 执行台账
