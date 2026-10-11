@@ -8,7 +8,7 @@
 
 本批 PP-003/004/005 已通过 [PR #13](https://github.com/nizuowanzhenbang/smart-power-plant/pull/13) 合并，工具固定版本 `5af33d2f3a974cf0bfad54766a8bb2650cb76c18`；25 项 CLI/HTTP 回归、PR/main CI、实际恢复与 GitHub 保存操作通过。见 [证据](evidence/2026-10-11-continuity.md)。3 项 Important 全部先失败再修复，旧摘要 Minor 同步修正。
 
-当前活动任务 PP-020，仓库 coal-quality-monitor，分支 upgrade/coal-quality-contract-20261011。候选已推送 `56c3a1761a2e7f2b1268e6380ebaf140935634f6`：完整 192 项后端、ruff、pip check 和前端 TypeScript/Vite 构建通过。已实现 kcal/kg/MJ/kg 热值换算、固定基准声明、化验/合同范围保护、关键缺项与零热值亏损、安全比值存储，以及详情字段/雷达缺项修正。设计与计划保存在煤质仓库 docs/；业务尚未合并。下一动作：一次独立无旧聊天恢复与整分支审查，重要问题先失败再修复，候选 CI 通过后集成。
+当前活动任务 PP-020，仓库 coal-quality-monitor，分支 upgrade/coal-quality-contract-20261011，[PR #4](https://github.com/nizuowanzhenbang/coal-quality-monitor/pull/4)。修复候选 `ab101aebb28409ff859c9fed6f6a8734c2fa27fc` 已推送：完整 201 后端、6 项实际合同标签渲染、ruff、pip check 和前端构建通过。两项收到的 Important 均先复现后修复：MJ/kg 超大整数应 422，合同科学计数法按数值比较。独立最终报告因限额未生成，父代理完成检查并保留边界。下一动作：新候选 CI 通过后合并并复核 main，再 release/回写。不要重跑初始核查或旧失败回归。
 
 实时认领与最后阶段以 [SESSION.json](SESSION.json) 为准；[AUTOMATION](docs/AUTOMATION.md) 说明固定快照恢复和条件写入。本文件保留批次/业务摘要。
 
