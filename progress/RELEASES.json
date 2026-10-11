@@ -37,6 +37,16 @@
       "checks": [
         "progress"
       ]
+    },
+    {
+      "task_id": "PP-020",
+      "repository": "nizuowanzhenbang/coal-quality-monitor",
+      "commit": "26bdbef9360e7b2ea2f037114adbf63ffdabb947",
+      "pr": 4,
+      "checks": [
+        "backend",
+        "frontend"
+      ]
     }
   ]
 }

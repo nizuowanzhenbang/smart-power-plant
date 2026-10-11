@@ -15,17 +15,17 @@
 | 范围 | 已交付内容 | 固定代码基线 |
 |---|---|---|
 | equipment-inspection | 离线重传与冲突、点检/检修/验收、库存并发与精度、收货重放、状态竞争、过时盘点、迁移恢复与部署基线 | `76d799c1fc781147ea6bbdeaff0ee57e8bc659db`；PR #14，包含前序集成 |
-| coal-quality-monitor | 化验重评保留运输预警/处理/扣分；创建和修改的 8 指标拒绝 NaN、Infinity 及指数溢出 | `d58a634e2dee43256ed27d6915903f70353f9219`；PR #3，包含 PR #2 |
+| coal-quality-monitor | 热值单位换算/固定基准/范围/关键缺项、零热值亏损、有限比率存储、详情与合同数值显示；保留非有限输入/运输处理/评分保护 | `26bdbef9360e7b2ea2f037114adbf63ffdabb947`；PR #4，包含 PR #2/3 |
 | plant-safety | 安全检查关联所有权；重大 14 天/一般 30 天期限、默认/UTC/历史兼容、过时竞争更新拒绝 | `e5e62e77ea0d01c7c24bea790d79e51a3b3f18d1`；PR #3，包含 PR #2 |
 | coal-unit-efficiency | 时间留出评估、均值基线比较、输入与训练范围检查、明确规则降级和模型证据 | `08534f680222dba098255deb0b3fc5e9e6ab6093`；PR #2 |
 
-原默认分支和 PR 状态于 2026-10-09 核对；2026-10-10 新增 PP-010 发布核对。本轮实际运行 plant-safety 完整后端 68 项及前端构建，见 [期限证据](evidence/2026-10-10-hazard-deadlines.md)。其他仓库引用固定历史证据，本轮未复跑；其他模块已有代码与功能说明，不据此推断同等验收深度。
+2026-10-11 本轮实际验证接续完整 25 项、煤质完整 201 后端/6 标签渲染及构建，候选与 main CI 通过。安全 68 项/构建为 2026-10-10 的 [历史期限证据](evidence/2026-10-10-hazard-deadlines.md)，本轮未复跑；设备/能效亦引用固定历史证据。其他模块不据此推断同等验收深度。
 
 ## 当前重点
 
 - PP-001 进度入口与 PP-010 整改期限已合并，完整状态见 CURRENT.md。
 - PP-002 已归档 [接续审查](docs/CONTINUITY-REVIEW-20261011.md)，其缺口是当时快照；本轮 PP-003/004/005 已合并，25 项回归、实际 GitHub 保存/切换和 CI 通过；独立冷恢复已演练。见 CURRENT 和接续发布证据。
-- 本批正在升级 `coal-quality-monitor` 的单位、基准、缺项和有限极端值；保留已交付的非有限输入保护及运输证据，不从头重做。
+- 本批 PP-020 已合并；下一批核查设备采购/自动补货和设备安全联动，见 [NEXT-BATCH](plans/NEXT-BATCH.md)。不从头重做已有保护。
 - 长期数智化线依次关注：统一业务身份与口径、可靠跨系统链路、煤质到配煤/燃烧/排放联合决策、预测校准与执行效果反馈。
 - 按 D-006 自主推进一批多个可独立验收单元，以 CURRENT/TASKS 为准；远期路线图不自动变成本轮全部范围。
 
@@ -35,4 +35,4 @@
 
 ## 接续入口
 
-先读 [CURRENT.md](CURRENT.md) 和 [TASKS.md](TASKS.md)，再核对目标代码仓库实际 HEAD。集成指令状态见 [REPOSITORIES.md](REPOSITORIES.md)；读取或回写失败必须显式记录。
+按同一中央 SHA 先读 AGENTS/SUMMARY/[CURRENT](CURRENT.md)/[TASKS](TASKS.md) 和 [SESSION](SESSION.json)，再核对目标代码仓库实际 HEAD。集成指令状态见 [REPOSITORIES.md](REPOSITORIES.md)；读取或回写失败必须显式记录。

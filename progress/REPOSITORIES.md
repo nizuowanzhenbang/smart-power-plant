@@ -1,12 +1,12 @@
 # 仓库与代码基线
 
-核对：2026-10-10 UTC。代码基线记录各模块最后已验证的业务发布；单独加入接续指令不改变原业务证据。本轮 plant-safety 已升级，其余保留此前固定版本。
+核对：2026-10-11 UTC。代码基线记录各模块最后已验证的业务发布；单独加入接续指令不改变原业务证据。本轮接续工具与煤质已升级；安全引用 2026-10-10 发布，其余保留此前固定版本。
 
 | 仓库 | 默认分支 | 代码基线 | Codex 入口 |
 |---|---|---|---|
 | [smart-power-plant](https://github.com/nizuowanzhenbang/smart-power-plant) | `main` | [`5af33d2f3a97`](https://github.com/nizuowanzhenbang/smart-power-plant/commit/5af33d2f3a974cf0bfad54766a8bb2650cb76c18) | [已接入 `b2b30735f27c`](https://github.com/nizuowanzhenbang/smart-power-plant/commit/b2b30735f27c99666286a0f00a16647147deb5f0) |
 | [equipment-inspection](https://github.com/nizuowanzhenbang/equipment-inspection) | `main` | [`76d799c1fc78`](https://github.com/nizuowanzhenbang/equipment-inspection/commit/76d799c1fc781147ea6bbdeaff0ee57e8bc659db) | [已接入 `8047049bb315`](https://github.com/nizuowanzhenbang/equipment-inspection/commit/8047049bb3158959172edc5a7148dd5f35be4217) |
-| [coal-quality-monitor](https://github.com/nizuowanzhenbang/coal-quality-monitor) | `main` | [`d58a634e2dee`](https://github.com/nizuowanzhenbang/coal-quality-monitor/commit/d58a634e2dee43256ed27d6915903f70353f9219) | [已接入 `e527426b9816`](https://github.com/nizuowanzhenbang/coal-quality-monitor/commit/e527426b9816d3843886dd9cd6b7629b2661e8ad) |
+| [coal-quality-monitor](https://github.com/nizuowanzhenbang/coal-quality-monitor) | `main` | [`26bdbef9360e`](https://github.com/nizuowanzhenbang/coal-quality-monitor/commit/26bdbef9360e7b2ea2f037114adbf63ffdabb947)；[PP-020 证据](evidence/2026-10-11-coal-quality-contract.md) | [已接入 `e527426b9816`](https://github.com/nizuowanzhenbang/coal-quality-monitor/commit/e527426b9816d3843886dd9cd6b7629b2661e8ad) |
 | [coal-transport-monitor](https://github.com/nizuowanzhenbang/coal-transport-monitor) | `main` | [`357de14ac550`](https://github.com/nizuowanzhenbang/coal-transport-monitor/commit/357de14ac5506e131acd15698989f352e4f1e9e2) | [已接入 `9ad9a0ba94cf`](https://github.com/nizuowanzhenbang/coal-transport-monitor/commit/9ad9a0ba94cf79838365387f97d95059b0b3b491) |
 | [fuel-procurement](https://github.com/nizuowanzhenbang/fuel-procurement) | `main` | [`db6bfd756ea1`](https://github.com/nizuowanzhenbang/fuel-procurement/commit/db6bfd756ea1f110080caac0a0e3235f17a07cb8) | [已接入 `fe025025b6c0`](https://github.com/nizuowanzhenbang/fuel-procurement/commit/fe025025b6c039992fba49b94ea957044b13ab6a) |
 | [coal-yard-management](https://github.com/nizuowanzhenbang/coal-yard-management) | `master` | [`140cfc237996`](https://github.com/nizuowanzhenbang/coal-yard-management/commit/140cfc2379969a443a16d09bb7f718b440d9ede0) | [已接入 `d2a2aa569dd2`](https://github.com/nizuowanzhenbang/coal-yard-management/commit/d2a2aa569dd2637263fc42c58ba2a903236e1796) |
