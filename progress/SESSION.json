@@ -6,13 +6,13 @@
     "code_repository": "nizuowanzhenbang/coal-quality-monitor",
     "branch": "upgrade/coal-quality-contract-20261011",
     "started_at": "2026-10-11T07:42:42.857800+00:00",
-    "updated_at": "2026-10-11T12:56:20.950589+00:00",
+    "updated_at": "2026-10-11T12:59:18.176003+00:00",
     "checkpoint": {
-      "phase": "pr_open",
-      "commit": "ab101aebb28409ff859c9fed6f6a8734c2fa27fc",
+      "phase": "merged",
+      "commit": "26bdbef9360e7b2ea2f037114adbf63ffdabb947",
       "pr": 4,
-      "note": "PR #4 修复候选已推送；201 后端和 6 前端渲染通过；新候选 CI 等待",
-      "next_action": "CI 通过后合并 PR #4 并复核 main"
+      "note": "PR #4 实际合并，候选 CI 38141089655 和 main CI 38141214245 全部成功；201 后端/6 标签渲染及构建通过",
+      "next_action": "读取中央同版核心/SESSION，按 NEXT-BATCH 核查设备采购补货及设备安全联动"
     }
   },
   "last": {
