@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-020",
     "owner": "codex-batch-20261011-01",
     "code_repository": "nizuowanzhenbang/coal-quality-monitor",
@@ -13,23 +14,8 @@
       "pr": 4,
       "note": "PR #4 实际合并，候选 CI 38141089655 和 main CI 38141214245 全部成功；201 后端/6 标签渲染及构建通过",
       "next_action": "读取中央同版核心/SESSION，按 NEXT-BATCH 核查设备采购补货及设备安全联动"
-    }
-  },
-  "last": {
-    "task_id": "PP-003",
-    "owner": "codex-batch-20261011-01",
-    "code_repository": "nizuowanzhenbang/smart-power-plant",
-    "branch": "upgrade/continuity-batch-20261011",
-    "started_at": "2026-10-11T07:38:32.678463+00:00",
-    "updated_at": "2026-10-11T07:42:35.980487+00:00",
-    "checkpoint": {
-      "phase": "merged",
-      "commit": "5af33d2f3a974cf0bfad54766a8bb2650cb76c18",
-      "pr": 13,
-      "note": "PR #13 已合并，25 项回归和修复候选 CI 通过",
-      "next_action": "释放接续任务并认领 PP-020"
     },
-    "release_reason": "接续工具已集成，切换本批煤质任务",
-    "released_at": "2026-10-11T07:42:39.371911+00:00"
+    "release_reason": "B-20261011-01 四项已合并且验收通过，释放认领并完成中央签收",
+    "released_at": "2026-10-11T12:59:21.699190+00:00"
   }
 }
