@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-003",
     "owner": "codex-batch-20261011-01",
     "code_repository": "nizuowanzhenbang/smart-power-plant",
@@ -13,7 +14,8 @@
       "pr": 13,
       "note": "PR #13 已合并，25 项回归和修复候选 CI 通过",
       "next_action": "释放接续任务并认领 PP-020"
-    }
-  },
-  "last": null
+    },
+    "release_reason": "接续工具已集成，切换本批煤质任务",
+    "released_at": "2026-10-11T07:42:39.371911+00:00"
+  }
 }
