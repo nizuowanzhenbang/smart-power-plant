@@ -27,6 +27,8 @@
 
 [接续模板](templates/HANDOFF.md) · [跨环境设置](docs/SETUP.md) · [首次基线核对](evidence/2026-10-09-baseline.md) · [入口接入证据](evidence/2026-10-10-memory-integration.md) · [整改期限发布](evidence/2026-10-10-hazard-deadlines.md)
 
+删除对话或换环境后，从 [接续审查与恢复步骤](docs/CONTINUITY-REVIEW-20261011.md) 恢复；其中区分已保存保障和待补强措施，不需要旧聊天作为开工前提。
+
 ## 快速接续指令
 
 > 继续电厂项目。先读取 nizuowanzhenbang/smart-power-plant 默认分支的 progress/AGENTS.md、progress/SUMMARY.md、progress/CURRENT.md、progress/TASKS.md，报告读取的提交与本轮任务编号；核对目标仓库当前状态，避免重做已交付能力；结束前回写进度、证据、阻塞和下一步。
