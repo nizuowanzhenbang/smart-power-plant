@@ -4,7 +4,7 @@
 
 | 仓库 | 默认分支 | 代码基线 | Codex 入口 |
 |---|---|---|---|
-| [smart-power-plant](https://github.com/nizuowanzhenbang/smart-power-plant) | `main` | [`b31e8c817c2c`](https://github.com/nizuowanzhenbang/smart-power-plant/commit/b31e8c817c2c4b76a446753ccb53c760cf471e70) | [已接入 `b2b30735f27c`](https://github.com/nizuowanzhenbang/smart-power-plant/commit/b2b30735f27c99666286a0f00a16647147deb5f0) |
+| [smart-power-plant](https://github.com/nizuowanzhenbang/smart-power-plant) | `main` | [`5af33d2f3a97`](https://github.com/nizuowanzhenbang/smart-power-plant/commit/5af33d2f3a974cf0bfad54766a8bb2650cb76c18) | [已接入 `b2b30735f27c`](https://github.com/nizuowanzhenbang/smart-power-plant/commit/b2b30735f27c99666286a0f00a16647147deb5f0) |
 | [equipment-inspection](https://github.com/nizuowanzhenbang/equipment-inspection) | `main` | [`76d799c1fc78`](https://github.com/nizuowanzhenbang/equipment-inspection/commit/76d799c1fc781147ea6bbdeaff0ee57e8bc659db) | [已接入 `8047049bb315`](https://github.com/nizuowanzhenbang/equipment-inspection/commit/8047049bb3158959172edc5a7148dd5f35be4217) |
 | [coal-quality-monitor](https://github.com/nizuowanzhenbang/coal-quality-monitor) | `main` | [`d58a634e2dee`](https://github.com/nizuowanzhenbang/coal-quality-monitor/commit/d58a634e2dee43256ed27d6915903f70353f9219) | [已接入 `e527426b9816`](https://github.com/nizuowanzhenbang/coal-quality-monitor/commit/e527426b9816d3843886dd9cd6b7629b2661e8ad) |
 | [coal-transport-monitor](https://github.com/nizuowanzhenbang/coal-transport-monitor) | `main` | [`357de14ac550`](https://github.com/nizuowanzhenbang/coal-transport-monitor/commit/357de14ac5506e131acd15698989f352e4f1e9e2) | [已接入 `9ad9a0ba94cf`](https://github.com/nizuowanzhenbang/coal-transport-monitor/commit/9ad9a0ba94cf79838365387f97d95059b0b3b491) |

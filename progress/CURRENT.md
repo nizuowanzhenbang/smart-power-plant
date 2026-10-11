@@ -6,9 +6,11 @@
 
 用户已授权自主实施接续补强，并要求每次对话完成更多迭代。执行者 codex-batch-20261011-01；开工进度 SHA `390535679fcdd60330ee581158147b5286342441`。
 
-批次包含 PP-003 阶段保存与恢复、PP-004 自动核验、PP-005 竞争认领，以及 PP-020 煤质口径升级。接续候选 PR #13 的独立审查已完成：3 项 Important 均先复现后修复，完整 25 项 CLI/HTTP 回归通过，初始 SESSION 已保留本批次认领。当前 PP-003；下一动作：修复后 CI 成功后集成，再实际保存远端合并检查点、释放并认领 PP-020。煤质基线 110 项通过，正在准备口径/缺项回归。
+本批 PP-003/004/005 已通过 [PR #13](https://github.com/nizuowanzhenbang/smart-power-plant/pull/13) 合并，工具固定版本 `5af33d2f3a974cf0bfad54766a8bb2650cb76c18`；25 项 CLI/HTTP 回归、PR/main CI、实际恢复与 GitHub 保存操作通过。见 [证据](evidence/2026-10-11-continuity.md)。3 项 Important 全部先失败再修复，旧摘要 Minor 同步修正。
 
-工具发布后实时认领以 [SESSION.json](SESSION.json) 为准；操作步骤见 [AUTOMATION](docs/AUTOMATION.md)。本文件保留业务和批次摘要，不替代实时认领。
+当前活动任务 PP-020，仓库 coal-quality-monitor，分支 upgrade/coal-quality-contract-20261011。业务基线 110 项通过；失败回归已推送 `4b95d183b040d0966373b21d95b7133949264226`，新用例首轮 77 failed/5 passed；极小基数追加存储断言后 3 failed/2 passed。正在实现单位/基准/范围、关键缺项、零热值与展示契约，下一动作：完整验证后推送候选并独立审查。
+
+实时认领与最后阶段以 [SESSION.json](SESSION.json) 为准；[AUTOMATION](docs/AUTOMATION.md) 说明固定快照恢复和条件写入。本文件保留批次/业务摘要。
 
 ## 最近完成
 
@@ -18,9 +20,9 @@
 
 ## 下一项任务
 
-PP-020，状态待核查：coal-quality-monitor 的煤质单位、基准、缺项和物理范围。尚未认领、实施或验收，不把路线图计为已交付。
+PP-020 已在本批认领：coal-quality-monitor 的煤质单位、基准、缺项和物理范围。正在实施，尚未集成，不把路线图或本地候选计为已交付。
 
-第一项动作：先取得中央最新 SHA 并读取四个核心文件；认领 PP-020，核对 coal-quality-monitor 当前默认分支、未合并 PR 与未提交改动；读取 DTO/schema、化验创建/修改及评分计算入口，列清 8 指标的单位、基准、null/缺项含义和有限极端值的真实行为。先复现具体缺口，再确定可验收的小范围改动。
+恢复时先读取固定中央快照和 SESSION，再核对活动分支/实际阶段；按上方下一动作继续，勿重做已经推送的失败复现或已合并接续机制。
 
 ## 已完成且不重做
 

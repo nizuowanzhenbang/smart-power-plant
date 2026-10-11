@@ -6,7 +6,37 @@
       "repository": "nizuowanzhenbang/plant-safety",
       "commit": "e5e62e77ea0d01c7c24bea790d79e51a3b3f18d1",
       "pr": 3,
-      "checks": ["backend", "frontend"]
+      "checks": [
+        "backend",
+        "frontend"
+      ]
+    },
+    {
+      "task_id": "PP-003",
+      "repository": "nizuowanzhenbang/smart-power-plant",
+      "commit": "5af33d2f3a974cf0bfad54766a8bb2650cb76c18",
+      "pr": 13,
+      "checks": [
+        "progress"
+      ]
+    },
+    {
+      "task_id": "PP-004",
+      "repository": "nizuowanzhenbang/smart-power-plant",
+      "commit": "5af33d2f3a974cf0bfad54766a8bb2650cb76c18",
+      "pr": 13,
+      "checks": [
+        "progress"
+      ]
+    },
+    {
+      "task_id": "PP-005",
+      "repository": "nizuowanzhenbang/smart-power-plant",
+      "commit": "5af33d2f3a974cf0bfad54766a8bb2650cb76c18",
+      "pr": 13,
+      "checks": [
+        "progress"
+      ]
     }
   ]
 }

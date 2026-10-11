@@ -33,12 +33,12 @@ Files: progress_tools/audit.py；tests/test_progress_tools.py；.github/workflow
 Interfaces: audit(root, remote_api=None) -> list[str]；CLI check --offline / --remote。
 - [x] 写坏链接/重复编号/错误状态/畸形 JSON/真实 PR 与检查不符回归，先失败再实现。
 - [x] 实现本地/远端核验、只读 CI，中央规则改为一批多项、关键阶段保存，保留证据边界。
-- [ ] 全套测试/离线/真实在线核验；提交候选。一次 fresh-context 审查，重要问题 RED→GREEN 修复；候选 CI 后集成，复核 main CI。
+- [x] 全套测试/离线/真实在线核验；提交候选。一次 fresh-context 审查，重要问题 RED→GREEN 修复；候选 CI 后集成，复核 main CI。
 
 ## Task 3 · 恢复演练与接续
 
 - [x] reviewer 不继承旧聊天，先只读取远端核心进度，报告最新 SHA、已完成/活动任务/第一动作；保存实际报告与范围。
-- [ ] 使用已发布工具实际认领/保存/释放或切换至 PP-020；回写运行结果及批次剩余，随后执行独立煤质设计与计划。
+- [x] 使用已发布工具实际认领/保存/释放或切换至 PP-020；回写运行结果及批次剩余，随后执行独立煤质设计与计划。
 
 ## 执行台账
 
