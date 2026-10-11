@@ -199,6 +199,58 @@ class ProgressTests(unittest.TestCase):
         self.reject('claim', 'PP-004', '--owner', 'bob', '--code-repo', 'demo/code', '--branch', 'work',
                     '--expected-sha', INITIAL)
 
+    def test_stale_identical_claim_cannot_report_success_after_takeover(self):
+        self.claim()
+        old = self.store.head
+        self.claim('bob', '--takeover-from', 'alice', '--reason', 'previous session stopped')
+        self.reject('claim', 'PP-003', '--owner', 'alice', '--code-repo', 'demo/code',
+                    '--branch', 'work', '--expected-sha', old)
+        self.assertEqual(self.store.session()['active']['owner'], 'bob')
+
+    def test_same_current_claim_remains_idempotent(self):
+        self.claim()
+        current = self.store.head
+        self.claim('alice', '--expected-sha', current)
+        self.assertEqual(self.store.head, current)
+
+    def test_malformed_checkpoints_and_handoffs_are_rejected(self):
+        self.claim()
+        valid = self.store.session()
+        for phase in ['decision', 'reproduced', 'implemented', 'reviewed', 'pr_open', 'merged']:
+            with self.subTest(phase=phase):
+                state = json.loads(json.dumps(valid))
+                state['active']['checkpoint'].update(phase=phase, commit=None, pr=None)
+                self.store.files()['progress/SESSION.json'] = json.dumps(state)
+                self.reject('release', 'PP-003', '--owner', 'alice', '--reason', 'handoff')
+                (self.root/'progress/SESSION.json').write_text(json.dumps(state))
+                self.assertNotEqual(self.invoke('check', '--offline').returncode, 0)
+        for changes in [{'phase': 'merged', 'commit': CODE, 'pr': None},
+                        {'phase': 'pr_open', 'commit': CODE, 'pr': True},
+                        {'phase': 'implemented', 'commit': 17}]:
+            with self.subTest(changes=changes):
+                state = json.loads(json.dumps(valid))
+                state['active']['checkpoint'].update(changes)
+                (self.root/'progress/SESSION.json').write_text(json.dumps(state))
+                self.assertNotEqual(self.invoke('check', '--offline').returncode, 0)
+        for changes in [{'release_reason': '', 'released_at': 'invalid'},
+                        {'takeovers': [{'previous_owner': '', 'reason': 'handoff', 'at': 'bad'}]}]:
+            state = json.loads(json.dumps(valid))
+            state['last'] = state.pop('active')
+            state['active'] = None
+            state['last'].update(changes)
+            (self.root/'progress/SESSION.json').write_text(json.dumps(state))
+            self.assertNotEqual(self.invoke('check', '--offline').returncode, 0)
+
+    def test_publication_preserves_existing_active_batch_owner(self):
+        state = json.loads((ROOT/'progress/evidence/2026-10-11-session-migration.json').read_text())
+        active = state['active']
+        self.assertIsNotNone(active, 'publication must migrate the active PP-003 claim')
+        self.assertEqual((active['task_id'], active['owner']),
+                         ('PP-003', 'codex-batch-20261011-01'))
+        self.store.files()['progress/SESSION.json'] = json.dumps(state)
+        self.reject('claim', 'PP-003', '--owner', 'bob', '--code-repo',
+                    active['code_repository'], '--branch', active['branch'])
+
     def test_other_owner_cannot_claim_checkpoint_or_release(self):
         self.claim()
         self.reject('claim', 'PP-004', '--owner', 'bob', '--code-repo', 'demo/code', '--branch', 'work')

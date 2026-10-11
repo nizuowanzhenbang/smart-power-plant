@@ -22,6 +22,20 @@ def text_value(value, label):
     return value
 
 
+def utc_value(value, label):
+    text_value(value, label)
+    try:
+        stamp = datetime.fromisoformat(value)
+        if stamp.utcoffset() is None or stamp.utcoffset().total_seconds() != 0:
+            raise ValueError()
+    except ValueError as exc:
+        raise ProgressError('时间必须使用 UTC ISO 格式') from exc
+
+
+def full_sha(value):
+    return isinstance(value, str) and SHA.fullmatch(value) is not None
+
+
 def strict_json(value):
     def pairs(items):
         result = {}
@@ -75,22 +89,32 @@ def validate_session(state, registry):
             raise ProgressError('不可认领已完成任务')
         for field in ['owner', 'branch', 'started_at', 'updated_at']:
             text_value(item.get(field), field)
-        if not REPO.fullmatch(item.get('code_repository', '')):
+        if not isinstance(item.get('code_repository'), str) or not REPO.fullmatch(item['code_repository']):
             raise ProgressError('目标仓库格式错误')
         for field in ['started_at', 'updated_at']:
-            try:
-                stamp = datetime.fromisoformat(item[field])
-                if stamp.utcoffset() is None or stamp.utcoffset().total_seconds() != 0:
-                    raise ValueError()
-            except ValueError as exc:
-                raise ProgressError('时间必须使用 UTC ISO 格式') from exc
+            utc_value(item[field], field)
         checkpoint = item.get('checkpoint')
         if not isinstance(checkpoint, dict) or checkpoint.get('phase') not in PHASES:
             raise ProgressError('检查点阶段错误')
         text_value(checkpoint.get('note'), 'note')
         text_value(checkpoint.get('next_action'), 'next_action')
-        if checkpoint.get('commit') is not None and not SHA.fullmatch(checkpoint['commit']):
+        if (checkpoint['phase'] != 'claimed' or checkpoint.get('commit') is not None) and not full_sha(checkpoint.get('commit')):
             raise ProgressError('检查点必须记录完整代码 SHA')
+        pr = checkpoint.get('pr')
+        if (checkpoint['phase'] in {'pr_open', 'merged'} or pr is not None) and (type(pr) is not int or pr <= 0):
+            raise ProgressError('检查点需要有效 PR 编号')
+        takeovers = item.get('takeovers', [])
+        if not isinstance(takeovers, list):
+            raise ProgressError('接管历史结构错误')
+        for takeover in takeovers:
+            if not isinstance(takeover, dict):
+                raise ProgressError('接管历史结构错误')
+            text_value(takeover.get('previous_owner'), 'previous_owner')
+            text_value(takeover.get('reason'), 'reason')
+            utc_value(takeover.get('at'), 'at')
+        if name == 'last':
+            text_value(item.get('release_reason'), 'release_reason')
+            utc_value(item.get('released_at'), 'released_at')
 
 
 def snapshot(api, repo, expected_sha=None):
@@ -121,6 +145,8 @@ def mutate(api, repo, command, task, owner, metadata, expected_sha=None):
             raise ProgressError('目标仓库格式错误')
         if active:
             if (active['task_id'], active['owner'], active['code_repository'], active['branch']) == (task, owner, code_repo, branch):
+                if api.request(f'repos/{repo}/commits/main').get('sha') != sha:
+                    raise ProgressError('中央版本已变更；重新恢复后核对当前认领')
                 return sha
             if (metadata.get('takeover_from') != active['owner'] or active['task_id'] != task
                     or active['code_repository'] != code_repo or active['branch'] != branch):

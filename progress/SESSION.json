@@ -1,5 +1,19 @@
 {
   "schema_version": 1,
-  "active": null,
+  "active": {
+    "task_id": "PP-003",
+    "owner": "codex-batch-20261011-01",
+    "code_repository": "nizuowanzhenbang/smart-power-plant",
+    "branch": "upgrade/continuity-batch-20261011",
+    "started_at": "2026-10-11T07:38:32.678463+00:00",
+    "updated_at": "2026-10-11T07:38:32.678463+00:00",
+    "checkpoint": {
+      "phase": "implemented",
+      "commit": "291120301810bf6a61c8e1cada479fa4360aa098",
+      "pr": 13,
+      "note": "从 CURRENT 迁移已有认领；21 项回归候选已推送，独立审查要求修复三项问题",
+      "next_action": "验证审查修复、候选 CI 后集成，保存真实合并检查点"
+    }
+  },
   "last": null
 }
