@@ -6,13 +6,13 @@
     "code_repository": "nizuowanzhenbang/equipment-inspection",
     "branch": "upgrade/equipment-procurement-20261012",
     "started_at": "2026-10-12T23:32:01.976693+00:00",
-    "updated_at": "2026-10-12T23:47:01.621851+00:00",
+    "updated_at": "2026-10-12T23:55:33.403588+00:00",
     "checkpoint": {
-      "phase": "decision",
-      "commit": "448e9b2640697388315ddcb7e25c581d1559ecb1",
+      "phase": "reproduced",
+      "commit": "5ae02b95bf0d8383e63384abc4f5d405dcbfa35c",
       "pr": null,
-      "note": "采购四单元及安全交付设计/计划已推送；设备基线 306 通过，安全 68 通过；真实 PG 基线仅客户端工具缺失四例失败，正在补齐环境",
-      "next_action": "采购真实 API/双数据库失败回归，再实现增量迁移/Decimal/编号/补货/收货保护"
+      "note": "采购新 API/双数据库首轮 40 failed/8 passed，迁移旧头升级先 1 failed；原 PG 缺少客户端四例已补齐后通过",
+      "next_action": "核对本地已实现采购的完整后端/PG/前端验证，推送阶段候选"
     }
   },
   "last": {
