@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-030",
     "owner": "codex-batch-20261012-01",
     "code_repository": "nizuowanzhenbang/equipment-inspection",
@@ -13,23 +14,8 @@
       "pr": null,
       "note": "采购目标66、完整后端/PG542通过，追加后缀2例另通过；前端16、构建/ruff/interview通过；生产候选已推送，待整批最终复核",
       "next_action": "同批转 PP-040 持久消息与回执，随后 PP-041 接收收据"
-    }
-  },
-  "last": {
-    "task_id": "PP-020",
-    "owner": "codex-batch-20261011-01",
-    "code_repository": "nizuowanzhenbang/coal-quality-monitor",
-    "branch": "upgrade/coal-quality-contract-20261011",
-    "started_at": "2026-10-11T07:42:42.857800+00:00",
-    "updated_at": "2026-10-11T12:59:18.176003+00:00",
-    "checkpoint": {
-      "phase": "merged",
-      "commit": "26bdbef9360e7b2ea2f037114adbf63ffdabb947",
-      "pr": 4,
-      "note": "PR #4 实际合并，候选 CI 38141089655 和 main CI 38141214245 全部成功；201 后端/6 标签渲染及构建通过",
-      "next_action": "读取中央同版核心/SESSION，按 NEXT-BATCH 核查设备采购补货及设备安全联动"
     },
-    "release_reason": "B-20261011-01 四项已合并且验收通过，释放认领并完成中央签收",
-    "released_at": "2026-10-11T12:59:21.699190+00:00"
+    "release_reason": "采购候选已保存且待整批审查集成，顺序推进安全发送任务",
+    "released_at": "2026-10-13T00:04:45.948425+00:00"
   }
 }
