@@ -1,6 +1,6 @@
 # PP-030 / PP-040 / PP-041 采购与安全可靠交付证据
 
-批次B-20261012-01，2026-10-12启动、13/14接续；owner codex-batch-20261012-01。当前接收端已交付，设备等待固定候选CI/集成，最终设备合并SHA随后追加。
+批次B-20261012-01，2026-10-12启动、13/14接续；owner codex-batch-20261012-01。三项已合并并分别签收，文档最新CI另行核对；代码/进度/文档SHA分开保存。
 
 ## 固定范围与实现
 
@@ -43,3 +43,13 @@ Declined-to-judge接受：现场有效性、容量/性能、真实第三方运�
 
 
 最后CI范围核对发现根目录发送测试的PG参数未被原PG目录命令选中，追加CI专门覆盖；最终候选3211e6602915483b479d1d638ada80af6b87f6a8仅改CI命令/台账，业务树与完整608通过的d412一致。对应pr_open检查点2482a47。等待CI期间完成[PP050只读准备](../docs/PP050-DISCOVERY-20261014.md)，未将身份映射或适配器计为实施。
+
+
+## 设备发布与整批签收
+
+最终3211e6602915483b479d1d638ada80af6b87f6a8的[质量CI38628696787](https://github.com/nizuowanzhenbang/equipment-inspection/actions/runs/38628696787)四项及[Compose38628696609](https://github.com/nizuowanzhenbang/equipment-inspection/actions/runs/38628696609)成功。按固定SHA合并[PR #15](https://github.com/nizuowanzhenbang/equipment-inspection/pull/15)为2312540c6d4c85ac0b921100937476067f87a506；合并树与候选一致。[main质量38629494445](https://github.com/nizuowanzhenbang/equipment-inspection/actions/runs/38629494445)四项成功，[手动main Compose38629717040](https://github.com/nizuowanzhenbang/equipment-inspection/actions/runs/38629717040)成功。浏览器场景为既有登录/鉴权/库存/部署场景，不能扩大为新增控制字符标签的浏览器测试；该标签的共享谓词由前端18项中的新增单元与构建核对。
+
+PP030 merged检查点2e3b061、release6d0eb2b；PP040 claim2a483ce、merged797e71c、releaseca30b20，SESSION.active=null且last为PP040的真实业务mergeSHA/PR15。RELEASES以两任务同一实际PR分别索引，不把后来文档SHA冒充业务merge。设备文档55a32758036dc0b7503b5d4fcb22f281c9fedd31关闭计划，[质量CI38630239143](https://github.com/nizuowanzhenbang/equipment-inspection/actions/runs/38630239143)四项成功；安全文档aed22d6已main绿。自有临时PG测试容器已停止并移除，没有后台模型开发服务；工作分支和检出保留，不强推或清理他人工作。
+
+
+最终离线结构/本地链接及8条真实发布索引远端核验通过，接续本轮25项完整通过。SESSION最后下一动作在签收文档中改为下一批入口，保留真实merged/release的SHA/PR/执行者/时间，不让旧合并时动作引发再次释放。三任务、两个业务基线、两份代码计划、下一批入口一致；最终中央签收提交与同SHA远端核心文件复读在收尾核对。

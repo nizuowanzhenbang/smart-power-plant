@@ -58,6 +58,32 @@
         "postgresql",
         "frontend"
       ]
+    },
+    {
+      "task_id": "PP-030",
+      "repository": "nizuowanzhenbang/equipment-inspection",
+      "commit": "2312540c6d4c85ac0b921100937476067f87a506",
+      "pr": 15,
+      "checks": [
+        "backend",
+        "postgresql",
+        "frontend",
+        "safety_contract",
+        "compose-browser"
+      ]
+    },
+    {
+      "task_id": "PP-040",
+      "repository": "nizuowanzhenbang/equipment-inspection",
+      "commit": "2312540c6d4c85ac0b921100937476067f87a506",
+      "pr": 15,
+      "checks": [
+        "backend",
+        "postgresql",
+        "frontend",
+        "safety_contract",
+        "compose-browser"
+      ]
     }
   ]
 }
