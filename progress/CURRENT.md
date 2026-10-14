@@ -2,23 +2,17 @@
 
 更新：2026-10-14 UTC。
 
-## 本轮优先 PP-100 · 求职与面试讲解
+## 当前批次 B-20261012-01 · 审查修正与发布
 
-用户明确目标：未来求职和面试能讲透项目，兼有前沿技术讲解与国产备用方案。执行者 `codex-interview-20261014`，开始于 2026-10-14 UTC；仓库 `nizuowanzhenbang/smart-power-plant`，材料分支 `docs/interview-dual-stack-20261014`。范围仅为公开项目证据、升级设计与讲解材料，不修改业务代码、不合并原业务候选。
+活动PP-041，owner codex-batch-20261012-01，安全分支upgrade/safety-integration-20261012；实际认领以SESSION为准。PP-100另会话已完成材料PR #14并释放后，本线程才恢复认领，没有覆盖它的工作。
 
-已核对中央 `1cda70cb9d12cf8cdb90cf84f0823a516b5ea062`，设备 PR #15 仍 open/head `57816f8fe76ed33317a8e5e4d3da1b43a325cca2`，安全 PR #4 仍 open/head `56f494a527dd71820400fc57cad7f6fdf35013f9`。按用户新任务优先，显式接管后释放 PP-041，保留其原检查点和待审状态；不是因记录过期抢占。下方原批次内容为暂停交接，不代表本轮活动认领。
+唯一整批审查已完成，3项Important均已补失败回归并实现修正，3项Minor延期。安全候选6ff90cac638d88b7109dba5bfaf4cefad95ffc05、[PR #4](https://github.com/nizuowanzhenbang/plant-safety/pull/4)，完整119通过/1刻意跳过；设备PP-030/040在[PR #15](https://github.com/nizuowanzhenbang/equipment-inspection/pull/15)修正后完整测试中，前端18通过/构建通过。两端尚未合并。
 
-本轮已整理[面试讲解卡](docs/INTERVIEW-CARDS-20261014.md)和[前沿/国产技术设计](docs/INTERVIEW-TECH-ROADMAP-20261014.md)：一分钟开场、三个代码案例、十分钟演示、常见追问、合成配煤算例、分层主备适配及切换验收。已阅读设备/煤质/能效相关代码、历史证据与官方技术资料；历史业务测试本轮未复跑。完整25项接续回归、离线结构/链接与在线发布索引核验通过，合成算例和量纲已核对；固定候选057c7d5687a826571164bd191a0790aac614abf6的PR CI通过，[PR #14](https://github.com/nizuowanzhenbang/smart-power-plant/pull/14)已合并，固定文档5f6e6ebb9724e6c7ef13ac3c4104cf730c237e06。
+第一动作：设备最终完整双库/双应用测试及两端固定候选CI，接收端先合并，设备再合并；逐项真实merged/release/发布索引回写。不重做已有采购/发送/接收实现，不启动第二次审查。详见[本批证据](evidence/2026-10-14-procurement-safety.md)和[冷恢复实录](docs/RECOVERY-EXERCISE-20261013.md)。
 
-PP-100已记录merged检查点并释放，无活动认领，中央释放提交e9197fbc09b34f506f46033b0eb6da07329e68eb。本轮只交付文档，不把RAG/基础模型/约束优化或国产部署记为已实现。原业务批次保留待审；若下一轮继续代码迭代，第一项为恢复并审查安全PR #4与设备PR #15、核对固定候选CI，仍按接收端先集成。面试练习可直接从讲解卡的一分钟开场开始。
+## PP-100 面试材料已交付
 
-## 暂停的业务批次 B-20261012-01
-
-本批三项候选均已推送，未合并：设备 PP-030/040 为 `57816f8fe76ed33317a8e5e4d3da1b43a325cca2`，[PR #15](https://github.com/nizuowanzhenbang/equipment-inspection/pull/15)；安全 PP-041 为 `56f494a527dd71820400fc57cad7f6fdf35013f9`，[PR #4](https://github.com/nizuowanzhenbang/plant-safety/pull/4)。设备最新完整582后端含真实PG、前端16/构建通过，真正两个独立应用/进程/数据库的丢回执重启恢复2项通过；最终含对接的584项运行中。安全完整113通过/1刻意跳过（PG外键已阻止的损坏场景，SQLite实际覆盖）、构建/ruff通过。
-
-原暂停点 PP-041，原执行者 codex-batch-20261012-01，分支 upgrade/safety-integration-20261012。下一动作：一次独立无旧聊天恢复与整批两分支审查，Important先RED→GREEN，固定候选CI成功后接收端先合并、设备再合并，逐项真实检查点/release/发布索引回写。不要重做已保存采购/发送/接收失败回归。
-
-活动认领与检查点以 SESSION 为准，已有本地采购改动，尚未集成；具体阶段/验证和两端范围见本批日志。
+[讲解卡](docs/INTERVIEW-CARDS-20261014.md)、[前沿/国产技术设计](docs/INTERVIEW-TECH-ROADMAP-20261014.md)，[PR #14](https://github.com/nizuowanzhenbang/smart-power-plant/pull/14)、固定文档5f6e6ebb9724e6c7ef13ac3c4104cf730c237e06。只交付设计与讲解，未实现RAG、基础模型、联合优化或国产部署；原文所述业务候选状态是当时快照，最新状态见本页和SESSION。保留[材料日志](logs/2026-10-14-PP-100-interview.md)。
 
 ## 最近已交付 B-20261011-01
 
@@ -31,13 +25,13 @@ PP-100已记录merged检查点并释放，无活动认领，中央释放提交e9
 
 ## 本批剩余与后续
 
-PP-030 采购候选待整批审查与集成；PP-040 发送候选待集成；PP-041 当前实现安全接收收据。不要回到采购初始核查或重做已保存回归。按上方当前下一动作继续，活动身份以 SESSION 为准。
+PP-030/040/041已完成实现与唯一整批审查；Important单轮修正后最终验证/集成中。不要回到采购初始核查或重做已保存回归。按上方当前下一动作继续，活动身份以 SESSION 为准。
 
 本批全交付后，下一步评估 PP-050 统一业务身份、单位、时间和指标口径，再按依赖推进联合决策。仍是待做范围，不计本轮交付。
 
 ## 恢复与边界
 
-两次不带旧聊天的实际恢复均正确识别任务/分支/下一动作，见 [演练](docs/RECOVERY-EXERCISE-20261011.md)。新环境按 [SETUP](docs/SETUP.md) 接入，再遵守 [AUTOMATION](docs/AUTOMATION.md) 的认领/接管/释放规则。删除聊天不删除已推送的代码与进度；任意未接入或无权限环境仍需恢复连接。
+此前两次恢复及本批第三次fresh-context恢复均识别任务/分支/下一动作，见[本批实录](docs/RECOVERY-EXERCISE-20261013.md)和[此前演练](docs/RECOVERY-EXERCISE-20261011.md)。新环境按 [SETUP](docs/SETUP.md) 接入，再遵守 [AUTOMATION](docs/AUTOMATION.md) 的认领/接管/释放规则。删除聊天不删除已推送的代码与进度；任意未接入或无权限环境仍需恢复连接。
 
 煤质独立最终审查报告因用量限制未生成；收到的两项 Important 均先失败后修复，父代理完成范围检查和回归。没有声称完整独立批准、浏览器/现场或 PostgreSQL 并发验收。
 
