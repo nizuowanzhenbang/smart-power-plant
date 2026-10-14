@@ -47,6 +47,17 @@
         "backend",
         "frontend"
       ]
+    },
+    {
+      "task_id": "PP-041",
+      "repository": "nizuowanzhenbang/plant-safety",
+      "commit": "6f12503f00fdd485a55e737f17d08e8ff8b833f0",
+      "pr": 4,
+      "checks": [
+        "backend",
+        "postgresql",
+        "frontend"
+      ]
     }
   ]
 }

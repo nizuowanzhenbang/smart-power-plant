@@ -4,11 +4,13 @@
 
 ## 当前批次 B-20261012-01 · 审查修正与发布
 
-活动PP-041，owner codex-batch-20261012-01，安全分支upgrade/safety-integration-20261012；实际认领以SESSION为准。PP-100另会话已完成材料PR #14并释放后，本线程才恢复认领，没有覆盖它的工作。
+活动PP-030，owner codex-batch-20261012-01，设备分支upgrade/equipment-procurement-20261012；实际认领以SESSION为准。PP-100另会话已完成材料PR #14并释放后，本线程才恢复认领，没有覆盖它的工作。
 
-唯一整批审查已完成，3项Important均已补失败回归并实现修正，3项Minor延期。安全候选6ff90cac638d88b7109dba5bfaf4cefad95ffc05、[PR #4](https://github.com/nizuowanzhenbang/plant-safety/pull/4)，完整119通过/1刻意跳过；设备PP-030/040在[PR #15](https://github.com/nizuowanzhenbang/equipment-inspection/pull/15)修正后完整测试中，前端18通过/构建通过。两端尚未合并。
+唯一整批审查已完成，3项Important先补失败回归后单轮修正，3项Minor延期。PP-041安全[PR #4](https://github.com/nizuowanzhenbang/plant-safety/pull/4)已合并为6f12503f00fdd485a55e737f17d08e8ff8b833f0，完整119通过/1刻意跳过，候选/main三项CI成功；文档签收aed22d6的main CI也成功，已merged/release并录入发布索引。
 
-第一动作：设备最终完整双库/双应用测试及两端固定候选CI，接收端先合并，设备再合并；逐项真实merged/release/发布索引回写。不重做已有采购/发送/接收实现，不启动第二次审查。详见[本批证据](evidence/2026-10-14-procurement-safety.md)和[冷恢复实录](docs/RECOVERY-EXERCISE-20261013.md)。
+设备PP-030/040候选d412845a2c38d5e4b60af1401a174f7d3f6021da、[PR #15](https://github.com/nizuowanzhenbang/equipment-inspection/pull/15)，完整608通过（双数据库、真实双服务），前端18/构建/ruff/pipcheck/interview_demo通过。配对CI固定已发布的安全6f12503。设备尚未合并。
+
+第一动作：设备固定候选五项CI绿后合并，再核对main；逐项真实merged/release/发布索引回写。不重做实现、不启动第二次整批审查。详见[本批证据](evidence/2026-10-14-procurement-safety.md)和[冷恢复实录](docs/RECOVERY-EXERCISE-20261013.md)。
 
 ## PP-100 面试材料已交付
 
