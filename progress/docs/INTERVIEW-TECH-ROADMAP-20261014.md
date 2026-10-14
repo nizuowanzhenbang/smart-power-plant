@@ -23,8 +23,8 @@
 | 主题 | 已有证据及适合讲的内容 | 表述边界 |
 |---|---|---|
 | 设备点检 | [重传测试](https://github.com/nizuowanzhenbang/equipment-inspection/blob/8047049bb3158959172edc5a7148dd5f35be4217/backend/tests/test_record_replay.py)、[事务锁](https://github.com/nizuowanzhenbang/equipment-inspection/blob/8047049bb3158959172edc5a7148dd5f35be4217/backend/app/utils/transactions.py)：相同任务测点重传返回原记录，冲突409，数据库约束防重复，锁后刷新旧对象 | 当前原型约定一个任务测点一条记录；不能不加新身份就扩展成同测点多次采样 |
-| 库存与盘点 | [库存API](https://github.com/nizuowanzhenbang/equipment-inspection/blob/8047049bb3158959172edc5a7148dd5f35be4217/backend/app/api/spare_parts.py)、[历史证据](RELEASE-STOCKTAKE-20261004.md)：盘点需携带版本，库存变化后拒绝过时覆盖 | 历史验证有SQLite和指定PostgreSQL范围，不外推为任意数据库兼容 |
-| 煤质质量 | [发布记录](../progress/evidence/2026-10-11-coal-quality-contract.md)，固定交付 `26bdbef9360e7b2ea2f037114adbf63ffdabb947`：热值单位、ar/ad/d基准、缺项、零值及非有限值保护 | kcal/kg与MJ/kg换算不等于ar/ad/d基准转换；缺少水分等条件时不能猜测 |
+| 库存与盘点 | [库存API](https://github.com/nizuowanzhenbang/equipment-inspection/blob/8047049bb3158959172edc5a7148dd5f35be4217/backend/app/api/spare_parts.py)、[历史证据](https://github.com/nizuowanzhenbang/smart-power-plant/blob/1cda70cb9d12cf8cdb90cf84f0823a516b5ea062/docs/RELEASE-STOCKTAKE-20261004.md)：盘点需携带版本，库存变化后拒绝过时覆盖 | 历史验证有SQLite和指定PostgreSQL范围，不外推为任意数据库兼容 |
+| 煤质质量 | [发布记录](../evidence/2026-10-11-coal-quality-contract.md)，固定交付 `26bdbef9360e7b2ea2f037114adbf63ffdabb947`：热值单位、ar/ad/d基准、缺项、零值及非有限值保护 | kcal/kg与MJ/kg换算不等于ar/ad/d基准转换；缺少水分等条件时不能猜测 |
 | 能效模型 | [算法源码](https://github.com/nizuowanzhenbang/coal-unit-efficiency/blob/39180dc6eed80b5d8392641e03f72f3c60fe6ae3/backend/app/algorithms/combustion_optimizer.py)、[输入证据](https://github.com/nizuowanzhenbang/coal-unit-efficiency/blob/39180dc6eed80b5d8392641e03f72f3c60fe6ae3/backend/app/services/optimization_evidence.py)：按时间留出、比较均值基线、越界降级、保存输入和数据摘要 | 氧量由负荷经验公式确定；线性回归用于估算收益。confidence是改善程度派生分数，未经概率校准 |
 | 跨系统事件 | [设备PR #15](https://github.com/nizuowanzhenbang/equipment-inspection/pull/15) 与 [安全PR #4](https://github.com/nizuowanzhenbang/plant-safety/pull/4)：发送Outbox、接收收据及内容冲突保护 | 本轮核对均open、未合并；可讲候选设计和已有验证记录，不能讲成main已交付 |
 
