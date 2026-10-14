@@ -6,12 +6,13 @@
     "code_repository": "nizuowanzhenbang/equipment-inspection",
     "branch": "upgrade/equipment-procurement-20261012",
     "started_at": "2026-10-14T19:59:31.595352+00:00",
-    "updated_at": "2026-10-14T19:59:31.595364+00:00",
+    "updated_at": "2026-10-14T20:00:18.313240+00:00",
     "checkpoint": {
-      "phase": "claimed",
-      "commit": null,
-      "note": "已认领；尚未完成实现",
-      "next_action": "读取实际代码与计划"
+      "phase": "reviewed",
+      "commit": "d412845a2c38d5e4b60af1401a174f7d3f6021da",
+      "pr": null,
+      "note": "设备单轮修正后完整608通过，前端18/构建/ruff/pipcheck/interview通过；R2/R3复现与修正已保存，配对CI固定已合并安全6f12503，三个Minor延期",
+      "next_action": "固定设备候选五项CI绿后合并PR15并检查main，随后逐项merged/release与中央索引回写"
     }
   },
   "last": {
