@@ -8,7 +8,7 @@
 
 唯一整批审查已完成，3项Important先补失败回归后单轮修正，3项Minor延期。PP-041安全[PR #4](https://github.com/nizuowanzhenbang/plant-safety/pull/4)已合并为6f12503f00fdd485a55e737f17d08e8ff8b833f0，完整119通过/1刻意跳过，候选/main三项CI成功；文档签收aed22d6的main CI也成功，已merged/release并录入发布索引。
 
-设备PP-030/040候选d412845a2c38d5e4b60af1401a174f7d3f6021da、[PR #15](https://github.com/nizuowanzhenbang/equipment-inspection/pull/15)，完整608通过（双数据库、真实双服务），前端18/构建/ruff/pipcheck/interview_demo通过。配对CI固定已发布的安全6f12503。设备尚未合并。
+设备PP-030/040最终候选3211e6602915483b479d1d638ada80af6b87f6a8（业务受测树d412一致）、[PR #15](https://github.com/nizuowanzhenbang/equipment-inspection/pull/15)，完整608通过（双数据库、真实双服务），前端18/构建/ruff/pipcheck/interview_demo通过。配对CI固定已发布的安全6f12503。设备尚未合并。
 
 第一动作：设备固定候选五项CI绿后合并，再核对main；逐项真实merged/release/发布索引回写。不重做实现、不启动第二次整批审查。详见[本批证据](evidence/2026-10-14-procurement-safety.md)和[冷恢复实录](docs/RECOVERY-EXERCISE-20261013.md)。
 
@@ -29,7 +29,7 @@
 
 PP-030/040/041已完成实现与唯一整批审查；Important单轮修正后最终验证/集成中。不要回到采购初始核查或重做已保存回归。按上方当前下一动作继续，活动身份以 SESSION 为准。
 
-本批全交付后，下一步评估 PP-050 统一业务身份、单位、时间和指标口径，再按依赖推进联合决策。仍是待做范围，不计本轮交付。
+本批全交付后，下一步评估 PP-050 统一业务身份、单位、时间和指标口径，再按依赖推进联合决策。仍是待做范围，不计本轮能力交付；四模块固定源码的[只读准备](docs/PP050-DISCOVERY-20261014.md)已保存，下一轮从明确身份差异和单条热值通路开始。
 
 ## 恢复与边界
 

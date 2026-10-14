@@ -40,3 +40,6 @@ Declined-to-judge接受：现场有效性、容量/性能、真实第三方运�
 安全固定6ff90cac638d88b7109dba5bfaf4cefad95ffc05候选CI [38627582408](https://github.com/nizuowanzhenbang/plant-safety/actions/runs/38627582408)三项成功，PR #4合并为6f12503f00fdd485a55e737f17d08e8ff8b833f0，合并树与受测树一致；[main CI 38628086080](https://github.com/nizuowanzhenbang/plant-safety/actions/runs/38628086080)三项成功。文档关闭计划签收aed22d627120c6c902878f6c6b8a28b50fef72c5，[main CI 38628257397](https://github.com/nizuowanzhenbang/plant-safety/actions/runs/38628257397)三项成功。真实merged检查点de1b520、release9254a4e；已录入RELEASES。设备配对CI固定实际接收发布6f12503。
 
 设备完整最终608通过、前端18/构建通过。固定修正候选d412845a2c38d5e4b60af1401a174f7d3f6021da已推送，reviewed检查点d0a64df，PR #15当前CI中，不能写为已合并。接续工具本轮完整25项通过。
+
+
+最后CI范围核对发现根目录发送测试的PG参数未被原PG目录命令选中，追加CI专门覆盖；最终候选3211e6602915483b479d1d638ada80af6b87f6a8仅改CI命令/台账，业务树与完整608通过的d412一致。对应pr_open检查点2482a47。等待CI期间完成[PP050只读准备](../docs/PP050-DISCOVERY-20261014.md)，未将身份映射或适配器计为实施。
