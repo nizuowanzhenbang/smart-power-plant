@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-030",
     "owner": "codex-batch-20261012-01",
     "code_repository": "nizuowanzhenbang/equipment-inspection",
@@ -13,23 +14,8 @@
       "pr": 15,
       "note": "设备PR15最终候选与main全部五项检查成功，质量38629494445和手动main Compose38629717040成功，合并树与608受测树一致",
       "next_action": "释放PP030，认领PP040同一PR的可靠发送分别签收，然后更新中央索引与下一批"
-    }
-  },
-  "last": {
-    "task_id": "PP-041",
-    "owner": "codex-batch-20261012-01",
-    "code_repository": "nizuowanzhenbang/plant-safety",
-    "branch": "upgrade/safety-integration-20261012",
-    "started_at": "2026-10-14T19:54:39.798589+00:00",
-    "updated_at": "2026-10-14T19:59:23.236949+00:00",
-    "checkpoint": {
-      "phase": "merged",
-      "commit": "6f12503f00fdd485a55e737f17d08e8ff8b833f0",
-      "pr": 4,
-      "note": "PR4按固定6ff90ca合并为6f12503，候选和该main三项CI均成功；本地119通过/1刻意跳过，修正后真正两应用2通过",
-      "next_action": "释放PP041，切换PP030集成设备PR15；保留三项Minor后续任务"
     },
-    "release_reason": "原子接收和三个入口编号已合并且main CI全绿，切换同批设备候选集成；最终中央签收随后统一回写",
-    "released_at": "2026-10-14T19:59:27.709201+00:00"
+    "release_reason": "采购四单元已合并且main全部五项检查成功，切换同PR的PP040分别签收；最终台账统一回写",
+    "released_at": "2026-10-14T20:13:37.432619+00:00"
   }
 }
