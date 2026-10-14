@@ -6,13 +6,13 @@
     "code_repository": "nizuowanzhenbang/smart-power-plant",
     "branch": "docs/interview-dual-stack-20261014",
     "started_at": "2026-10-14T19:47:13.356752+00:00",
-    "updated_at": "2026-10-14T19:53:14.891072+00:00",
+    "updated_at": "2026-10-14T19:53:22.143569+00:00",
     "checkpoint": {
-      "phase": "reviewed",
+      "phase": "pr_open",
       "commit": "057c7d5687a826571164bd191a0790aac614abf6",
-      "pr": null,
-      "note": "已完成材料自查；25项接续回归、离线链接与在线发布索引核验通过，独立算术核对合成配煤与煤耗量纲；未复跑业务测试、未部署前沿模型或国产环境",
-      "next_action": "核对PR14固定候选CI；仅集成材料，不处理原业务候选"
+      "pr": 14,
+      "note": "讲解材料PR14已打开，固定候选057c7d5687a826571164bd191a0790aac614abf6；CI待核对，不能提前计为合并",
+      "next_action": "固定候选CI成功后集成文档并回写任务与交接"
     }
   },
   "last": {
