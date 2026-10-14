@@ -6,13 +6,13 @@
     "code_repository": "nizuowanzhenbang/equipment-inspection",
     "branch": "upgrade/equipment-procurement-20261012",
     "started_at": "2026-10-14T19:59:31.595352+00:00",
-    "updated_at": "2026-10-14T20:09:10.789031+00:00",
+    "updated_at": "2026-10-14T20:13:32.767523+00:00",
     "checkpoint": {
       "phase": "merged",
       "commit": "2312540c6d4c85ac0b921100937476067f87a506",
       "pr": 15,
-      "note": "固定3211e66的backend/postgresql（含发送PG）/frontend/safety_contract/compose-browser五项全绿，PR15已合并为2312540；main CI待核验，尚未释放或完成签收",
-      "next_action": "核对合并树与候选一致及main五项CI；通过后逐项release PP030/040并更新发布索引"
+      "note": "设备PR15最终候选与main全部五项检查成功，质量38629494445和手动main Compose38629717040成功，合并树与608受测树一致",
+      "next_action": "释放PP030，认领PP040同一PR的可靠发送分别签收，然后更新中央索引与下一批"
     }
   },
   "last": {
