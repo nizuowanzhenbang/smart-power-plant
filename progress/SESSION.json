@@ -6,13 +6,13 @@
     "code_repository": "nizuowanzhenbang/equipment-inspection",
     "branch": "upgrade/equipment-procurement-20261012",
     "started_at": "2026-10-14T19:59:31.595352+00:00",
-    "updated_at": "2026-10-14T20:01:50.099868+00:00",
+    "updated_at": "2026-10-14T20:03:12.292382+00:00",
     "checkpoint": {
       "phase": "pr_open",
-      "commit": "d412845a2c38d5e4b60af1401a174f7d3f6021da",
+      "commit": "3211e6602915483b479d1d638ada80af6b87f6a8",
       "pr": 15,
-      "note": "设备PR15完整608与前端18通过，CI五项运行中；接收PR4及main已先通过并签收，发布索引在线核验通过",
-      "next_action": "等固定候选的backend/postgresql/frontend/safety_contract/compose-browser全绿后按SHA合并，核验main"
+      "note": "业务受测树与608通过的d412相同，追加CI命令显式覆盖根目录发送PG回归；最终候选3211e66等待五项CI，无再次审查",
+      "next_action": "固定3211e66全部五项CI成功后合并设备PR15、核验main并逐项签收"
     }
   },
   "last": {
