@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-041",
     "owner": "codex-interview-20261014",
     "code_repository": "nizuowanzhenbang/plant-safety",
@@ -20,23 +21,8 @@
         "reason": "用户本轮明确求职面试为优先目标；已核对安全PR4仍open/head56f494a、设备PR15仍open/head57816f8，保留原检查点并暂停待审候选，不修改或合并业务代码；随后单独整理讲解材料",
         "at": "2026-10-14T19:46:17.376664+00:00"
       }
-    ]
-  },
-  "last": {
-    "task_id": "PP-040",
-    "owner": "codex-batch-20261012-01",
-    "code_repository": "nizuowanzhenbang/equipment-inspection",
-    "branch": "upgrade/equipment-procurement-20261012",
-    "started_at": "2026-10-13T00:04:49.855401+00:00",
-    "updated_at": "2026-10-13T00:21:29.754195+00:00",
-    "checkpoint": {
-      "phase": "implemented",
-      "commit": "f440023e92e76b04c49a373c6ba880a2bee1a041",
-      "pr": null,
-      "note": "发送目标38、前端16/构建通过；生产候选已推送；完整原有+采购+发送套件运行中，真正双服务协议待接收端实现",
-      "next_action": "同批 PP-041 原子接收/内容冲突回归，随后真正两个应用验收"
-    },
-    "release_reason": "发送候选保存，整批待最终全套/审查；顺序实现接收端",
-    "released_at": "2026-10-13T00:21:33.343102+00:00"
+    ],
+    "release_reason": "按本轮求职面试目标暂停业务候选；安全PR4/设备PR15仍待整批审查与固定候选CI，保留原候选与检查点；下一项PP-100只整理公开项目讲解和国产备用设计",
+    "released_at": "2026-10-14T19:46:32.777350+00:00"
   }
 }
