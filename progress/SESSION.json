@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-041",
     "owner": "codex-batch-20261012-01",
     "code_repository": "nizuowanzhenbang/plant-safety",
@@ -13,23 +14,8 @@
       "pr": 4,
       "note": "PR4按固定6ff90ca合并为6f12503，候选和该main三项CI均成功；本地119通过/1刻意跳过，修正后真正两应用2通过",
       "next_action": "释放PP041，切换PP030集成设备PR15；保留三项Minor后续任务"
-    }
-  },
-  "last": {
-    "task_id": "PP-100",
-    "owner": "codex-interview-20261014",
-    "code_repository": "nizuowanzhenbang/smart-power-plant",
-    "branch": "docs/interview-dual-stack-20261014",
-    "started_at": "2026-10-14T19:47:13.356752+00:00",
-    "updated_at": "2026-10-14T19:53:55.961139+00:00",
-    "checkpoint": {
-      "phase": "merged",
-      "commit": "5f6e6ebb9724e6c7ef13ac3c4104cf730c237e06",
-      "pr": 14,
-      "note": "材料PR14已合并，固定候选CI success；交付仅为求职讲解与技术设计，未实现新业务能力或国产部署",
-      "next_action": "释放PP100并回写固定交付、验证范围；原设备和安全候选仍待审"
     },
-    "release_reason": "PR14材料交付已合并；现有能力与设计边界已标明，补齐最终台账后保留原业务候选待审；本轮不扩大到业务实现",
-    "released_at": "2026-10-14T19:54:03.321548+00:00"
+    "release_reason": "原子接收和三个入口编号已合并且main CI全绿，切换同批设备候选集成；最终中央签收随后统一回写",
+    "released_at": "2026-10-14T19:59:27.709201+00:00"
   }
 }
