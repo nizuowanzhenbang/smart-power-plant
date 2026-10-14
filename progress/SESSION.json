@@ -1,6 +1,19 @@
 {
   "schema_version": 1,
-  "active": null,
+  "active": {
+    "task_id": "PP-100",
+    "owner": "codex-interview-20261014",
+    "code_repository": "nizuowanzhenbang/smart-power-plant",
+    "branch": "docs/interview-dual-stack-20261014",
+    "started_at": "2026-10-14T19:47:13.356752+00:00",
+    "updated_at": "2026-10-14T19:47:13.356766+00:00",
+    "checkpoint": {
+      "phase": "claimed",
+      "commit": null,
+      "note": "已认领；尚未完成实现",
+      "next_action": "读取实际代码与计划"
+    }
+  },
   "last": {
     "task_id": "PP-041",
     "owner": "codex-interview-20261014",
