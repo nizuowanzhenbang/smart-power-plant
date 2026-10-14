@@ -8,6 +8,8 @@
 - PP-041原子接收/内容冲突/三入口共用编号：[安全PR #4](https://github.com/nizuowanzhenbang/plant-safety/pull/4)，固定业务6f12503f00fdd485a55e737f17d08e8ff8b833f0。完整119通过/1刻意跳过（PG外键阻止的人工损坏映射，SQLite实际覆盖），固定候选/main三项CI成功。安全先发布，设备随后发布。
 - 三任务分别保存真实merged/release，8条RELEASES记录范围在线核验；接续工具本轮完整25项通过。唯一整批审查3个Important先失败后单轮修正，3个Minor延期；无第二次审查。[完整证据/裁定与成本](evidence/2026-10-14-procurement-safety.md)、[批次日志](logs/2026-10-12-batch-01.md)、[第三次冷恢复实录](docs/RECOVERY-EXERCISE-20261013.md)均已保存。
 
+最终中央快照bb01d8558737e6e8c526ff4c7b97c28be66f401a已实际按同一SHA复读9文件并resume一致，Progress checks38631234716成功；后续签收日志提交不改变交付状态。
+
 代码与文档签收SHA分开：安全aed22d6最新文档main CI成功；设备55a3275关闭计划，最新文档质量CI38630239143四项成功；业务发布2312540五项成功。文档与业务索引不混用。
 
 PP-100另一会话[面试讲解卡](docs/INTERVIEW-CARDS-20261014.md)/[前沿与国产设计](docs/INTERVIEW-TECH-ROADMAP-20261014.md)已通过[PR #14](https://github.com/nizuowanzhenbang/smart-power-plant/pull/14)、固定文档5f6e6ebb9724e6c7ef13ac3c4104cf730c237e06交付并释放。其旧候选描述是当时快照；未实施RAG、基础模型、联合优化或国产部署。成果与[日志](logs/2026-10-14-PP-100-interview.md)保留。

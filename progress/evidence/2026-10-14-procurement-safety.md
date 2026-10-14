@@ -53,3 +53,6 @@ PP030 merged检查点2e3b061、release6d0eb2b；PP040 claim2a483ce、merged797e7
 
 
 最终离线结构/本地链接及8条真实发布索引远端核验通过，接续本轮25项完整通过。SESSION最后下一动作在签收文档中改为下一批入口，保留真实merged/release的SHA/PR/执行者/时间，不让旧合并时动作引发再次释放。三任务、两个业务基线、两份代码计划、下一批入口一致；最终中央签收提交与同SHA远端核心文件复读在收尾核对。
+
+
+实际最终快照核对：中央bb01d8558737e6e8c526ff4c7b97c28be66f401a的9份核心/状态/索引/基线/下一批/证据文件按同一GitHub SHA复读，与本地逐字一致；active=null、last=PP040/merged/PR15/2312540、发布索引8条。真实resume取得相同固定SHA；两个业务仓库最新main分别55a3275/aed22d6，正常检出均干净。[该中央Progress checks38631234716](https://github.com/nizuowanzhenbang/smart-power-plant/actions/runs/38631234716)成功。本条是在已发生核对后追加的签收记录，自己的新提交不冒充被核对的旧SHA；之后只核验日志追加提交CI，不再修改业务或核心交付状态。
