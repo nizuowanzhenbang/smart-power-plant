@@ -8,9 +8,9 @@
 
 唯一整批审查已完成，3项Important先补失败回归后单轮修正，3项Minor延期。PP-041安全[PR #4](https://github.com/nizuowanzhenbang/plant-safety/pull/4)已合并为6f12503f00fdd485a55e737f17d08e8ff8b833f0，完整119通过/1刻意跳过，候选/main三项CI成功；文档签收aed22d6的main CI也成功，已merged/release并录入发布索引。
 
-设备PP-030/040最终候选3211e6602915483b479d1d638ada80af6b87f6a8（业务受测树d412一致）、[PR #15](https://github.com/nizuowanzhenbang/equipment-inspection/pull/15)，完整608通过（双数据库、真实双服务），前端18/构建/ruff/pipcheck/interview_demo通过。配对CI固定已发布的安全6f12503。设备尚未合并。
+设备PP-030/040最终候选3211e6602915483b479d1d638ada80af6b87f6a8（业务受测树d412一致）、[PR #15](https://github.com/nizuowanzhenbang/equipment-inspection/pull/15)，完整608通过（双数据库、真实双服务），前端18/构建/ruff/pipcheck/interview_demo通过。配对CI固定已发布的安全6f12503。设备PR #15已合并为2312540c6d4c85ac0b921100937476067f87a506，合并树与受测候选一致；main质量CI运行中，Compose/browser仅PR与手动触发，已对main手动发起同一验收。
 
-第一动作：设备固定候选五项CI绿后合并，再核对main；逐项真实merged/release/发布索引回写。不重做实现、不启动第二次整批审查。详见[本批证据](evidence/2026-10-14-procurement-safety.md)和[冷恢复实录](docs/RECOVERY-EXERCISE-20261013.md)。
+第一动作：设备main五项CI完成后逐项release/发布索引签收；保存计划收尾文档并核对最新main。不重做实现、不启动第二次整批审查。详见[本批证据](evidence/2026-10-14-procurement-safety.md)和[冷恢复实录](docs/RECOVERY-EXERCISE-20261013.md)。
 
 ## PP-100 面试材料已交付
 
