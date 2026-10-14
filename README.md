@@ -10,6 +10,8 @@
 
 **项目性质：个人软件原型与模拟场景。** 已有 10 个业务代码仓库；本仓库是导览与文档入口。尚未完成全平台联合验收，不宣称电厂生产投运、接入 DCS/SIS、替代现场两票制度或取得经济收益。
 
+- [求职与面试讲解卡：开场、代码案例与技术追问](progress/docs/INTERVIEW-CARDS-20261014.md)
+- [前沿技术主方案与国产备用设计：架构、配煤算例、切换验收](progress/docs/INTERVIEW-TECH-ROADMAP-20261014.md)（新增能力为设计，尚未实现）
 - [10 分钟演示路线](docs/DEMO.md)
 - [本轮化验输入发布证据](docs/RELEASE-COAL-FINITE-20261005.md)
 - [煤质输入内部招聘案例](https://github.com/nizuowanzhenbang/coal-quality-monitor/blob/d58a634e2dee43256ed27d6915903f70353f9219/docs/LAB-FINITE-VALUES.md)
