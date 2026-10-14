@@ -6,13 +6,13 @@
     "code_repository": "nizuowanzhenbang/equipment-inspection",
     "branch": "upgrade/equipment-procurement-20261012",
     "started_at": "2026-10-14T19:59:31.595352+00:00",
-    "updated_at": "2026-10-14T20:03:12.292382+00:00",
+    "updated_at": "2026-10-14T20:09:10.789031+00:00",
     "checkpoint": {
-      "phase": "pr_open",
-      "commit": "3211e6602915483b479d1d638ada80af6b87f6a8",
+      "phase": "merged",
+      "commit": "2312540c6d4c85ac0b921100937476067f87a506",
       "pr": 15,
-      "note": "业务受测树与608通过的d412相同，追加CI命令显式覆盖根目录发送PG回归；最终候选3211e66等待五项CI，无再次审查",
-      "next_action": "固定3211e66全部五项CI成功后合并设备PR15、核验main并逐项签收"
+      "note": "固定3211e66的backend/postgresql（含发送PG）/frontend/safety_contract/compose-browser五项全绿，PR15已合并为2312540；main CI待核验，尚未释放或完成签收",
+      "next_action": "核对合并树与候选一致及main五项CI；通过后逐项release PP030/040并更新发布索引"
     }
   },
   "last": {
