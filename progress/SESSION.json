@@ -1,6 +1,19 @@
 {
   "schema_version": 1,
-  "active": null,
+  "active": {
+    "task_id": "PP-031",
+    "owner": "codex-batch-20261027-01",
+    "code_repository": "nizuowanzhenbang/equipment-inspection",
+    "branch": "upgrade/daily-visibility-20261027",
+    "started_at": "2026-10-27T17:59:00+00:00",
+    "updated_at": "2026-10-27T17:59:00+00:00",
+    "checkpoint": {
+      "phase": "claimed",
+      "commit": null,
+      "note": "采购列表/详情显式显示剩余数量，沿用两位小数及现有收货重放上限",
+      "next_action": "提交真实浏览器余量断言，Actions确认RED后实施"
+    }
+  },
   "last": {
     "task_id": "PP-042",
     "owner": "codex-batch-20261027-01",
