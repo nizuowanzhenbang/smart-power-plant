@@ -1,6 +1,19 @@
 {
   "schema_version": 1,
-  "active": null,
+  "active": {
+    "task_id": "PP-042",
+    "owner": "codex-batch-20261027-01",
+    "code_repository": "nizuowanzhenbang/plant-safety",
+    "branch": "docs/safety-upgrade-20261027",
+    "started_at": "2026-10-27T17:57:00+00:00",
+    "updated_at": "2026-10-27T17:57:00+00:00",
+    "checkpoint": {
+      "phase": "claimed",
+      "commit": null,
+      "note": "已认领升级操作文档；本地云环境starting，使用GitHub连接固定源码与候选CI",
+      "next_action": "编写备份、维护窗口、统一切换与隔离恢复说明"
+    }
+  },
   "last": {
     "task_id": "PP-040",
     "owner": "codex-batch-20261012-01",
