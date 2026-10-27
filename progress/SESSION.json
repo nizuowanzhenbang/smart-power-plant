@@ -1,34 +1,21 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-042",
     "owner": "codex-batch-20261027-01",
     "code_repository": "nizuowanzhenbang/plant-safety",
     "branch": "docs/safety-upgrade-20261027",
     "started_at": "2026-10-27T17:57:00+00:00",
-    "updated_at": "2026-10-27T17:57:00+00:00",
+    "updated_at": "2026-10-27T17:58:30+00:00",
     "checkpoint": {
-      "phase": "claimed",
-      "commit": null,
-      "note": "已认领升级操作文档；本地云环境starting，使用GitHub连接固定源码与候选CI",
-      "next_action": "编写备份、维护窗口、统一切换与隔离恢复说明"
-    }
-  },
-  "last": {
-    "task_id": "PP-040",
-    "owner": "codex-batch-20261012-01",
-    "code_repository": "nizuowanzhenbang/equipment-inspection",
-    "branch": "upgrade/equipment-procurement-20261012",
-    "started_at": "2026-10-14T20:13:41.152259+00:00",
-    "updated_at": "2026-10-14T20:13:45.990172+00:00",
-    "checkpoint": {
-      "phase": "merged",
-      "commit": "2312540c6d4c85ac0b921100937476067f87a506",
-      "pr": 15,
-      "note": "不可变发送/严格ACK/坏历史引用恢复已随设备PR15发布；完整608、真实配对2、前端18及固定候选/main五项CI成功，接收端已先发布",
-      "next_action": "本批三任务已签收，无需再次释放；下一批按CURRENT/NEXT-BATCH从PP050身份与热值适配、及PP031/042/043小项接续，先读固定中央并认领"
+      "phase": "pr_open",
+      "commit": "7da72b4b5f756cdd0bfdc9d61bb06304df8130bf",
+      "pr": 5,
+      "note": "升级说明PR5已建立；4a33ac3候选三项CI成功，独立文档核对无阻塞，修正导出失败后不再继续验收；最新候选CI待完成",
+      "next_action": "等待固定最新候选CI后合并；期间顺序处理设备页面小项"
     },
-    "release_reason": "本批PP030/040/041全部已合并且业务main CI成功，三项独立签收完成；无活动认领，下一批PP050及三个Minor按队列接续",
-    "released_at": "2026-10-14T20:13:50.144409+00:00"
+    "release_reason": "文档候选等待CI，保留PR5，顺序切换至PP031",
+    "released_at": "2026-10-27T17:58:30+00:00"
   }
 }
