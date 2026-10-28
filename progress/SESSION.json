@@ -6,13 +6,13 @@
     "code_repository": "nizuowanzhenbang/coal-quality-monitor",
     "branch": "feature/coal-quality-export-20261028",
     "started_at": "2026-10-28T17:12:55.653219+00:00",
-    "updated_at": "2026-10-28T17:16:58.709600+00:00",
+    "updated_at": "2026-10-28T17:18:16.943920+00:00",
     "checkpoint": {
-      "phase": "pr_open",
-      "commit": "bf07d7b3eb7c0e96d178a414758284ca7c03fde2",
+      "phase": "merged",
+      "commit": "1973c4a88b166f1636768bfde6043b0c8472abbb",
       "pr": 5,
-      "note": "独立审查两异常输入复现失败后修复：非有限JSON、超大ID；目标12通过，完整回归和新CI运行；PP053已合并",
-      "next_action": "核对完整回归及固定候选CI后合并；主分支签收"
+      "note": "审查两项异常输入修复RED→GREEN，完整213通过；候选backend/frontend成功，main CI待验收；跨应用持续回归留后续",
+      "next_action": "核对main CI后release和签收，继续持久映射"
     }
   },
   "last": {
