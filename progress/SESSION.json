@@ -6,13 +6,13 @@
     "code_repository": "nizuowanzhenbang/coal-quality-monitor",
     "branch": "feature/coal-quality-export-20261028",
     "started_at": "2026-10-28T17:12:55.653219+00:00",
-    "updated_at": "2026-10-28T17:15:26.204159+00:00",
+    "updated_at": "2026-10-28T17:16:58.709600+00:00",
     "checkpoint": {
-      "phase": "implemented",
-      "commit": "aff785c6f9dfcd393351086cea58633b8d5fd242",
-      "pr": null,
-      "note": "实际入厂记录导出与人工时区声明；完整209通过，煤质实际API结果已传入能效预览；独立审查/CI进行中",
-      "next_action": "依据独立审查修复并完成PR与CI"
+      "phase": "pr_open",
+      "commit": "bf07d7b3eb7c0e96d178a414758284ca7c03fde2",
+      "pr": 5,
+      "note": "独立审查两异常输入复现失败后修复：非有限JSON、超大ID；目标12通过，完整回归和新CI运行；PP053已合并",
+      "next_action": "核对完整回归及固定候选CI后合并；主分支签收"
     }
   },
   "last": {
