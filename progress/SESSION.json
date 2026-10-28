@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-050",
     "owner": "codex-batch-20261028-01",
     "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
@@ -13,23 +14,8 @@
       "pr": 3,
       "note": "首个子单元PP051已合并；独立审查无阻塞/1日期极值Minor延期；整体PP050仍进行中，master CI待完成",
       "next_action": "核对主分支CI并签收PP051，后续来源导出与持久关联"
-    }
-  },
-  "last": {
-    "task_id": "PP-043",
-    "owner": "codex-batch-20261028-01",
-    "code_repository": "nizuowanzhenbang/equipment-inspection",
-    "branch": "upgrade/daily-visibility-20261027",
-    "started_at": "2026-10-28T07:06:05.489294+00:00",
-    "updated_at": "2026-10-28T07:08:25.711312+00:00",
-    "checkpoint": {
-      "phase": "implemented",
-      "commit": "5ee33b6b40e303c7eb82fd62b1c43d9ee2fc1723",
-      "pr": null,
-      "note": "列表/详情缺字段3个SQLite失败已修复；本地后端366通过248跳过（PG及双应用环境未配置），前端18/构建及原因浏览器1通过",
-      "next_action": "等待整批审查/CI，顺序推进PP050最小适配"
     },
-    "release_reason": "实现推送PR16，等待整批审查和CI",
-    "released_at": "2026-10-28T07:08:30.176206+00:00"
+    "release_reason": "首个预览单元已合并，进入发布验收；总体身份口径任务保留进行中",
+    "released_at": "2026-10-28T07:17:32.599114+00:00"
   }
 }
