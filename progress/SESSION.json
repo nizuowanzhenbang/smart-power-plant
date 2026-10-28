@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-031",
     "owner": "codex-batch-20261028-01",
     "code_repository": "nizuowanzhenbang/equipment-inspection",
@@ -20,23 +21,8 @@
         "reason": "原子代理已不在活动列表；已核对远端PR16和分支e801514，接续原任务与既有测试，不重做已提交工作",
         "at": "2026-10-28T07:02:18.536348+00:00"
       }
-    ]
-  },
-  "last": {
-    "task_id": "PP-042",
-    "owner": "codex-batch-20261027-01",
-    "code_repository": "nizuowanzhenbang/plant-safety",
-    "branch": "docs/safety-upgrade-20261027",
-    "started_at": "2026-10-27T17:57:00+00:00",
-    "updated_at": "2026-10-27T17:58:30+00:00",
-    "checkpoint": {
-      "phase": "pr_open",
-      "commit": "7da72b4b5f756cdd0bfdc9d61bb06304df8130bf",
-      "pr": 5,
-      "note": "升级说明PR5已建立；4a33ac3候选三项CI成功，独立文档核对无阻塞，修正导出失败后不再继续验收；最新候选CI待完成",
-      "next_action": "等待固定最新候选CI后合并；期间顺序处理设备页面小项"
-    },
-    "release_reason": "文档候选等待CI，保留PR5，顺序切换至PP031",
-    "released_at": "2026-10-27T17:58:30+00:00"
+    ],
+    "release_reason": "已验证实现推送PR16，等待同批审查及CI，顺序进入PP043",
+    "released_at": "2026-10-28T07:06:00.883910+00:00"
   }
 }
