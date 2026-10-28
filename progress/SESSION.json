@@ -6,12 +6,13 @@
     "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
     "branch": "fix/coal-preview-date-boundaries-20261028",
     "started_at": "2026-10-28T16:32:52.441127+00:00",
-    "updated_at": "2026-10-28T16:32:52.441140+00:00",
+    "updated_at": "2026-10-28T16:33:41.448983+00:00",
     "checkpoint": {
-      "phase": "claimed",
-      "commit": null,
-      "note": "已认领；尚未完成实现",
-      "next_action": "读取实际代码与计划"
+      "phase": "implemented",
+      "commit": "3f0da1f20a449e12b278513762bb77f0d9447222",
+      "pr": null,
+      "note": "上下边界及四字段RED后校验；候选已推送，完整回归/审查/CI进行中",
+      "next_action": "核验回归与审查，完成PR和发布"
     }
   },
   "last": {
