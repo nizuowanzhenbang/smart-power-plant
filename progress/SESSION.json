@@ -1,6 +1,19 @@
 {
   "schema_version": 1,
-  "active": null,
+  "active": {
+    "task_id": "PP-052",
+    "owner": "codex-batch-20261028-02",
+    "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
+    "branch": "fix/coal-preview-date-boundaries-20261028",
+    "started_at": "2026-10-28T16:32:52.441127+00:00",
+    "updated_at": "2026-10-28T16:32:52.441140+00:00",
+    "checkpoint": {
+      "phase": "claimed",
+      "commit": null,
+      "note": "已认领；尚未完成实现",
+      "next_action": "读取实际代码与计划"
+    }
+  },
   "last": {
     "task_id": "PP-051",
     "owner": "codex-batch-20261028-01",
