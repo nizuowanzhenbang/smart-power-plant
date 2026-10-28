@@ -141,6 +141,26 @@
         "backend",
         "frontend"
       ]
+    },
+    {
+      "task_id": "PP-053",
+      "repository": "nizuowanzhenbang/coal-unit-efficiency",
+      "commit": "30e8e6af92d796d6889875ec55b1de24c1ca13fe",
+      "pr": 5,
+      "checks": [
+        "backend",
+        "frontend"
+      ]
+    },
+    {
+      "task_id": "PP-054",
+      "repository": "nizuowanzhenbang/coal-quality-monitor",
+      "commit": "1973c4a88b166f1636768bfde6043b0c8472abbb",
+      "pr": 5,
+      "checks": [
+        "backend",
+        "frontend"
+      ]
     }
   ]
 }

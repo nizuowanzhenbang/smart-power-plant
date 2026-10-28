@@ -1,6 +1,6 @@
 # 当前工作与接续
 
-更新：2026-10-28 UTC。B-20261027-01已合并并验收。PP052已完成。本轮PP054进行中，实时认领以SESSION为准。
+更新：2026-10-28 UTC。B-20261027-01已合并并验收。PP052已完成。PP053/054已合并，SESSION无活动认领。
 
 - PP-042：[安全PR5](https://github.com/nizuowanzhenbang/plant-safety/pull/5)，a972bd8；备份/维护窗口/统一切换与恢复说明。候选/main三项CI成功，未执行实际恢复演练。
 - PP-031/043：[设备PR16](https://github.com/nizuowanzhenbang/equipment-inspection/pull/16)，09ee584；采购余量和日常联动原因。本地后端366通过248环境跳过，前端18/构建/audit0，收货4+原因1真实浏览器通过；候选五项成功，main五项CI成功。
@@ -9,9 +9,9 @@
 
 ## 2026-10-28 继续批次
 
-执行者 codex-20261028-next。PP053：[能效PR5](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/5)，4edc72a；33项目标测试通过，临时移除UTC校验8个用例均失败，独立审查无问题；已合并30e8e6a，master CI进行中。
+执行者 codex-20261028-next。PP053：[能效PR5](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/5)，4edc72a；33项目标测试通过，临时移除UTC校验8个用例均失败，独立审查无问题；已合并30e8e6a，master CI通过。
 
-PP054：[煤质PR5](https://github.com/nizuowanzhenbang/coal-quality-monitor/pull/5)，已合并1973c4a；配置来源实例、操作者明确声明时区及依据，从入厂化验导出measurement。完整213通过；合成记录的实际煤质API输出经独立能效API预览，4000 kcal/kg得16747.2 kJ/kg。审查两项边界已先失败后修复；候选CI成功、main CI进行中；来源及时间声明真实性依操作者核实，不自动识别模拟记录，不证明入炉。第一动作：核对煤质main CI后release，逐项登记发布索引；随后完成跨系统持久回归并继续持久关联设计。
+PP054：[煤质PR5](https://github.com/nizuowanzhenbang/coal-quality-monitor/pull/5)，已合并1973c4a；配置来源实例、操作者明确声明时区及依据，从入厂化验导出measurement。完整213通过；合成记录的实际煤质API输出经独立能效API预览，4000 kcal/kg得16747.2 kJ/kg。审查两项边界已先失败后修复；候选及main CI均成功；来源及时间声明真实性依操作者核实，不自动识别模拟记录，不证明入炉。第一动作：PP055实现跨系统持续回归，再继续持久关联设计。
 
 ## 最近已交付
 
