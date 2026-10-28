@@ -1,11 +1,17 @@
 # 当前工作与接续
 
-更新：2026-10-28 UTC。B-20261027-01已合并并验收。PP052已完成；SESSION无活动认领。
+更新：2026-10-28 UTC。B-20261027-01已合并并验收。PP052已完成。本轮PP054进行中，实时认领以SESSION为准。
 
 - PP-042：[安全PR5](https://github.com/nizuowanzhenbang/plant-safety/pull/5)，a972bd8；备份/维护窗口/统一切换与恢复说明。候选/main三项CI成功，未执行实际恢复演练。
 - PP-031/043：[设备PR16](https://github.com/nizuowanzhenbang/equipment-inspection/pull/16)，09ee584；采购余量和日常联动原因。本地后端366通过248环境跳过，前端18/构建/audit0，收货4+原因1真实浏览器通过；候选五项成功，main五项CI成功。
 - PP-051：[能效PR3](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/3)，974d526；带来源血缘、显式批次/机组/时间关联的热值适配与真实能效算法情景预览。完整146通过，候选/master两项CI成功。PP-050总体仍进行中，不包含持久映射、来源导出或实际入炉消耗证明。
 - 唯一独立审查无阻塞，日期极值Minor登记PP-052。详细[本批证据](evidence/2026-10-28-visibility-coal-preview.md)与[日志](logs/2026-10-28-batch-01.md)。
+
+## 2026-10-28 继续批次
+
+执行者 codex-20261028-next。PP053：[能效PR5](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/5)，4edc72a；33项目标测试通过，临时移除UTC校验8个用例均失败，候选CI通过，待独立审查和合并。
+
+PP054：[煤质PR5](https://github.com/nizuowanzhenbang/coal-quality-monitor/pull/5)，aff785c；配置来源实例、操作者明确声明时区及依据，从入厂化验导出measurement。完整209通过；合成记录的实际煤质API输出经独立能效API预览，4000 kcal/kg得16747.2 kJ/kg。审查和CI进行中；来源及时间声明真实性依操作者核实，不自动识别模拟记录，不证明入炉。第一动作：核对审查，必要时修复，CI通过后合并两PR并签收；然后继续持久关联设计。
 
 ## 最近已交付
 
