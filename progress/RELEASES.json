@@ -131,6 +131,16 @@
         "backend",
         "frontend"
       ]
+    },
+    {
+      "task_id": "PP-052",
+      "repository": "nizuowanzhenbang/coal-unit-efficiency",
+      "commit": "c604b0276dd0e0c74f3fc68f36e593b027d8b420",
+      "pr": 4,
+      "checks": [
+        "backend",
+        "frontend"
+      ]
     }
   ]
 }
