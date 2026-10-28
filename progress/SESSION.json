@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-051",
     "owner": "codex-batch-20261028-01",
     "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
@@ -13,23 +14,8 @@
       "pr": 3,
       "note": "首个情景预览子单元交付，完整146通过，候选与master backend/frontend全部成功；独立审查1日期Minor记PP052",
       "next_action": "先PP052日期边界，再PP050来源导出和持久关联"
-    }
-  },
-  "last": {
-    "task_id": "PP-043",
-    "owner": "codex-batch-20261028-01",
-    "code_repository": "nizuowanzhenbang/equipment-inspection",
-    "branch": "upgrade/daily-visibility-20261027",
-    "started_at": "2026-10-28T07:18:28.765364+00:00",
-    "updated_at": "2026-10-28T07:18:33.371555+00:00",
-    "checkpoint": {
-      "phase": "merged",
-      "commit": "09ee584457a3af50192a64d84930c0805bc9bfad",
-      "pr": 16,
-      "note": "联动原因查询及日常展示已合并，候选五项成功",
-      "next_action": "主分支CI与发布签收"
     },
-    "release_reason": "实现已合并，中央统一签收",
-    "released_at": "2026-10-28T07:18:36.904076+00:00"
+    "release_reason": "子单元实际合并且主分支CI成功，PP050总体进行中",
+    "released_at": "2026-10-28T07:19:18.368435+00:00"
   }
 }
