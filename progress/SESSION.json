@@ -6,12 +6,13 @@
     "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
     "branch": "upgrade/coal-quality-adapter-20261028",
     "started_at": "2026-10-28T07:19:09.082230+00:00",
-    "updated_at": "2026-10-28T07:19:09.082243+00:00",
+    "updated_at": "2026-10-28T07:19:14.272600+00:00",
     "checkpoint": {
-      "phase": "claimed",
-      "commit": null,
-      "note": "已认领；尚未完成实现",
-      "next_action": "读取实际代码与计划"
+      "phase": "merged",
+      "commit": "974d526c26fcf13f6ac1d7ed87e208585b74ee36",
+      "pr": 3,
+      "note": "首个情景预览子单元交付，完整146通过，候选与master backend/frontend全部成功；独立审查1日期Minor记PP052",
+      "next_action": "先PP052日期边界，再PP050来源导出和持久关联"
     }
   },
   "last": {
