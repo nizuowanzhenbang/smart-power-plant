@@ -1,6 +1,19 @@
 {
   "schema_version": 1,
-  "active": null,
+  "active": {
+    "task_id": "PP-054",
+    "owner": "codex-20261028-next",
+    "code_repository": "nizuowanzhenbang/coal-quality-monitor",
+    "branch": "feature/coal-quality-export-20261028",
+    "started_at": "2026-10-28T17:12:55.653219+00:00",
+    "updated_at": "2026-10-28T17:12:55.653231+00:00",
+    "checkpoint": {
+      "phase": "claimed",
+      "commit": null,
+      "note": "已认领；尚未完成实现",
+      "next_action": "读取实际代码与计划"
+    }
+  },
   "last": {
     "task_id": "PP-053",
     "owner": "codex-20261028-next",
