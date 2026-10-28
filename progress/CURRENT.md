@@ -1,14 +1,11 @@
 # 当前工作与接续
 
-更新：2026-10-28 UTC。批次 B-20261027-01 接续完成中；实时认领以 SESSION 为准。
+更新：2026-10-28 UTC。B-20261027-01实现已合并，主分支验收通过。SESSION无活动认领，last保留PP051真实merged/release。
 
-本轮 codex-batch-20261028-01 已核对原代理不再活动、设备PR16仅测试提交，按显式接管机制继续。云环境已恢复。
-
-- PP-042：[安全PR5](https://github.com/nizuowanzhenbang/plant-safety/pull/5)已合并，a972bd8ce8191cc2af13e268924f4274208048e2；候选/main三项CI通过。仅升级说明，未执行备份恢复演练。
-- PP-031/043：[设备PR16](https://github.com/nizuowanzhenbang/equipment-inspection/pull/16)，候选5ee33b6，采购余量和联动原因已实现；本地后端366通过248环境跳过、前端18/构建/audit0、浏览器收货4/原因1通过；候选五项CI全部成功；独立审查中，尚未合并。
-- PP-050首个子单元PP-051：[能效PR3](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/3)，候选23cc92a。显式来源实例/批次/机组/时间关联，Qnet/ar热值适配并实际调用能效计算，返回血缘，无运行账本写入。本地完整146通过；候选CI与独立审查待签收。PP-050总体仍进行中，持久映射、来源导出和实际入炉消耗关联未实现。
-
-第一接续动作：读取SESSION，核对上述两个候选PR/审查，再合并并完成main CI、逐项发布索引与释放。既有任务与PP-100面试资料保留，不重新实施。
+- PP-042：[安全PR5](https://github.com/nizuowanzhenbang/plant-safety/pull/5)，a972bd8；备份/维护窗口/统一切换与恢复说明。候选/main三项CI成功，未执行实际恢复演练。
+- PP-031/043：[设备PR16](https://github.com/nizuowanzhenbang/equipment-inspection/pull/16)，09ee584；采购余量和日常联动原因。本地后端366通过248环境跳过，前端18/构建/audit0，收货4+原因1真实浏览器通过；候选五项成功，main五项CI成功。
+- PP-051：[能效PR3](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/3)，974d526；带来源血缘、显式批次/机组/时间关联的热值适配与真实能效算法情景预览。完整146通过，候选/master两项CI成功。PP-050总体仍进行中，不包含持久映射、来源导出或实际入炉消耗证明。
+- 唯一独立审查无阻塞，日期极值Minor登记PP-052。详细[本批证据](evidence/2026-10-28-visibility-coal-preview.md)与[日志](logs/2026-10-28-batch-01.md)。
 
 ## 最近已交付
 
@@ -24,9 +21,9 @@ PP-100另一会话[面试讲解卡](docs/INTERVIEW-CARDS-20261014.md)/[前沿与
 
 ## 下一批第一动作
 
-按[下一批入口](plans/NEXT-BATCH.md)读取最新固定中央五文件，核对无活动认领再claim。能力主线PP-050：四模块已完成[身份/单位/时间只读核查](docs/PP050-DISCOVERY-20261014.md)，从来源身份映射和煤质到能效的一条热值适配开始；此准备不算能力交付。然后按依赖推进PP-060约束联合决策。
+从最新固定中央五文件resume。先核对本批main验收和RELEASES，不重做已合并功能。然后处理PP-052：新预览输入极端时区日期归一UTC应422，而不是500，补年1/9999边界及正常跨日回归。
 
-审查小项PP-042备份/维护窗口升级操作、PP-031显式采购余量、PP-043日常联动原因仍待做，可集中交付。已经保存采购/发送/接收实现及其回归，不从旧计划未更新的阶段描述重新开始；SESSION.last保留真实合并/释放并指向此下一批入口。
+能力主线继续PP-050：按[下一批入口](plans/NEXT-BATCH.md)，优先为已有煤质记录提供显式导出契约，保留来源实例/批次/化验ID、Qnet/ar元数据和明确时间来源。之后设计持久关联与实际批次消耗，再推进PP060联合决策。PP051已是实际情景计算能力，但不是全厂身份治理完成。
 
 ## 默认跳过与恢复
 

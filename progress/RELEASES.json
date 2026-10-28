@@ -84,6 +84,53 @@
         "safety_contract",
         "compose-browser"
       ]
+    },
+    {
+      "task_id": "PP-042",
+      "repository": "nizuowanzhenbang/plant-safety",
+      "commit": "a972bd8ce8191cc2af13e268924f4274208048e2",
+      "pr": 5,
+      "checks": [
+        "backend",
+        "postgresql",
+        "frontend"
+      ]
+    },
+    {
+      "task_id": "PP-031",
+      "repository": "nizuowanzhenbang/equipment-inspection",
+      "commit": "09ee584457a3af50192a64d84930c0805bc9bfad",
+      "pr": 16,
+      "checks": [
+        "backend",
+        "postgresql",
+        "frontend",
+        "safety_contract",
+        "compose-browser"
+      ]
+    },
+    {
+      "task_id": "PP-043",
+      "repository": "nizuowanzhenbang/equipment-inspection",
+      "commit": "09ee584457a3af50192a64d84930c0805bc9bfad",
+      "pr": 16,
+      "checks": [
+        "backend",
+        "postgresql",
+        "frontend",
+        "safety_contract",
+        "compose-browser"
+      ]
+    },
+    {
+      "task_id": "PP-051",
+      "repository": "nizuowanzhenbang/coal-unit-efficiency",
+      "commit": "974d526c26fcf13f6ac1d7ed87e208585b74ee36",
+      "pr": 3,
+      "checks": [
+        "backend",
+        "frontend"
+      ]
     }
   ]
 }
