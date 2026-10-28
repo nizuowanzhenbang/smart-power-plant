@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-031",
     "owner": "codex-batch-20261028-01",
     "code_repository": "nizuowanzhenbang/equipment-inspection",
@@ -13,23 +14,8 @@
       "pr": 16,
       "note": "余量实现已合并，候选五项成功，主分支验收进行中",
       "next_action": "记录发布验收"
-    }
-  },
-  "last": {
-    "task_id": "PP-050",
-    "owner": "codex-batch-20261028-01",
-    "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
-    "branch": "upgrade/coal-quality-adapter-20261028",
-    "started_at": "2026-10-28T07:08:34.278375+00:00",
-    "updated_at": "2026-10-28T07:17:28.354286+00:00",
-    "checkpoint": {
-      "phase": "merged",
-      "commit": "974d526c26fcf13f6ac1d7ed87e208585b74ee36",
-      "pr": 3,
-      "note": "首个子单元PP051已合并；独立审查无阻塞/1日期极值Minor延期；整体PP050仍进行中，master CI待完成",
-      "next_action": "核对主分支CI并签收PP051，后续来源导出与持久关联"
     },
-    "release_reason": "首个预览单元已合并，进入发布验收；总体身份口径任务保留进行中",
-    "released_at": "2026-10-28T07:17:32.599114+00:00"
+    "release_reason": "实现已合并，中央统一签收",
+    "released_at": "2026-10-28T07:18:24.878001+00:00"
   }
 }
