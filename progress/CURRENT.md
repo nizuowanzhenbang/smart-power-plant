@@ -9,9 +9,9 @@
 
 ## 2026-10-28 继续批次
 
-执行者 codex-20261028-next。PP053：[能效PR5](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/5)，4edc72a；33项目标测试通过，临时移除UTC校验8个用例均失败，候选CI通过，待独立审查和合并。
+执行者 codex-20261028-next。PP053：[能效PR5](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/5)，4edc72a；33项目标测试通过，临时移除UTC校验8个用例均失败，独立审查无问题；已合并30e8e6a，master CI进行中。
 
-PP054：[煤质PR5](https://github.com/nizuowanzhenbang/coal-quality-monitor/pull/5)，aff785c；配置来源实例、操作者明确声明时区及依据，从入厂化验导出measurement。完整209通过；合成记录的实际煤质API输出经独立能效API预览，4000 kcal/kg得16747.2 kJ/kg。审查和CI进行中；来源及时间声明真实性依操作者核实，不自动识别模拟记录，不证明入炉。第一动作：核对审查，必要时修复，CI通过后合并两PR并签收；然后继续持久关联设计。
+PP054：[煤质PR5](https://github.com/nizuowanzhenbang/coal-quality-monitor/pull/5)，bf07d7b；配置来源实例、操作者明确声明时区及依据，从入厂化验导出measurement。完整213通过；合成记录的实际煤质API输出经独立能效API预览，4000 kcal/kg得16747.2 kJ/kg。审查两项边界已先失败后修复；候选CI进行中；来源及时间声明真实性依操作者核实，不自动识别模拟记录，不证明入炉。第一动作：核对审查，必要时修复，CI通过后合并两PR并签收；然后继续持久关联设计。
 
 ## 最近已交付
 
