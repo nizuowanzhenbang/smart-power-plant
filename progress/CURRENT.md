@@ -1,6 +1,6 @@
 # 当前工作与接续
 
-更新：2026-10-28 UTC。B-20261027-01实现已合并，主分支验收通过。SESSION无活动认领，last保留PP051真实merged/release。
+更新：2026-10-28 UTC。B-20261027-01已合并并验收。新批PP052进行中；实时认领以SESSION为准。
 
 - PP-042：[安全PR5](https://github.com/nizuowanzhenbang/plant-safety/pull/5)，a972bd8；备份/维护窗口/统一切换与恢复说明。候选/main三项CI成功，未执行实际恢复演练。
 - PP-031/043：[设备PR16](https://github.com/nizuowanzhenbang/equipment-inspection/pull/16)，09ee584；采购余量和日常联动原因。本地后端366通过248环境跳过，前端18/构建/audit0，收货4+原因1真实浏览器通过；候选五项成功，main五项CI成功。
@@ -18,6 +18,10 @@
 代码与文档签收SHA分开：安全aed22d6最新文档main CI成功；设备55a3275关闭计划，最新文档质量CI38630239143四项成功；业务发布2312540五项成功。文档与业务索引不混用。
 
 PP-100另一会话[面试讲解卡](docs/INTERVIEW-CARDS-20261014.md)/[前沿与国产设计](docs/INTERVIEW-TECH-ROADMAP-20261014.md)已通过[PR #14](https://github.com/nizuowanzhenbang/smart-power-plant/pull/14)、固定文档5f6e6ebb9724e6c7ef13ac3c4104cf730c237e06交付并释放。其旧候选描述是当时快照；未实施RAG、基础模型、联合优化或国产部署。成果与[日志](logs/2026-10-14-PP-100-interview.md)保留。
+
+## 当前后续：PP-052
+
+执行者 codex-batch-20261028-02；能效分支 fix/coal-preview-date-boundaries-20261028，开始2026-10-28 UTC。PR4/候选3f0da1f；四字段上下日期越界先复现失败再修复，合法跨日通过，完整155通过，独立审查无阻塞。候选CI及合并待完成。审查Minor：测试只断言422，部分用例可能因其他时间规则拒绝，需将字段位置/消息断言与可表示极值另列后续。
 
 ## 下一批第一动作
 
