@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-053",
     "owner": "codex-20261028-next",
     "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
@@ -13,23 +14,8 @@
       "pr": 5,
       "note": "字段原因/位置及上下有效边界33通过；临时移除UTC校验8个用例全部失败；候选CI待完成",
       "next_action": "独立审查并核对CI；继续煤质来源导出"
-    }
-  },
-  "last": {
-    "task_id": "PP-052",
-    "owner": "codex-batch-20261028-02",
-    "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
-    "branch": "fix/coal-preview-date-boundaries-20261028",
-    "started_at": "2026-10-28T16:32:52.441127+00:00",
-    "updated_at": "2026-10-28T16:34:53.924855+00:00",
-    "checkpoint": {
-      "phase": "merged",
-      "commit": "c604b0276dd0e0c74f3fc68f36e593b027d8b420",
-      "pr": 4,
-      "note": "独立审查无阻塞，候选backend/frontend通过；合并后master CI待完成，测试定位Minor登记PP053",
-      "next_action": "核对master CI后release、回写并发布索引"
     },
-    "release_reason": "PR4已合并，候选与master两项CI成功，回写发布索引；测试精度Minor保留PP053",
-    "released_at": "2026-10-28T16:36:12.240871+00:00"
+    "release_reason": "候选已推送PR5待CI，顺序切换煤质导出",
+    "released_at": "2026-10-28T17:12:46.283875+00:00"
   }
 }
