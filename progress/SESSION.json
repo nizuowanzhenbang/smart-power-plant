@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-052",
     "owner": "codex-batch-20261028-02",
     "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
@@ -13,23 +14,8 @@
       "pr": 4,
       "note": "独立审查无阻塞，候选backend/frontend通过；合并后master CI待完成，测试定位Minor登记PP053",
       "next_action": "核对master CI后release、回写并发布索引"
-    }
-  },
-  "last": {
-    "task_id": "PP-051",
-    "owner": "codex-batch-20261028-01",
-    "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
-    "branch": "upgrade/coal-quality-adapter-20261028",
-    "started_at": "2026-10-28T07:19:09.082230+00:00",
-    "updated_at": "2026-10-28T07:19:14.272600+00:00",
-    "checkpoint": {
-      "phase": "merged",
-      "commit": "974d526c26fcf13f6ac1d7ed87e208585b74ee36",
-      "pr": 3,
-      "note": "首个情景预览子单元交付，完整146通过，候选与master backend/frontend全部成功；独立审查1日期Minor记PP052",
-      "next_action": "先PP052日期边界，再PP050来源导出和持久关联"
     },
-    "release_reason": "子单元实际合并且主分支CI成功，PP050总体进行中",
-    "released_at": "2026-10-28T07:19:18.368435+00:00"
+    "release_reason": "PR4已合并，候选与master两项CI成功，回写发布索引；测试精度Minor保留PP053",
+    "released_at": "2026-10-28T16:36:12.240871+00:00"
   }
 }
