@@ -1,8 +1,14 @@
 # 当前工作与接续
 
-更新：2026-10-27 UTC。批次 B-20261027-01 开始；实时认领以 SESSION 为准。
+更新：2026-10-28 UTC。批次 B-20261027-01 接续完成中；实时认领以 SESSION 为准。
 
-本轮执行者 codex-batch-20261027-01，先认领 PP-042，仓库 plant-safety，分支 docs/safety-upgrade-20261027，UTC 2026-10-27 17:57。先交付安全升级备份/停写/统一切换/恢复说明，再顺序推进 PP-031、PP-043 和 PP-050 最小适配单元。云环境仍 starting，当前通过 GitHub 连接核对固定源码；未声称本地测试或恢复演练已运行。上一批交付保留。
+本轮 codex-batch-20261028-01 已核对原代理不再活动、设备PR16仅测试提交，按显式接管机制继续。云环境已恢复。
+
+- PP-042：[安全PR5](https://github.com/nizuowanzhenbang/plant-safety/pull/5)已合并，a972bd8ce8191cc2af13e268924f4274208048e2；候选/main三项CI通过。仅升级说明，未执行备份恢复演练。
+- PP-031/043：[设备PR16](https://github.com/nizuowanzhenbang/equipment-inspection/pull/16)，候选5ee33b6，采购余量和联动原因已实现；本地后端366通过248环境跳过、前端18/构建/audit0、浏览器收货4/原因1通过；候选五项CI全部成功；独立审查中，尚未合并。
+- PP-050首个子单元PP-051：[能效PR3](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/3)，候选23cc92a。显式来源实例/批次/机组/时间关联，Qnet/ar热值适配并实际调用能效计算，返回血缘，无运行账本写入。本地完整146通过；候选CI与独立审查待签收。PP-050总体仍进行中，持久映射、来源导出和实际入炉消耗关联未实现。
+
+第一接续动作：读取SESSION，核对上述两个候选PR/审查，再合并并完成main CI、逐项发布索引与释放。既有任务与PP-100面试资料保留，不重新实施。
 
 ## 最近已交付
 
