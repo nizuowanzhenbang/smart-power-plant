@@ -6,12 +6,13 @@
     "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
     "branch": "test/coal-preview-date-evidence-20261028",
     "started_at": "2026-10-28T17:11:33.847071+00:00",
-    "updated_at": "2026-10-28T17:11:33.847085+00:00",
+    "updated_at": "2026-10-28T17:12:36.426658+00:00",
     "checkpoint": {
-      "phase": "claimed",
-      "commit": null,
-      "note": "已认领；尚未完成实现",
-      "next_action": "读取实际代码与计划"
+      "phase": "pr_open",
+      "commit": "4edc72af248f787245eb72f387a8aa4fe22f8d26",
+      "pr": 5,
+      "note": "字段原因/位置及上下有效边界33通过；临时移除UTC校验8个用例全部失败；候选CI待完成",
+      "next_action": "独立审查并核对CI；继续煤质来源导出"
     }
   },
   "last": {
