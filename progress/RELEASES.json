@@ -161,6 +161,17 @@
         "backend",
         "frontend"
       ]
+    },
+    {
+      "task_id": "PP-055",
+      "repository": "nizuowanzhenbang/coal-quality-monitor",
+      "commit": "308b3ba125979e2e78df251c3c62bc1c15360964",
+      "pr": 6,
+      "checks": [
+        "backend",
+        "frontend",
+        "coal_energy_contract"
+      ]
     }
   ]
 }
