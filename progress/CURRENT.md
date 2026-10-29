@@ -59,3 +59,5 @@ PP-001/002/003/004/005/010/020和本批030/040/041/100已交付；设备库存/�
 
 ## 本轮PP050来源核查
 执行者codex-consumption-20261029；2026-10-29 UTC；smart-power-plant分支docs/consumption-discovery-20261029。先核查煤场与能效来源，再交付煤场账面出场证据导出。
+
+PP050来源核查已保存，转PP058；执行者codex-consumption-20261029，2026-10-29 UTC，煤场分支feat/stockout-evidence-20261029。第一动作：真实API测试先复现缺失导出端点，再实现只读校验。
