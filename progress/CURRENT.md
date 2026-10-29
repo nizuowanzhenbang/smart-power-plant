@@ -17,7 +17,9 @@ PP054：[煤质PR5](https://github.com/nizuowanzhenbang/coal-quality-monitor/pul
 
 PP055：[煤质PR6](https://github.com/nizuowanzhenbang/coal-quality-monitor/pull/6)，候选a8e378a。独立进程实际导出与能效预览、来源/基准错配与不写快照，固定能效30e8e6a；本地契约通过、煤质完整213通过。审查指出应独立断言来源/时间，模拟错误来源先失败后修复，候选CI进行中。固定版本与人工时区依据边界保留。
 
-本轮继续PP056，探索显式情景关联持久化；不能把入厂化验或操作者声明当实际入炉证明。实时认领以SESSION为准。
+PP055煤质PR6已合并308b3ba，候选与main三项CI全部成功；待顺序签收。
+
+PP056：[能效PR6](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/6)，候选d8c3ef5；情景关联持久化并按ID预览。独立审查指出NUL与非法Unicode导致500及机组编号约束不一致，先失败后修复；SQLite同请求并发一致/冲突测试通过。完整回归与候选CI进行中。未验证真实PostgreSQL并发/现场升级，不能把声明当实际入炉证明。实时认领以SESSION为准。
 
 ## 最近已交付
 
