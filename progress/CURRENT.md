@@ -1,6 +1,6 @@
 # 当前工作与接续
 
-更新：2026-10-28 UTC。B-20261027-01已合并并验收。PP052已完成。PP053/054已合并，SESSION无活动认领。
+更新：2026-10-29 UTC。B-20261027-01已合并并验收。PP052已完成。PP053/054已合并，SESSION无活动认领。
 
 - PP-042：[安全PR5](https://github.com/nizuowanzhenbang/plant-safety/pull/5)，a972bd8；备份/维护窗口/统一切换与恢复说明。候选/main三项CI成功，未执行实际恢复演练。
 - PP-031/043：[设备PR16](https://github.com/nizuowanzhenbang/equipment-inspection/pull/16)，09ee584；采购余量和日常联动原因。本地后端366通过248环境跳过，前端18/构建/audit0，收货4+原因1真实浏览器通过；候选五项成功，main五项CI成功。
@@ -17,9 +17,9 @@ PP054：[煤质PR5](https://github.com/nizuowanzhenbang/coal-quality-monitor/pul
 
 PP055：[煤质PR6](https://github.com/nizuowanzhenbang/coal-quality-monitor/pull/6)，候选a8e378a。独立进程实际导出与能效预览、来源/基准错配与不写快照，固定能效30e8e6a；本地契约通过、煤质完整213通过。审查指出应独立断言来源/时间，模拟错误来源先失败后修复，候选CI进行中。固定版本与人工时区依据边界保留。
 
-PP055煤质PR6已合并308b3ba，候选与main三项CI全部成功；待顺序签收。
+PP055煤质PR6已合并308b3ba，候选与main三项CI全部成功；已签收。
 
-PP056：[能效PR6](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/6)，已合并81233d8；情景关联持久化并按ID预览。独立审查指出NUL与非法Unicode导致500及机组编号约束不一致，先失败后修复；SQLite完整167通过，隔离PostgreSQL10通过含并发/分页；按来源和批次分页查回，分页非一致快照需刷新。最新候选backend/frontend/scenario_postgresql三项成功，master CI运行中。未验证现场升级，不能把声明当实际入炉证明。实时认领以SESSION为准。
+PP056：[能效PR6](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/6)，已合并81233d8；情景关联持久化并按ID预览。独立审查指出NUL与非法Unicode导致500及机组编号约束不一致，先失败后修复；SQLite完整167通过，隔离PostgreSQL10通过含并发/分页；按来源和批次分页查回，分页非一致快照需刷新。候选及master的backend/frontend/scenario_postgresql三项均成功。未验证现场升级，不能把声明当实际入炉证明。当前已release，SESSION无活动认领。
 
 ## 最近已交付
 
@@ -39,9 +39,9 @@ PP-100另一会话[面试讲解卡](docs/INTERVIEW-CARDS-20261014.md)/[前沿与
 
 ## 下一批第一动作
 
-从最新固定中央五文件resume。PP052已release并签收。PP053补日期校验测试的字段定位与可表示极值。
+从最新中央固定SHA resume，PP055/056已合并并签收，不重做。PP057设计并实现煤质时间声明依据的可追溯持久保存，明确其来源为操作者声明；核对偏移与测量时间、版本和关联，保留校验与冲突行为。更新跨系统持续回归以覆盖保存关联的预览；原CI目前固定对端30e8e6a，仅覆盖无持久关联的预览路径。
 
-能力主线继续PP-050：按[下一批入口](plans/NEXT-BATCH.md)，优先为已有煤质记录提供显式导出契约，保留来源实例/批次/化验ID、Qnet/ar元数据和明确时间来源。之后设计持久关联与实际批次消耗，再推进PP060联合决策。PP051已是实际情景计算能力，但不是全厂身份治理完成。
+PP050总体仍进行中：已有情景关联不是实际批次消耗事实。之后需验证现场分配证据和业务来源，再推进PP060联合决策。
 
 ## 默认跳过与恢复
 

@@ -172,6 +172,17 @@
         "frontend",
         "coal_energy_contract"
       ]
+    },
+    {
+      "task_id": "PP-056",
+      "repository": "nizuowanzhenbang/coal-unit-efficiency",
+      "commit": "81233d85a9d0a7f2b4c61724499514ace0c4aaa7",
+      "pr": 6,
+      "checks": [
+        "backend",
+        "frontend",
+        "scenario_postgresql"
+      ]
     }
   ]
 }
