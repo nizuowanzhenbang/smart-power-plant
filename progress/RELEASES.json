@@ -183,6 +183,17 @@
         "frontend",
         "scenario_postgresql"
       ]
+    },
+    {
+      "task_id": "PP-057",
+      "repository": "nizuowanzhenbang/coal-unit-efficiency",
+      "commit": "a214bfddd79236f4bd9930899344c7b08e0b0db2",
+      "pr": 7,
+      "checks": [
+        "backend",
+        "frontend",
+        "scenario_postgresql"
+      ]
     }
   ]
 }
