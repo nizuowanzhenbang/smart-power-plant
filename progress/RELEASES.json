@@ -194,6 +194,17 @@
         "frontend",
         "scenario_postgresql"
       ]
+    },
+    {
+      "task_id": "PP-058",
+      "repository": "nizuowanzhenbang/coal-yard-management",
+      "commit": "ccc6f7eb1149a46157865752c7946ea509feba27",
+      "pr": 2,
+      "checks": [
+        "backend",
+        "frontend",
+        "evidence_postgresql"
+      ]
     }
   ]
 }

@@ -1,6 +1,6 @@
 # 当前工作与接续
 
-更新：2026-10-29 UTC。PP057已交付：能效PR7/a214bfd、煤质PR7/6de4862，候选与默认分支各三项CI均成功；SESSION已释放。下列旧批次段落为历史记录。
+更新：2026-10-29 UTC。PP058煤场PR2/ccc6f7e已交付；PP059数量子单元PR3/551a0b8已合并，master三项CI通过，PP059盘点和并发保护仍进行中；SESSION已释放。下列旧批次段落为历史记录。
 
 - PP-042：[安全PR5](https://github.com/nizuowanzhenbang/plant-safety/pull/5)，a972bd8；备份/维护窗口/统一切换与恢复说明。候选/main三项CI成功，未执行实际恢复演练。
 - PP-031/043：[设备PR16](https://github.com/nizuowanzhenbang/equipment-inspection/pull/16)，09ee584；采购余量和日常联动原因。本地后端366通过248环境跳过，前端18/构建/audit0，收货4+原因1真实浏览器通过；候选五项成功，main五项CI成功。
@@ -63,3 +63,5 @@ PP-001/002/003/004/005/010/020和本批030/040/041/100已交付；设备库存/�
 PP050来源核查已保存，转PP058；执行者codex-consumption-20261029，2026-10-29 UTC，煤场分支feat/stockout-evidence-20261029。第一动作：真实API测试先复现缺失导出端点，再实现只读校验。
 
 PP058煤场PR2/ccc6f7e已合并，候选三项CI通过，master运行中。现转PP059：codex-consumption-20261029，fix/yard-quantity-validation-20261029，先完成数量输入保护；并发和FIFO守恒仍须后续，不因输入校验完成而关闭PP059。
+
+本轮PP058已交付，PP059数量子单元已合并、整体仍进行中；下一步按[下一批入口](plans/NEXT-BATCH.md)处理盘点守恒、陈旧盘点及全入口并发。
