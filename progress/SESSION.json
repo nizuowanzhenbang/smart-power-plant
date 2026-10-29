@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-055",
     "owner": "codex-batch-20261029-01",
     "code_repository": "nizuowanzhenbang/coal-quality-monitor",
@@ -13,23 +14,8 @@
       "pr": null,
       "note": "独立审查指出双端来源/时间仅回显不充分；模拟错误来源RED、独立期望断言后GREEN；CI重跑中",
       "next_action": "候选三项CI成功后合并签收；期间准备持久化关联最小设计"
-    }
-  },
-  "last": {
-    "task_id": "PP-053",
-    "owner": "codex-20261028-next",
-    "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
-    "branch": "test/coal-preview-date-evidence-20261028",
-    "started_at": "2026-10-28T17:19:45.122310+00:00",
-    "updated_at": "2026-10-28T17:19:50.963286+00:00",
-    "checkpoint": {
-      "phase": "merged",
-      "commit": "30e8e6af92d796d6889875ec55b1de24c1ca13fe",
-      "pr": 5,
-      "note": "目标33通过、去除校验8失败，审查无问题，候选/master两项CI成功",
-      "next_action": "release并登记发布索引"
     },
-    "release_reason": "PR5已合并，候选与master两项CI成功",
-    "released_at": "2026-10-28T17:19:55.942078+00:00"
+    "release_reason": "PR6已推送固定候选，三项CI运行；顺序推进关联记录设计，后续验收签收",
+    "released_at": "2026-10-29T09:12:09.799618+00:00"
   }
 }
