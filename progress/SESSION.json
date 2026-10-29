@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-057",
     "owner": "codex-time-evidence-20261029",
     "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
@@ -13,23 +14,8 @@
       "pr": 7,
       "note": "能效PR7已合并，候选backend/frontend/scenario_postgresql全部成功；主分支待验收；煤质对端契约正在发布",
       "next_action": "验收能效主分支、煤质PR7与主分支，同步文档签收"
-    }
-  },
-  "last": {
-    "task_id": "PP-101",
-    "owner": "codex-interview-guide",
-    "code_repository": "nizuowanzhenbang/smart-power-plant",
-    "branch": "docs/interview-answer-guide",
-    "started_at": "2026-10-29T14:37:54.522113+00:00",
-    "updated_at": "2026-10-29T14:40:59.211201+00:00",
-    "checkpoint": {
-      "phase": "merged",
-      "commit": "971d2d8415111a51258829839205875edccde046",
-      "pr": 15,
-      "note": "问答手册与旧卡片入口已合并；固定候选progress CI成功，主分支检查运行中",
-      "next_action": "确认main检查、release并更新接续入口"
     },
-    "release_reason": "问答手册已通过PR15合并；候选CI成功，回写统一入口",
-    "released_at": "2026-10-29T14:41:52.655986+00:00"
+    "release_reason": "能效PR7已合并且主分支三项通过；煤质PR7已合并、候选三项通过，正在完成主分支验收与文档回写",
+    "released_at": "2026-10-29T17:52:39.299866+00:00"
   }
 }
