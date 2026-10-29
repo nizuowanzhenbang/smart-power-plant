@@ -13,6 +13,12 @@
 
 PP054：[煤质PR5](https://github.com/nizuowanzhenbang/coal-quality-monitor/pull/5)，已合并1973c4a；配置来源实例、操作者明确声明时区及依据，从入厂化验导出measurement。完整213通过；合成记录的实际煤质API输出经独立能效API预览，4000 kcal/kg得16747.2 kJ/kg。审查两项边界已先失败后修复；候选及main CI均成功；来源及时间声明真实性依操作者核实，不自动识别模拟记录，不证明入炉。第一动作：PP055实现跨系统持续回归，再继续持久关联设计。
 
+## 2026-10-29 批次
+
+PP055：[煤质PR6](https://github.com/nizuowanzhenbang/coal-quality-monitor/pull/6)，候选a8e378a。独立进程实际导出与能效预览、来源/基准错配与不写快照，固定能效30e8e6a；本地契约通过、煤质完整213通过。审查指出应独立断言来源/时间，模拟错误来源先失败后修复，候选CI进行中。固定版本与人工时区依据边界保留。
+
+本轮继续PP056，探索显式情景关联持久化；不能把入厂化验或操作者声明当实际入炉证明。实时认领以SESSION为准。
+
 ## 最近已交付
 
 - PP-030采购四单元、PP-040可靠发送：[设备PR #15](https://github.com/nizuowanzhenbang/equipment-inspection/pull/15)，固定业务2312540c6d4c85ac0b921100937476067f87a506。完整608后端（SQLite/真实PostgreSQL/真实两应用）、前端18/构建、ruff/依赖/interview_demo通过。固定候选和该main的backend/postgresql/frontend/safety_contract/compose-browser五项成功；PG CI已包含根目录发送恢复回归。
