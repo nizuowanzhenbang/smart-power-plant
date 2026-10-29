@@ -1,6 +1,19 @@
 {
   "schema_version": 1,
-  "active": null,
+  "active": {
+    "task_id": "PP-057",
+    "owner": "codex-time-evidence-20261029",
+    "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
+    "branch": "feat/coal-time-evidence-20261029",
+    "started_at": "2026-10-29T17:41:49.849002+00:00",
+    "updated_at": "2026-10-29T17:41:49.849015+00:00",
+    "checkpoint": {
+      "phase": "claimed",
+      "commit": null,
+      "note": "已认领；尚未完成实现",
+      "next_action": "读取实际代码与计划"
+    }
+  },
   "last": {
     "task_id": "PP-101",
     "owner": "codex-interview-guide",
