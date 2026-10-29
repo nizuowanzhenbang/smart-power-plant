@@ -6,13 +6,13 @@
     "code_repository": "nizuowanzhenbang/coal-yard-management",
     "branch": "fix/yard-quantity-validation-20261029",
     "started_at": "2026-10-29T18:04:35.252417+00:00",
-    "updated_at": "2026-10-29T18:05:55.228499+00:00",
+    "updated_at": "2026-10-29T18:06:55.347476+00:00",
     "checkpoint": {
-      "phase": "implemented",
-      "commit": "7f2ebbe3f9e2126a55d5a17671373c7c1da51b0e",
+      "phase": "reviewed",
+      "commit": "cc86d52ae480222fa9ddb53f4b0b2b90c8c1e0b0",
       "pr": null,
-      "note": "先复现20项数量输入失败与两项FIFO边界失败；实现后SQLite完整48通过。独立审查和候选CI中；并发/盘点守恒尚未完成",
-      "next_action": "处理审查、验收PR3，然后继续盘点与并发保护"
+      "note": "独立审查发现字符串超精度被float四舍五入；先失败后修复，补跨批次和审批库存变更；完整SQLite53通过。并发及盘点仍待做",
+      "next_action": "验收PR3最新候选CI并合并，主分支完成后回写"
     }
   },
   "last": {
