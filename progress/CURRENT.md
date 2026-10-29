@@ -7,6 +7,10 @@
 - PP-051：[能效PR3](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/3)，974d526；带来源血缘、显式批次/机组/时间关联的热值适配与真实能效算法情景预览。完整146通过，候选/master两项CI成功。PP-050总体仍进行中，不包含持久映射、来源导出或实际入炉消耗证明。
 - 唯一独立审查无阻塞，日期极值Minor登记PP-052。详细[本批证据](evidence/2026-10-28-visibility-coal-preview.md)与[日志](logs/2026-10-28-batch-01.md)。
 
+## 用户当前学习重点：面试问答
+
+PP-101 已交付[从零开始的面试问答手册](docs/INTERVIEW-ANSWER-GUIDE.md)，[PR #15](https://github.com/nizuowanzhenbang/smart-power-plant/pull/15)，合并971d2d8415111a51258829839205875edccde046；候选progress CI通过。用户表示不熟悉面试准备方法；后续先从简单业务例子出发，一次教一个问题、让用户用自己的话复述，再按其实际理解追问。个人贡献、AI参与和现场经验只能按用户真实经历填写，不能虚构。用户主动学习/面试问题优先；若转回开发，按下一批入口接续PP057。
+
 ## 2026-10-28 继续批次
 
 执行者 codex-20261028-next。PP053：[能效PR5](https://github.com/nizuowanzhenbang/coal-unit-efficiency/pull/5)，4edc72a；33项目标测试通过，临时移除UTC校验8个用例均失败，独立审查无问题；已合并30e8e6a，master CI通过。

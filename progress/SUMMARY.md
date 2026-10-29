@@ -33,6 +33,10 @@ PP053能效PR5/30e8e6a加强日期边界测试；PP054煤质PR5/1973c4a可从入
 
 PP055煤质PR6/308b3ba：CI固定能效版本，使用两个隔离进程运行真实导出与预览契约；候选/main三项CI成功。PP056能效PR6/81233d8：保存操作者声明的批次—机组情景关联，UUID幂等、按来源批次分页查回、明确选择后预览；SQLite完整167项、独立PostgreSQL10项（含并发/分页）、候选和master三项CI通过。关联不是实际入炉证明；时间声明依据尚由调用者保存，PP057继续。详情见[批次日志](logs/2026-10-29-PP-055-056.md)。
 
+## 面试学习入口
+
+用户希望从基础学习如何回答面试问题。先读[问答手册](docs/INTERVIEW-ANSWER-GUIDE.md)：用通俗例子解释项目、12个常见问题、术语与一周练习；个人贡献按真实情况填写，不把AI生成内容视为用户已掌握。用户主动学习问题优先；技术后续以CURRENT和SESSION为准。
+
 ## 当前重点
 
 - 2026-10-14 用户明确本轮以未来求职、面试讲解为目标：PP-100 已通过[PR #14](https://github.com/nizuowanzhenbang/smart-power-plant/pull/14)合并[讲解卡](docs/INTERVIEW-CARDS-20261014.md)与[前沿主方案/国产备用设计](docs/INTERVIEW-TECH-ROADMAP-20261014.md)。RAG、时序基础模型、联合优化和国产环境均为待实施设计；不增加已交付软件能力或现场收益。原业务候选保留，详见 CURRENT/SESSION。
