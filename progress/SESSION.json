@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-058",
     "owner": "codex-consumption-20261029",
     "code_repository": "nizuowanzhenbang/coal-yard-management",
@@ -13,23 +14,8 @@
       "pr": 2,
       "note": "煤场PR2已合并；候选SQLite25项、PostgreSQL及前端CI成功；master CI待验收",
       "next_action": "进入PP059数量输入保护，库存并发留后续"
-    }
-  },
-  "last": {
-    "task_id": "PP-050",
-    "owner": "codex-consumption-20261029",
-    "code_repository": "nizuowanzhenbang/smart-power-plant",
-    "branch": "docs/consumption-discovery-20261029",
-    "started_at": "2026-10-29T17:56:52.202539+00:00",
-    "updated_at": "2026-10-29T17:59:16.716656+00:00",
-    "checkpoint": {
-      "phase": "decision",
-      "commit": "b855ea486b1cffea1ffd8bfb8d577ef113e5bb14",
-      "pr": null,
-      "note": "固定源码核查完成：FIFO为账面分配，缺少化验/机组稳定身份和计量窗口；先PP058只读证据导出",
-      "next_action": "切换PP058实施，再推进PP059"
     },
-    "release_reason": "来源核查单元完成，PP050总体仍进行中，进入PP058实现",
-    "released_at": "2026-10-29T17:59:21.521276+00:00"
+    "release_reason": "PR2合并，候选CI通过，master CI进行中；进入下一环节",
+    "released_at": "2026-10-29T18:04:21.569343+00:00"
   }
 }
