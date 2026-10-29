@@ -6,13 +6,13 @@
     "code_repository": "nizuowanzhenbang/coal-yard-management",
     "branch": "feat/stockout-evidence-20261029",
     "started_at": "2026-10-29T17:59:26.566730+00:00",
-    "updated_at": "2026-10-29T18:02:11.208398+00:00",
+    "updated_at": "2026-10-29T18:03:20.926004+00:00",
     "checkpoint": {
-      "phase": "implemented",
-      "commit": "4edee1f1355482cfa661130ceb6a9755f559f502",
+      "phase": "reviewed",
+      "commit": "4f2ea6e86ade4bfd79468103adb8220b4f2c4647",
       "pr": null,
-      "note": "新增真实API测试先404失败；SQLite完整23通过；导出核对账面数量、来源、时间与权限。独立审查中",
-      "next_action": "检查PostgreSQL CI并处理审查，创建PR"
+      "note": "审查指出可编辑历史来源、数据库测试清理范围、并发混合读取和深层损坏数据；明确当前状态范围、隔离测试schema、单语句查询、添加回归；SQLite25通过，候选CI待完成",
+      "next_action": "候选CI通过后合并，继续PP059数量输入保护"
     }
   },
   "last": {
