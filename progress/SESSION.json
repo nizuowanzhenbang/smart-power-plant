@@ -6,13 +6,13 @@
     "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
     "branch": "feat/coal-time-evidence-20261029",
     "started_at": "2026-10-29T17:41:49.849002+00:00",
-    "updated_at": "2026-10-29T17:45:09.495301+00:00",
+    "updated_at": "2026-10-29T17:46:18.268171+00:00",
     "checkpoint": {
-      "phase": "reproduced",
-      "commit": "3c0e606d668c26605d9e06a23b0e47666a83d788",
+      "phase": "implemented",
+      "commit": "afe5adaf28817ca34b13501c2b68b131fc5dbe43",
       "pr": null,
-      "note": "15个真实API用例因未实现端点返回404失败，设计与测试已推送",
-      "next_action": "实现不可变测量依据并验证SQLite/PostgreSQL"
+      "note": "新增15项通过，完整SQLite后端182项退出0，ruff和diff检查通过；PR7独立审查与PG CI进行中",
+      "next_action": "处理审查并验收CI，然后升级双进程契约"
     }
   },
   "last": {
