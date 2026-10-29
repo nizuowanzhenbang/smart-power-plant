@@ -6,12 +6,13 @@
     "code_repository": "nizuowanzhenbang/coal-quality-monitor",
     "branch": "test/coal-energy-contract-20261029",
     "started_at": "2026-10-29T09:22:07.986412+00:00",
-    "updated_at": "2026-10-29T09:22:07.986425+00:00",
+    "updated_at": "2026-10-29T09:22:13.567879+00:00",
     "checkpoint": {
-      "phase": "claimed",
-      "commit": null,
-      "note": "已认领；尚未完成实现",
-      "next_action": "读取实际代码与计划"
+      "phase": "merged",
+      "commit": "308b3ba125979e2e78df251c3c62bc1c15360964",
+      "pr": 6,
+      "note": "跨应用持续回归已合并；本地煤质213通过，独立审查错误来源RED→GREEN，候选与main三项CI成功",
+      "next_action": "release并登记发布索引"
     }
   },
   "last": {
