@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-056",
     "owner": "codex-batch-20261029-01",
     "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
@@ -13,23 +14,8 @@
       "pr": 6,
       "note": "独立审查修复完成，SQLite完整167及独立PG10通过；候选backend/frontend/scenario_postgresql成功；已合并，master CI待完成",
       "next_action": "核对master三项CI并release签收"
-    }
-  },
-  "last": {
-    "task_id": "PP-055",
-    "owner": "codex-batch-20261029-01",
-    "code_repository": "nizuowanzhenbang/coal-quality-monitor",
-    "branch": "test/coal-energy-contract-20261029",
-    "started_at": "2026-10-29T09:22:07.986412+00:00",
-    "updated_at": "2026-10-29T09:22:13.567879+00:00",
-    "checkpoint": {
-      "phase": "merged",
-      "commit": "308b3ba125979e2e78df251c3c62bc1c15360964",
-      "pr": 6,
-      "note": "跨应用持续回归已合并；本地煤质213通过，独立审查错误来源RED→GREEN，候选与main三项CI成功",
-      "next_action": "release并登记发布索引"
     },
-    "release_reason": "PR6已合并，候选和main三项CI成功",
-    "released_at": "2026-10-29T09:22:17.527852+00:00"
+    "release_reason": "能效PR6已合并，候选/master三项CI成功；按完整来源身份分页及关联ID预览已验收",
+    "released_at": "2026-10-29T09:25:45.905362+00:00"
   }
 }
