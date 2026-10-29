@@ -6,13 +6,13 @@
     "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
     "branch": "feature/coal-association-20261029",
     "started_at": "2026-10-29T09:12:17.117273+00:00",
-    "updated_at": "2026-10-29T09:20:14.943256+00:00",
+    "updated_at": "2026-10-29T09:21:08.114319+00:00",
     "checkpoint": {
       "phase": "pr_open",
-      "commit": "053ec1db34fe9f1525213ca02368ddd43211f57d",
+      "commit": "7f103f3225b1ca0f6eb528723e69543d350dec2b",
       "pr": 6,
-      "note": "增加按来源实例与批次查回和游标分页：100/101边界RED→GREEN；新增候选CI/完整SQLite与PG回归进行中，先前审查两Important已修复",
-      "next_action": "核对最新候选CI及两数据库回归后合并签收"
+      "note": "含按来源批次查回/游标分页；本地SQLite完整167通过，PG10通过（并发及分页）；审查问题修复，分页独立审查无阻塞，最新候选CI待完成",
+      "next_action": "固定候选三项CI通过后合并，再签收PP055与PP056"
     }
   },
   "last": {
