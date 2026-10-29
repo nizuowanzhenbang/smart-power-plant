@@ -6,13 +6,13 @@
     "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
     "branch": "feat/coal-time-evidence-20261029",
     "started_at": "2026-10-29T17:41:49.849002+00:00",
-    "updated_at": "2026-10-29T17:46:18.268171+00:00",
+    "updated_at": "2026-10-29T17:48:33.447674+00:00",
     "checkpoint": {
-      "phase": "implemented",
-      "commit": "afe5adaf28817ca34b13501c2b68b131fc5dbe43",
+      "phase": "reviewed",
+      "commit": "2f38f7be6798481c0516648a7b8943c77646b0a0",
       "pr": null,
-      "note": "新增15项通过，完整SQLite后端182项退出0，ruff和diff检查通过；PR7独立审查与PG CI进行中",
-      "next_action": "处理审查并验收CI，然后升级双进程契约"
+      "note": "独立审查发现stored_time NUL遗漏，回归先失败后修复；完整185通过；双进程新路径通过。最新候选CI待验收",
+      "next_action": "验收PR7最新候选并合并，固定跨系统对端"
     }
   },
   "last": {
