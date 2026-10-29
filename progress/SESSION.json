@@ -6,13 +6,13 @@
     "code_repository": "nizuowanzhenbang/coal-quality-monitor",
     "branch": "test/coal-energy-contract-20261029",
     "started_at": "2026-10-29T09:08:45.013451+00:00",
-    "updated_at": "2026-10-29T09:10:45.576324+00:00",
+    "updated_at": "2026-10-29T09:11:54.688059+00:00",
     "checkpoint": {
       "phase": "implemented",
-      "commit": "70f660f85384993f9862822fc45127bbd393850a",
+      "commit": "a8e378af1a562ca432488b468e1b2b1ace9a99a5",
       "pr": null,
-      "note": "真实煤质导出与隔离能效API双进程测试本地通过，CI job固定30e8e6a；完整回归/审查/CI进行中",
-      "next_action": "固定候选CI和独立审查后合并并签收"
+      "note": "独立审查指出双端来源/时间仅回显不充分；模拟错误来源RED、独立期望断言后GREEN；CI重跑中",
+      "next_action": "候选三项CI成功后合并签收；期间准备持久化关联最小设计"
     }
   },
   "last": {
