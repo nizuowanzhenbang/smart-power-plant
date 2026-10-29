@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-101",
     "owner": "codex-interview-guide",
     "code_repository": "nizuowanzhenbang/smart-power-plant",
@@ -13,23 +14,8 @@
       "pr": 15,
       "note": "问答手册与旧卡片入口已合并；固定候选progress CI成功，主分支检查运行中",
       "next_action": "确认main检查、release并更新接续入口"
-    }
-  },
-  "last": {
-    "task_id": "PP-056",
-    "owner": "codex-batch-20261029-01",
-    "code_repository": "nizuowanzhenbang/coal-unit-efficiency",
-    "branch": "feature/coal-association-20261029",
-    "started_at": "2026-10-29T09:22:22.457513+00:00",
-    "updated_at": "2026-10-29T09:24:03.156377+00:00",
-    "checkpoint": {
-      "phase": "merged",
-      "commit": "81233d85a9d0a7f2b4c61724499514ace0c4aaa7",
-      "pr": 6,
-      "note": "独立审查修复完成，SQLite完整167及独立PG10通过；候选backend/frontend/scenario_postgresql成功；已合并，master CI待完成",
-      "next_action": "核对master三项CI并release签收"
     },
-    "release_reason": "能效PR6已合并，候选/master三项CI成功；按完整来源身份分页及关联ID预览已验收",
-    "released_at": "2026-10-29T09:25:45.905362+00:00"
+    "release_reason": "问答手册已通过PR15合并；候选CI成功，回写统一入口",
+    "released_at": "2026-10-29T14:41:52.655986+00:00"
   }
 }
