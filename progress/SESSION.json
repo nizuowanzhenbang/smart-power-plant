@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "active": {
+  "active": null,
+  "last": {
     "task_id": "PP-059",
     "owner": "codex-consumption-20261029",
     "code_repository": "nizuowanzhenbang/coal-yard-management",
@@ -13,23 +14,8 @@
       "pr": 3,
       "note": "数量输入与FIFO边界子单元已合并，候选三项CI通过；PP059总体仍需盘点/并发保护，master CI进行中",
       "next_action": "核查master CI，接续盘点守恒与全入口并发保护"
-    }
-  },
-  "last": {
-    "task_id": "PP-058",
-    "owner": "codex-consumption-20261029",
-    "code_repository": "nizuowanzhenbang/coal-yard-management",
-    "branch": "feat/stockout-evidence-20261029",
-    "started_at": "2026-10-29T17:59:26.566730+00:00",
-    "updated_at": "2026-10-29T18:04:16.152200+00:00",
-    "checkpoint": {
-      "phase": "merged",
-      "commit": "ccc6f7eb1149a46157865752c7946ea509feba27",
-      "pr": 2,
-      "note": "煤场PR2已合并；候选SQLite25项、PostgreSQL及前端CI成功；master CI待验收",
-      "next_action": "进入PP059数量输入保护，库存并发留后续"
     },
-    "release_reason": "PR2合并，候选CI通过，master CI进行中；进入下一环节",
-    "released_at": "2026-10-29T18:04:21.569343+00:00"
+    "release_reason": "数量子单元PR3合并；PP059整体仍进行中，下一轮实现盘点与并发保护",
+    "released_at": "2026-10-29T18:08:12.354978+00:00"
   }
 }
