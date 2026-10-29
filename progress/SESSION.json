@@ -6,12 +6,13 @@
     "code_repository": "nizuowanzhenbang/smart-power-plant",
     "branch": "docs/consumption-discovery-20261029",
     "started_at": "2026-10-29T17:56:52.202539+00:00",
-    "updated_at": "2026-10-29T17:56:52.202553+00:00",
+    "updated_at": "2026-10-29T17:59:16.716656+00:00",
     "checkpoint": {
-      "phase": "claimed",
-      "commit": null,
-      "note": "已认领；尚未完成实现",
-      "next_action": "读取实际代码与计划"
+      "phase": "decision",
+      "commit": "b855ea486b1cffea1ffd8bfb8d577ef113e5bb14",
+      "pr": null,
+      "note": "固定源码核查完成：FIFO为账面分配，缺少化验/机组稳定身份和计量窗口；先PP058只读证据导出",
+      "next_action": "切换PP058实施，再推进PP059"
     }
   },
   "last": {
