@@ -1,6 +1,19 @@
 {
   "schema_version": 1,
-  "active": null,
+  "active": {
+    "task_id": "PP-058",
+    "owner": "codex-consumption-20261029",
+    "code_repository": "nizuowanzhenbang/coal-yard-management",
+    "branch": "feat/stockout-evidence-20261029",
+    "started_at": "2026-10-29T17:59:26.566730+00:00",
+    "updated_at": "2026-10-29T17:59:26.566743+00:00",
+    "checkpoint": {
+      "phase": "claimed",
+      "commit": null,
+      "note": "已认领；尚未完成实现",
+      "next_action": "读取实际代码与计划"
+    }
+  },
   "last": {
     "task_id": "PP-050",
     "owner": "codex-consumption-20261029",
