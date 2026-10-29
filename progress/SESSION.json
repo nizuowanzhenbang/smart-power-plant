@@ -6,13 +6,13 @@
     "code_repository": "nizuowanzhenbang/smart-power-plant",
     "branch": "docs/interview-answer-guide",
     "started_at": "2026-10-29T14:37:54.522113+00:00",
-    "updated_at": "2026-10-29T14:39:33.628042+00:00",
+    "updated_at": "2026-10-29T14:40:59.211201+00:00",
     "checkpoint": {
-      "phase": "pr_open",
-      "commit": "552039a56f3a8002e114d67d7d308a2a7f0d0564",
+      "phase": "merged",
+      "commit": "971d2d8415111a51258829839205875edccde046",
       "pr": 15,
-      "note": "入门问答及旧讲解卡入口已推送，离线链接检查通过，最新候选CI待完成",
-      "next_action": "CI通过后合并并在中央进度回写"
+      "note": "问答手册与旧卡片入口已合并；固定候选progress CI成功，主分支检查运行中",
+      "next_action": "确认main检查、release并更新接续入口"
     }
   },
   "last": {
